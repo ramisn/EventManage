@@ -1,4 +1,4 @@
 == Welcome to EventManagement
-:tool to handle all events happenings:
+*tool to handle all events happenings
 
   Work is in progress
