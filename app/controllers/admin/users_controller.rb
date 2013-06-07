@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
   def new
     @user = User.new
   end
@@ -10,5 +10,9 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def index
+    @user = User.all
   end
 end

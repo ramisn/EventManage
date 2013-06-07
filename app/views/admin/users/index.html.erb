@@ -1,0 +1,8 @@
+<h1>Listing Users</h1>
+
+<% @user.each_with_index do |u,index| %>
+  <p><%= index + 1 %>&nbsp;&nbsp;<%= u.email %></p>
+<% end %>
+
+<p><%= link_to 'create User',new_admin_user_path %></p>
+<p><%= link_to 'back',admin_path %></p>
