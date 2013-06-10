@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   private
 
   def not_authenticated
-    redirect_to login_url, :notice => "First Sign in to view secret page!"
+    redirect_to login_url, :notice => "Sign in first!"
   end
 end
