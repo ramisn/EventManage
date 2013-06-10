@@ -1,8 +1,16 @@
 <h1>Events</h1>
-<% @event.each_with_index do |e,index| %>
-  <p><%= index + 1 %>&nbsp;&nbsp;<%= e.title %></p>
-<% end %>
+<table>
+<% @events.each_with_index do |event,index| %>
 
+  <tr>
+    <td><%= index + 1 %></td>
+    <td><%= event.title %></td>
+    <td><%= link_to 'Edit', edit_admin_event_path(event) %></td>
+    <td><%= link_to 'Destroy', admin_event_path(event), :method => :delete, :confirm => " are you sure?" %></td>
+  </tr>
+
+<% end %>
+</table>
 <%= link_to 'create an event',new_admin_event_path %>
 
 <p><%= link_to 'back',admin_path %></p>

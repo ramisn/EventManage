@@ -11,8 +11,8 @@ EventManagement::Application.routes.draw do
   get "admin" => "admin::dashboard#index"
 
   namespace :admin do
-    resources :events
-    resources :users
+    resources :events, :except => :show
+    resources :users, :except => :show
   end
   
   # The priority is based upon order of creation:

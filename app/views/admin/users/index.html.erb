@@ -1,8 +1,17 @@
 <h1>Listing Users</h1>
 
-<% @user.each_with_index do |u,index| %>
-  <p><%= index + 1 %>&nbsp;&nbsp;<%= u.email %></p>
+<table>
+<% @users.each_with_index do |user,index| %>
+
+  <tr>
+    <td><%= index + 1 %></td>
+    <td><%= user.email %></td>
+    <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
+    <td><%= link_to 'Destroy', admin_user_path(user), :method => :delete, :confirm => " are you sure?" %></td>
+  </tr>
+
 <% end %>
+</table>
 
 <p><%= link_to 'create User',new_admin_user_path %></p>
 <p><%= link_to 'back',admin_path %></p>

@@ -1,1 +1,22 @@
 <h1>Events</h1>
+
+<table border=1>
+  <tr>
+    <th>No.</th>
+    <th>Event</th>
+    <th>Description</th>
+    <th>Venue</th>
+    <th>Starts at</th>
+    <th>Ends at</th>
+  </tr>
+  <% @event.each_with_index do |e,index| %>
+  <tr>
+    <td><%= index + 1 %></td>
+    <td><%= e.title %></td>
+    <td><%= e.description %></td>
+    <td><%= e.venue %></td>
+    <td><%= e.starts_at %></td>
+    <td><%= e.ends_at  %></td>
+  </tr>
+  <% end %>
+</table>

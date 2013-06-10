@@ -8,14 +8,34 @@ class Admin::EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     if @event.save
-      redirect_to admin_url, :notice => "Event created!"
+      redirect_to admin_events_url, :notice => "Event created!"
     else
       render :new
     end
   end
 
   def index
-    @event = Event.all
+    @events = Event.all
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+
+    if @event.update_attributes(params[:event])
+      redirect_to admin_events_path, :notice => "Event Updated"
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to admin_events_path, :notice => "Event Deleted"
   end
 
 end

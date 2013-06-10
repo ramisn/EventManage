@@ -6,13 +6,33 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to root_url, :notice => "Signed up!"
+      redirect_to admin_users_url, :notice => "Signed up!"
     else
       render :new
     end
   end
 
   def index
-    @user = User.all
+    @users = User.all
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update_attributes(params[:user])
+      redirect_to admin_users_path, :notice => "User Updated!"
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to admin_users_path, :notice => "User Deleted!"
   end
 end
