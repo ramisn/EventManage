@@ -13,7 +13,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @admin_users = User.admin_users
+    @players = User.all
   end
 
   def edit
