@@ -7,6 +7,7 @@ EventManagement::Application.routes.draw do
   get 'admin/organizers' => 'users#index', :as => 'organizers'
   get 'events' => 'events#index'
 
+  #match 'admin/events/:event_id/teams/:id/add_player' => 'admin/teams#add_player', :as => 'add_player'
   resources :sessions
   resources :password_resets
   get "admin" => "admin::dashboard#index"

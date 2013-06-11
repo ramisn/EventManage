@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611110642) do
+ActiveRecord::Schema.define(:version => 20130611121441) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20130611110642) do
     t.datetime "reset_password_email_sent_at"
     t.string   "name"
     t.string   "role",                            :default => "player"
+    t.integer  "team_id"
   end
 
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"

@@ -5,9 +5,21 @@
     <p>
       <%= team.title %>
       <%= team.description %>
-      <%= link_to 'edit',"#" %>
-      <%= link_to 'destroy',"#" %>
+      <%= team.id %>
+      <%= team.event_id %>
+      <%= link_to 'edit', "#" %>
+      <%= link_to 'destroy',"#", :method => :delete, :confirm => " are you sure?" %>
     </p>
+    <% if team.users.any? %>
+      <p><h4>players</h4>
+        <% team.users.each do |player| %>
+          <%= player.name %></br>
+        <% end %>
+      </p>
+    <% end %>
+
+   <%= link_to 'add player', "#" %></br>
+-----------------------------------------
   <% end %>
 <% else %>
   <p>Sorry! There is no teams selected yet.</p>

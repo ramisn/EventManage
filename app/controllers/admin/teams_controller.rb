@@ -20,4 +20,34 @@ class Admin::TeamsController < ApplicationController
       render :new, :notice => "error creating!"
     end
   end
+
+  def edit
+    @team = Team.find(params[:id])
+  end
+
+  def update
+    @team = Team.find(params[:id])
+
+    if @team.update_attributes(params[:team])
+      redirect_to admin_event_teams_path, :notice => "Team Updated"
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @team = Team.find(params[:id])
+    @team.destroy
+    redirect_to admin_event_teams_path, :notice => "Team Deleted"
+  end
+
+  def add_player
+    @player = User.find(params[:user_id])
+    @player.team_id = params[:team_id]
+    if @player.save
+      redirect_to admin_event_teams_path, :notice => "player added!"
+    else
+      redirect_to admin_event_teams_path, :notice => "failed to add player."
+    end
+  end
 end
