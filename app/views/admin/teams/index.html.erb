@@ -1,0 +1,21 @@
+<h1><%= @event.title %>&nbsp;Teams</h1>
+
+<% if @teams.any? %>
+  <% @teams.each do |team| %>
+    <p>
+      <%= team.title %>
+      <%= team.description %>
+      <%= link_to 'edit',"#" %>
+      <%= link_to 'destroy',"#" %>
+    </p>
+  <% end %>
+<% else %>
+  <p>Sorry! There is no teams selected yet.</p>
+<% end %>
+
+<p><%= button_to "Create a Team", new_admin_event_team_path(@event.id), :method => "get",:disable_with => 'loading...' %></p>
+
+<h1>Rules</h1>
+<p>coming soon!</p>
+
+<%= link_to 'back', admin_events_path %>

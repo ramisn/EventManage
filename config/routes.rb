@@ -1,9 +1,10 @@
 EventManagement::Application.routes.draw do
+
   root :to => "home#index"
   get 'logout' => 'sessions#destroy', :as => 'logout'
   get 'login' => 'sessions#new', :as => 'login'
   get 'signup' => 'admin::users#new', :as => 'signup'
-  get 'admin/organizers' => 'users#index'
+  get 'admin/organizers' => 'users#index', :as => 'organizers'
   get 'events' => 'events#index'
 
   resources :sessions
@@ -11,7 +12,9 @@ EventManagement::Application.routes.draw do
   get "admin" => "admin::dashboard#index"
 
   namespace :admin do
-    resources :events, :except => :show
+    resources :events, :except => :show do
+      resources :teams, :only => [:index,:new,:create,:edit,:update,:destroy]
+    end
     resources :users, :except => :show
   end
   
