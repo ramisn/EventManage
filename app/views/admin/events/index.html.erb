@@ -4,7 +4,7 @@
     <% @events.each_with_index do |event,index| %>
       <tr>
         <td><%= index + 1 %></td>
-        <td><%= link_to "#{event.title}", admin_event_teams_path(event.id) %></td>
+        <td><%= link_to "#{event.title.capitalize}", admin_event_teams_path(event.id) %></td>
         <td><%= link_to 'Edit', edit_admin_event_path(event) %></td>
         <td><%= link_to 'Destroy', admin_event_path(event), :method => :delete, :confirm => " are you sure?" %></td>
       </tr>
