@@ -1,15 +1,15 @@
-== Welcome to EventManagement
+= Welcome to EventManagement
 *tool to handle all events happenings
 
 Work is in progress
 
-  Work done till now.
-  <b>Admin Interface</b>
+Work done till now.
+  Admin Interface
     * View Dashboard,Event,Users(Admin/Players)
     * Create/Edit/Destroy Event
     * Create/Edit/Destroy Team for particular Event
     * Add Players for each Team
-  <b>User Interface</b>
+  User Interface
     * View Events
 
 Last Updated: 12-jun-13
