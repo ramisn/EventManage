@@ -9,14 +9,16 @@
     <th>Starts at</th>
     <th>Ends at</th>
   </tr>
-  <% @event.each_with_index do |e,index| %>
+  <% @events.each_with_index do |event,index| %>
   <tr>
     <td><%= index + 1 %></td>
-    <td><%= e.title %></td>
-    <td><%= e.description %></td>
-    <td><%= e.venue %></td>
-    <td><%= e.starts_at %></td>
-    <td><%= e.ends_at  %></td>
+    <td><%= link_to "#{event.title.capitalize}", show_teams_event_path(event.id) %></td>
+    <td><%= event.description %></td>
+    <td><%= event.venue %></td>
+    <td><%= event.starts_at %></td>
+    <td><%= event.ends_at  %></td>
   </tr>
   <% end %>
 </table>
+
+<p><%= link_to 'back', root_path %></p>

@@ -1,16 +1,22 @@
 EventManagement::Application.routes.draw do
 
+  #Front UI routes
   root :to => "home#index"
-  get 'logout' => 'sessions#destroy', :as => 'logout'
-  get 'login' => 'sessions#new', :as => 'login'
-  get 'signup' => 'admin::users#new', :as => 'signup'
-  get 'admin/organizers' => 'users#index', :as => 'organizers'
-  get 'events' => 'events#index'
+  resources :events, :only => :index do
+    member do
+      get 'show_teams'
+    end
+  end
 
-  match 'admin/events/:event_id/teams/:id/add_player' => 'admin/teams#add_player', :as => 'add_player'
-  resources :sessions
-  resources :password_resets
+  #Admin UI routes
   get "admin" => "admin::dashboard#index"
+  get 'login' => 'sessions#new', :as => 'login'
+  get 'logout' => 'sessions#destroy', :as => 'logout'
+  get 'signup' => 'admin::users#new', :as => 'signup'
+  match 'admin/events/:event_id/teams/:id/add_player' => 'admin/teams#add_player', :as => 'add_player'
+
+  resources :sessions, :only => [:new,:create,:destroy]
+  resources :password_resets, :only => [:create,:edit,:update]
 
   namespace :admin do
     resources :events, :except => :show do

@@ -1,5 +1,11 @@
 class EventsController < ApplicationController
   def index
-    @event = Event.all
+    @events = Event.all
+  end
+
+  def show_teams
+    @event = Event.find(params[:id])
+    @teams = @event.teams
+    @rules = @event.rules
   end
 end

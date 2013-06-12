@@ -1,0 +1,36 @@
+<h1><%= @event.title.capitalize %>&nbsp;Teams</h1>
+<% if @teams.any? %>
+  <% @teams.each_with_index do |team,index| %>
+    <table border=1>
+      <tr>
+        <th>Team&nbsp;<%= team.title %>(<%= team.description %>)</th>
+      </tr>
+      <tr>
+        <td>
+          <ul>
+            <% team.users.each do |player| %>
+              <li><%= player.name %></li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+      
+    </table>
+  <% end %>
+<% else %>
+  No Teams selected!
+<% end %>
+
+<h2>Rules</h2>
+<% if @rules.any? %>
+  <% @rules.each_with_index do |rule,index| %>
+    <p>
+      <%= index + 1 %> >
+      <%= rule.description %>
+    </p>
+  <% end %>
+<% else %>
+  <p>Why should all the games have rules!! Cheers!</p>
+<% end %>
+
+<%= link_to 'back', events_path %>
