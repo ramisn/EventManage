@@ -7,18 +7,24 @@
       <%= team.description %>
       <%= team.id %>
       <%= team.event_id %>
-      <%= link_to 'edit', "#" %>
-      <%= link_to 'destroy',"#", :method => :delete, :confirm => " are you sure?" %>
+      <%= link_to 'edit', edit_admin_event_team_path(params[:event_id],team.id)%>
+      <%= link_to 'destroy', admin_event_team_path(params[:event_id],team.id), :method => :delete, :confirm => " are you sure?" %>
     </p>
     <% if team.users.any? %>
-      <p><h4>players</h4>
-        <% team.users.each do |player| %>
-          <%= player.name %></br>
-        <% end %>
-      </p>
+      <h4>players</h4>
+        <ul>
+          <% team.users.each do |player| %>
+            <li><%= player.name %></li>
+          <% end %>
+        </ul>
     <% end %>
 
-   <%= link_to 'add player', "#" %></br>
+    <%= form_tag add_player_path(params[:event_id],team.id), :method => :post do %>
+      <div class="field">
+        <%= select_tag :user_id, options_from_collection_for_select(User.all, :id, :name) %>
+        <%= submit_tag "Add" %>
+      </div>
+    <% end %>
 -----------------------------------------
   <% end %>
 <% else %>

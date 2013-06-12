@@ -17,7 +17,7 @@ class Admin::TeamsController < ApplicationController
     if @team.save
       redirect_to admin_event_teams_path, :notice => "Team created!"
     else
-      render :new, :notice => "error creating!"
+      render :new
     end
   end
 
@@ -27,9 +27,8 @@ class Admin::TeamsController < ApplicationController
 
   def update
     @team = Team.find(params[:id])
-
     if @team.update_attributes(params[:team])
-      redirect_to admin_event_teams_path, :notice => "Team Updated"
+     redirect_to admin_event_teams_path, :notice => "Team updated!"
     else
       render 'edit'
     end
@@ -43,7 +42,7 @@ class Admin::TeamsController < ApplicationController
 
   def add_player
     @player = User.find(params[:user_id])
-    @player.team_id = params[:team_id]
+    @player.team_id = params[:id]
     if @player.save
       redirect_to admin_event_teams_path, :notice => "player added!"
     else
