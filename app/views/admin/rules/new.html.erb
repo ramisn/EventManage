@@ -1,0 +1,14 @@
+<h1>Create a Rule</h1>
+</br>
+
+<% @rule.errors.full_messages.each do |error| %>
+  <li><%= error %><li>
+<% end %>
+
+<%= form_for [:admin,:event, @rule] do |f| %>
+  <%= render 'fields', f: f %>
+  <%= f.submit %></p>
+
+<% end %>
+
+<%= link_to 'back',admin_event_teams_path %>

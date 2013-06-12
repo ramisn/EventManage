@@ -5,4 +5,5 @@ class Event < ActiveRecord::Base
   validates :description, :presence => true
 
   has_many :teams, :dependent => :destroy
+  has_many :rules, :dependent => :destroy
 end

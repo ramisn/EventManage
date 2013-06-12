@@ -3,10 +3,8 @@
 <% if @teams.any? %>
   <% @teams.each do |team| %>
     <p>
-      <%= team.title %>
+      Team Name&nbsp;<%= team.title %>
       <%= team.description %>
-      <%= team.id %>
-      <%= team.event_id %>
       <%= link_to 'edit', edit_admin_event_team_path(params[:event_id],team.id)%>
       <%= link_to 'destroy', admin_event_team_path(params[:event_id],team.id), :method => :delete, :confirm => " are you sure?" %>
     </p>
@@ -34,6 +32,19 @@
 <p><%= button_to "Create a Team", new_admin_event_team_path(@event.id), :method => "get",:disable_with => 'loading...' %></p>
 
 <h1>Rules</h1>
-<p>coming soon!</p>
+<% if @rules.any? %>
+  <% @rules.each_with_index do |rule,index| %>
+    <p>
+      <%= index + 1 %> >
+      <%= rule.description %>
+      <%= link_to 'edit', edit_admin_event_rule_path(params[:event_id],rule.id)%>
+      <%= link_to 'destroy', admin_event_rule_path(params[:event_id],rule.id), :method => :delete, :confirm => " are you sure?" %>
+    </p>
+  <% end %>
+<% else %>
+  <p>Sorry! There is no rules selected yet.</p>
+<% end %>
+
+<p><%= button_to "Create a Rule", new_admin_event_rule_path(@event.id), :method => "get",:disable_with => 'loading...' %></p>
 
 <%= link_to 'back', admin_events_path %>

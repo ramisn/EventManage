@@ -15,6 +15,7 @@ EventManagement::Application.routes.draw do
   namespace :admin do
     resources :events, :except => :show do
       resources :teams, :only => [:index,:new,:create,:edit,:update,:destroy]
+      resources :rules, :only => [:new,:create,:edit,:update,:destroy]
     end
     resources :users, :except => :show
   end
