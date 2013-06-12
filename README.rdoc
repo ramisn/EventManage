@@ -2,3 +2,15 @@
 *tool to handle all events happenings
 
   Work is in progress
+
+ Work done till now.
+  Admin Interface
+ * View Dashboard,Event,Users(Admin/Players)
+ * Create/Edit/Destroy Event
+ * Create/Edit/Destroy Team for particular Event
+ * Add Players for each Team
+
+
+Last Updated: 12-jun-13
+
+Parth.
