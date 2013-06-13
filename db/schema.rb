@@ -38,13 +38,6 @@ ActiveRecord::Schema.define(:version => 20130613101702) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "teams_users", :id => false, :force => true do |t|
-    t.integer "team_id"
-    t.integer "user_id"
-  end
-
-  add_index "teams_users", ["team_id", "user_id"], :name => "index_teams_users_on_team_id_and_user_id"
-
   create_table "users", :force => true do |t|
     t.string   "email"
     t.string   "crypted_password"
