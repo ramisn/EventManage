@@ -8,10 +8,10 @@
       <%= link_to 'edit', edit_admin_event_team_path(params[:event_id],team.id)%>
       <%= link_to 'destroy', admin_event_team_path(params[:event_id],team.id), :method => :delete, :confirm => " are you sure?" %>
     </p>
-    <% if team.users.any? %>
+    <% if team.players.any? %>
       <h4>players</h4>
         <ul>
-          <% team.users.each do |player| %>
+          <% team.players.each do |player| %>
             <li><%= player.name %></li>
           <% end %>
         </ul>

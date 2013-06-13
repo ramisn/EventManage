@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :role
 
   has_many :team_users
-  has_many :teams, :through => :team_users
+  has_many :teams, :through => :team_users,:uniq => true
 
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create

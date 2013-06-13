@@ -42,14 +42,13 @@ class Admin::TeamsController < ApplicationController
   end
 
   def add_player
-    #render :text=> params[:id].inspect and return false
     @player = User.find(params[:user_id])
     @team = Team.find(params[:id])
-    @team.users << @player
-
-    if @player.save
-      redirect_to admin_event_teams_path, :notice => "player added!"
-    else
+    #render :text=> @team.inspect and return false
+    begin 
+      @team.players << @player
+      redirect_to admin_event_teams_path, :notice => "Player Added !"
+    rescue
       redirect_to admin_event_teams_path, :notice => "failed to add player."
     end
   end
