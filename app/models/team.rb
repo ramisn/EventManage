@@ -4,6 +4,6 @@ class Team < ActiveRecord::Base
   has_many :team_users
   has_many :players, :class_name => 'User', :through => :team_users, :source => :user
 
-  validates :title, :presence => true, :uniqueness => true
-  validates :description, :presence => true, :uniqueness => true
+  validates :title, :presence => true, :uniqueness => {:scope => :event_id}
+  validates :description, :presence => true, :uniqueness => {:scope => :event_id}
 end

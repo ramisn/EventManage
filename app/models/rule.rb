@@ -3,5 +3,5 @@ class Rule < ActiveRecord::Base
 
   belongs_to :event
 
-  validates :description, :presence => true, :uniqueness => true
+  validates :description, :presence => true, :uniqueness => {:scope => :event_id}
 end
