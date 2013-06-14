@@ -12,7 +12,7 @@
       <h4>players</h4>
         <ul>
           <% team.players.each do |player| %>
-            <li><%= player.name %></li>
+            <li><%= player.name %>&nbsp;&nbsp;<%= link_to image_tag("remove.gif", :border => 0), remove_player_path(params[:event_id],team.id,player.id) %></li>
           <% end %>
         </ul>
     <% end %>
@@ -23,6 +23,8 @@
         <%= submit_tag "Add" %>
       </div>
     <% end %>
+
+    <p><%= link_to 'Reset Team', reset_team_path(params[:event_id],team.id) if team.players.any? %></p>
 -----------------------------------------
   <% end %>
 <% else %>

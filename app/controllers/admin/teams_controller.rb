@@ -38,18 +38,38 @@ class Admin::TeamsController < ApplicationController
   def destroy
     @team = Team.find(params[:id])
     @team.destroy
-    redirect_to admin_event_teams_path, :notice => "Team Deleted"
+    redirect_to admin_event_teams_path, :notice => "Team Deleted!"
   end
 
   def add_player
     @player = User.find(params[:user_id])
-    @team = Team.find(params[:id])
-    #render :text=> @team.inspect and return false
-    begin 
+    @team = Team.find(params[:team_id])
+    begin
       @team.players << @player
-      redirect_to admin_event_teams_path, :notice => "Player Added !"
+      redirect_to admin_event_teams_path, :notice => "Player Added!"
     rescue
       redirect_to admin_event_teams_path, :notice => "failed to add player."
+    end
+  end
+
+  def remove_player
+    @player = User.find(params[:user_id])
+    @team = Team.find(params[:team_id])
+    begin
+      @team.players.delete(@player)
+      redirect_to admin_event_teams_path, :notice => "Player removed!"
+    rescue
+      redirect_to admin_event_teams_path, :notice => "failed to add player."
+    end
+  end
+
+  def reset_team
+    @team = Team.find(params[:team_id])
+    begin
+      @team.players.clear
+      redirect_to admin_event_teams_path, :notice => "Team Reset!"
+    rescue
+      redirect_to admin_event_teams_path, :notice => "Team reset failed!"
     end
   end
 end

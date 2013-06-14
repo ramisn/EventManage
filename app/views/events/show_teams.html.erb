@@ -8,13 +8,12 @@
       <tr>
         <td>
           <ul>
-            <% team.users.each do |player| %>
+            <% team.players.each do |player| %>
               <li><%= player.name %></li>
             <% end %>
           </ul>
         </td>
       </tr>
-      
     </table>
   <% end %>
 <% else %>
