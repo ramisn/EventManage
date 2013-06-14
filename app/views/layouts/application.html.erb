@@ -7,6 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= params[:controller] %>">
+  <% if logged_in? %>
+    Logged in as <b><%= current_user.name %></b>
+    <%= link_to 'Logout', logout_path %></br>
+    <%= link_to 'Admin Panel | Home', admin_path %>
+  <% end %>
   <div id="container">
     <% flash.each do |name,msg| %>
       <%= content_tag(:div, msg, :id => "flash_#{name}")%>
