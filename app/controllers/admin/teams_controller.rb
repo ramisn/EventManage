@@ -42,10 +42,8 @@ class Admin::TeamsController < ApplicationController
   end
 
   def add_player
-    @player = User.find(params[:user_id])
-    @team = Team.find(params[:team_id])
     begin
-      @team.players << @player
+      TeamUser.create!(:team_id=>params[:team_id].to_s,:user_id=>params[:user_id].to_s,:event_id=>params[:event_id].to_s)
       redirect_to admin_event_teams_path, :notice => "Player Added!"
     rescue
       redirect_to admin_event_teams_path, :notice => "failed to add player."
