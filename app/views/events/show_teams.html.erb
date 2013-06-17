@@ -1,21 +1,23 @@
 <h1><%= @event.title.capitalize %>&nbsp;Teams</h1>
 <% if @teams.any? %>
-  <% @teams.each_with_index do |team,index| %>
-    <table border=1>
-      <tr>
-        <th>Team&nbsp;<%= team.title %>(<%= team.description %>)</th>
-      </tr>
-      <tr>
-        <td>
+  <table style="border:1px solid;border-collapse:collapse;">
+    <tr>
+      <% @teams.each_with_index do |team,index| %>
+        <th style="border:1px solid; padding: 5px; border-color: #000080;">Team&nbsp;<%= team.title %>(<%= team.description %>)</th>
+      <% end %>
+    </tr>
+    <tr>
+      <% @teams.each_with_index do |team,index| %>
+        <td style="border:1px solid;border-color: #000080;">
           <ul>
             <% team.players.each do |player| %>
-              <li><%= player.name %></li>
+              <li style="width: 133px;"><%= player.name %></li>
             <% end %>
           </ul>
         </td>
-      </tr>
-    </table>
-  <% end %>
+      <% end %>
+    </tr>
+  </table>
 <% else %>
   No Teams selected!
 <% end %>
@@ -24,7 +26,7 @@
 <% if @rules.any? %>
   <% @rules.each_with_index do |rule,index| %>
     <p>
-      <%= index + 1 %> >
+      (<%= index + 1 %>)
       <%= rule.description %>
     </p>
   <% end %>
