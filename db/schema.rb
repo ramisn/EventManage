@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130613140825) do
+ActiveRecord::Schema.define(:version => 20130617095541) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -21,6 +21,19 @@ ActiveRecord::Schema.define(:version => 20130613140825) do
     t.datetime "ends_at"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "results", :force => true do |t|
+    t.integer  "played",     :default => 0,   :null => false
+    t.integer  "won",        :default => 0,   :null => false
+    t.integer  "lost",       :default => 0,   :null => false
+    t.integer  "tie",        :default => 0,   :null => false
+    t.integer  "nr",         :default => 0,   :null => false
+    t.integer  "points",     :default => 0,   :null => false
+    t.float    "nrr",        :default => 0.0, :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.integer  "team_id"
   end
 
   create_table "rules", :force => true do |t|
@@ -59,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20130613140825) do
     t.datetime "reset_password_email_sent_at"
     t.string   "name"
     t.string   "role",                            :default => "player"
+    t.integer  "event_id"
   end
 
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"

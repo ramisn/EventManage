@@ -1,0 +1,53 @@
+<style type="text/css">
+table {
+  border:1px solid;
+  border-collapse:collapse;
+}
+th {
+  border:1px solid;
+  padding: 5px;
+  border-color: #000080;
+}
+td {
+  border:1px solid;
+  border-color: #000080;
+  text-align: center;
+  padding: 5px;
+}
+</style>
+<h1><%= @event.title.capitalize %>&nbsp;Results</h1>
+<% if @teams.any? %>
+  <table style="border:1px solid;border-collapse:collapse;">
+    <tr>
+      <th >Sr No.</th>
+      <th>Team Name</th>
+      <th>Played</th>
+      <th>Won</th>
+      <th>Lost</th>
+      <th>Tie</th>
+      <th>NR</th>
+      <th>Points</th>
+      <th>NRR</th>
+    </tr>
+    <% @teams.each_with_index do |team,index| %>
+      <% unless team.result.nil? %>
+        <tr>
+          <td><%= index +1 %></td>
+          <td style="text-align: left;">Team&nbsp;<%= team.title %>(<%= team.description %>)</td>
+          <td><%= team.result.played %></td>
+          <td><%= team.result.won %></td>
+          <td><%= team.result.lost %></td>
+          <td><%= team.result.tie %></td>
+          <td><%= team.result.nr %></td>
+          <td><%= team.result.points %></td>
+          <td><%= team.result.nrr %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+<% else %>
+  No results!
+<% end %>
+
+<p><%= link_to 'Team Players & Rules', show_teams_event_path %></p>
+<p><%= link_to 'back', events_path %></p>

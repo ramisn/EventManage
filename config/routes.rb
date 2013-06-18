@@ -5,6 +5,7 @@ EventManagement::Application.routes.draw do
   resources :events, :only => :index do
     member do
       get 'show_teams'
+      get 'results'
     end
   end
 
@@ -16,7 +17,13 @@ EventManagement::Application.routes.draw do
   match 'admin/events/:event_id/teams/:team_id/add_player' => 'admin/teams#add_player', :as => 'add_player'
   match 'admin/events/:event_id/teams/:team_id/:user_id/remove_player' => 'admin/teams#remove_player', :as => 'remove_player'
   match 'admin/events/:event_id/teams/:team_id/reset_team' => 'admin/teams#reset_team', :as => 'reset_team'
-
+  match 'admin/events/:event_id/teams/:team_id/show_result' => 'admin/teams#show_result', :as => 'team_result'
+  match 'admin/events/:event_id/teams/:team_id/plus_one_played' => 'admin/teams#plus_one_played', :as => 'plus_one_played'
+  match 'admin/events/:event_id/teams/:team_id/plus_one_won' => 'admin/teams#plus_one_won', :as => 'plus_one_won'
+  match 'admin/events/:event_id/teams/:team_id/plus_one_lost' => 'admin/teams#plus_one_lost', :as => 'plus_one_lost'
+  match 'admin/events/:event_id/teams/:team_id/plus_one_tie' => 'admin/teams#plus_one_tie', :as => 'plus_one_tie'
+  match 'admin/events/:event_id/teams/:team_id/plus_one_nr' => 'admin/teams#plus_one_nr', :as => 'plus_one_nr'
+  match 'admin/events/:event_id/teams/:team_id/reset_result' => 'admin/teams#reset_result', :as => 'reset_result'
   resources :sessions, :only => [:new,:create,:destroy]
   resources :password_resets, :only => [:create,:edit,:update]
 

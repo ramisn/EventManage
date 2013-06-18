@@ -1,17 +1,33 @@
+<style type="text/css">
+table {
+  border:1px solid;
+  border-collapse:collapse;
+}
+th {
+  border:1px solid;
+  padding: 5px;
+  border-color: #000080;
+}
+td {
+  border:1px solid;
+  border-color: #000080;
+  width: 136px;
+}
+</style>
 <h1><%= @event.title.capitalize %>&nbsp;Teams</h1>
 <% if @teams.any? %>
-  <table style="border:1px solid;border-collapse:collapse;">
+  <table>
     <tr>
       <% @teams.each_with_index do |team,index| %>
-        <th style="border:1px solid; padding: 5px; border-color: #000080;">Team&nbsp;<%= team.title %>(<%= team.description %>)</th>
+        <th>Team&nbsp;<%= team.title %>(<%= team.description %>)</th>
       <% end %>
     </tr>
     <tr>
       <% @teams.each_with_index do |team,index| %>
-        <td style="border:1px solid;border-color: #000080;">
+        <td>
           <ul>
             <% team.players.each do |player| %>
-              <li style="width: 133px;"><%= player.name %></li>
+              <li><%= player.name %></li>
             <% end %>
           </ul>
         </td>

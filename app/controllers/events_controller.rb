@@ -8,4 +8,9 @@ class EventsController < ApplicationController
     @teams = @event.teams
     @rules = @event.rules
   end
+
+  def results
+    @event = Event.find(params[:id])
+    @teams = @event.teams
+  end
 end

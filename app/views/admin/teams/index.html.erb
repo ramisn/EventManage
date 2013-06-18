@@ -25,6 +25,8 @@
     <% end %>
 
     <p><%= link_to 'Reset Team', reset_team_path(params[:event_id],team.id),:confirm => "Are you sure?" if team.players.any? %></p>
+
+    <p><%= link_to 'Show Result', team_result_path(params[:event_id],team.id) %></p>
 -----------------------------------------
   <% end %>
 <% else %>

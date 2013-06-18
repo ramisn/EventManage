@@ -1,21 +1,37 @@
+<style type="text/css">
+table {
+  border:1px solid;
+  border-collapse:collapse;
+  text-align: center;
+  width: 100%;
+}
+th {
+  border:1px solid;
+  padding: 5px;
+  border-color: #000080;
+}
+td {
+  border:1px solid;
+  border-color: #000080;
+  padding: 5px;
+}
+</style>
 <h1>Events</h1>
 
-<table style="border: 1px dashed" width="100%"  cellspacing="4" cellpadding="4">
+<table>
   <tr>
-    <th align="left">No.</th>
-    <th align="left">Event</th>
-    <th align="left">Description</th>
-    <th align="left">Venue</th>
-    <th align="left">Starts at</th>
-    <th align="left">Ends at</th>
+    <th>No.</th>
+    <th>Event</th>
+    <th>Description</th>
+    <th>Venue</th>
+    <th>Starts at</th>
+    <th>Ends at</th>
   </tr>
-  <tr>
-    <td colspan="6"><hr/></td>
-  </tr>
+  
   <% @events.each_with_index do |event,index| %>
   <tr>
     <td><%= index + 1 %></td>
-    <td><%= link_to "#{event.title.capitalize}", show_teams_event_path(event.id) %></td>
+    <td><%= link_to "#{event.title.capitalize}", results_event_path(event.id), :title => "See Results" %></td>
     <td><%= event.description %></td>
     <td><%= event.venue %></td>
     <td><%= time_ago_in_words event.starts_at %></td>
