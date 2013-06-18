@@ -15,9 +15,9 @@ td {
   padding: 5px;
 }
 </style>
-<h1><%= @event.title.capitalize %>&nbsp;Results</h1>
+<h1><%= @event.title.titleize %>&nbsp;Results</h1>
 <% if @teams.any? %>
-  <table style="border:1px solid;border-collapse:collapse;">
+  <table>
     <tr>
       <th >Sr No.</th>
       <th>Team Name</th>

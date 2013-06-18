@@ -14,7 +14,7 @@ td {
   width: 136px;
 }
 </style>
-<h1><%= @event.title.capitalize %>&nbsp;Teams</h1>
+<h1><%= @event.title.titleize %>&nbsp;Teams</h1>
 <% if @teams.any? %>
   <table>
     <tr>
@@ -26,8 +26,12 @@ td {
       <% @teams.each_with_index do |team,index| %>
         <td>
           <ul>
-            <% team.players.each do |player| %>
-              <li><%= player.name %></li>
+            <% if team.players.any? %>
+              <% team.players.each do |player| %>
+                <li><%= player.name %></li>
+              <% end %>
+            <% else %>
+              No players selected!
             <% end %>
           </ul>
         </td>
@@ -50,4 +54,4 @@ td {
   <p>Why should all the games have rules!! Cheers!</p>
 <% end %>
 
-<%= link_to 'back', events_path %>
+<%= link_to 'back', results_event_path %>

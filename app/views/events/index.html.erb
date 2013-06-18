@@ -31,7 +31,7 @@ td {
   <% @events.each_with_index do |event,index| %>
   <tr>
     <td><%= index + 1 %></td>
-    <td><%= link_to "#{event.title.capitalize}", results_event_path(event.id), :title => "See Results" %></td>
+    <td><%= link_to "#{event.title.titleize}", results_event_path(event.id), :title => "See Results" %></td>
     <td><%= event.description %></td>
     <td><%= event.venue %></td>
     <td><%= time_ago_in_words event.starts_at %></td>
