@@ -1,10 +1,9 @@
 <h1><%= @event.title.titleize %>&nbsp;Rules</h1>
 
 <% if @rules.any? %>
-  <% @rules.each_with_index do |rule,index| %>
+  <% @rules.each do |rule| %>
     <p>
-      <%= index + 1 %> >
-      <%= rule.description %>
+      <%= raw rule.description %>
       <%= link_to 'edit', edit_admin_event_rule_path(params[:event_id],rule.id)%>
       <%= link_to 'destroy', admin_event_rule_path(params[:event_id],rule.id), :method => :delete, :confirm => "Are you sure?" %>
     </p>

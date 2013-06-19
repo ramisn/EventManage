@@ -6,8 +6,10 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
-gem 'sorcery'
-gem 'thin'
+gem 'sorcery'  #For simple authentication
+gem 'thin'  #For faster application server
+gem "ckeditor"  #For great WYSIWYG editor for form_for/form_tag etc.
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

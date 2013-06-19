@@ -4,7 +4,7 @@
   <% @matches.each do |match| %>
     <p>
       <h4>Match &nbsp;<%= match.title %></h4>
-      <%= match.description %>
+      <%= raw match.description %>
       <%= link_to 'edit', edit_admin_event_match_path(params[:event_id],match.id)%>
       <%= link_to 'destroy', admin_event_match_path(params[:event_id],match.id), :method => :delete, :confirm => "Are you sure?" %>
     </p>

@@ -1,5 +1,5 @@
-<h1>Edit a Match</h1>
-</br>
+<h1>Edit a Match <%= @match.title %></h1>
+<h3>Team &nbsp;<%= @match.t1 %> <b>v/s</b> Team &nbsp;<%= @match.t2 %></h3>
 
 <% @match.errors.full_messages.each do |error| %>
   <li><%= error %><li>

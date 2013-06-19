@@ -1,10 +1,9 @@
 <h1><%= @event.title.titleize %>&nbsp;Rules</h1>
 
 <% if @rules.any? %>
-  <% @rules.each_with_index do |rule,index| %>
+  <% @rules.each do |rule| %>
     <p>
-      (<%= index + 1 %>)
-      <%= rule.description %>
+      <%= raw rule.description %>
     </p>
   <% end %>
 <% else %>
