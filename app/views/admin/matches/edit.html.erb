@@ -1,0 +1,14 @@
+<h1>Edit a Match</h1>
+</br>
+
+<% @match.errors.full_messages.each do |error| %>
+  <li><%= error %><li>
+<% end %>
+
+<%= form_for [:admin,:event, @match],:url => admin_event_match_path(params[:event_id],@match) do |f| %>
+  <%= render 'fields', f: f %>
+  <%= f.submit %></p>
+
+<% end %>
+
+<%= link_to 'back',admin_event_matches_path %>

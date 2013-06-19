@@ -42,16 +42,4 @@ td {
   No Teams selected!
 <% end %>
 
-<h2>Rules</h2>
-<% if @rules.any? %>
-  <% @rules.each_with_index do |rule,index| %>
-    <p>
-      (<%= index + 1 %>)
-      <%= rule.description %>
-    </p>
-  <% end %>
-<% else %>
-  <p>Why should all the games have rules!! Cheers!</p>
-<% end %>
-
-<%= link_to 'back', results_event_path %>
+<p><%= link_to 'back', event_path(@event.id) %></p>

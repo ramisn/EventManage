@@ -19,7 +19,7 @@
 
     <%= form_tag add_player_path(params[:event_id],team.id), :method => :post do %>
       <div class="field">
-        <%= select_tag :user_id, options_from_collection_for_select(User.all, :id, :name) %>
+        <%= select_tag :user_id, options_from_collection_for_select(@users, :id, :name) %>
         <%= submit_tag "Add" %>
       </div>
     <% end %>
@@ -34,21 +34,4 @@
 <% end %>
 
 <p><%= button_to "Create a Team", new_admin_event_team_path(@event.id), :method => "get" %></p>
-
-<h1>Rules</h1>
-<% if @rules.any? %>
-  <% @rules.each_with_index do |rule,index| %>
-    <p>
-      <%= index + 1 %> >
-      <%= rule.description %>
-      <%= link_to 'edit', edit_admin_event_rule_path(params[:event_id],rule.id)%>
-      <%= link_to 'destroy', admin_event_rule_path(params[:event_id],rule.id), :method => :delete, :confirm => "Are you sure?" %>
-    </p>
-  <% end %>
-<% else %>
-  <p>Sorry! There is no rules selected yet.</p>
-<% end %>
-
-<p><%= button_to "Create a Rule", new_admin_event_rule_path(@event.id), :method => "get" %></p>
-
-<%= link_to 'back', admin_events_path %>
+<%= link_to 'back', admin_event_path(params[:event_id]) %>

@@ -2,10 +2,12 @@ EventManagement::Application.routes.draw do
 
   #Front UI routes
   root :to => "home#index"
-  resources :events, :only => :index do
+  resources :events, :only => [:index,:show] do
     member do
-      get 'show_teams'
+      get 'teams'
       get 'results'
+      get 'matches'
+      get 'rules'
     end
   end
 
@@ -24,13 +26,17 @@ EventManagement::Application.routes.draw do
   match 'admin/events/:event_id/teams/:team_id/plus_one_tie' => 'admin/teams#plus_one_tie', :as => 'plus_one_tie'
   match 'admin/events/:event_id/teams/:team_id/plus_one_nr' => 'admin/teams#plus_one_nr', :as => 'plus_one_nr'
   match 'admin/events/:event_id/teams/:team_id/reset_result' => 'admin/teams#reset_result', :as => 'reset_result'
+  match 'admin/events/:event_id/matches/:match_id/update_result' => 'admin/matches#update_result', :as => 'update_result'
+  match 'admin/events/:event_id/matches/reset_matches' => 'admin/matches#reset_matches', :as => 'reset_matches'
+
   resources :sessions, :only => [:new,:create,:destroy]
   resources :password_resets, :only => [:create,:edit,:update]
 
   namespace :admin do
-    resources :events, :except => :show do
-      resources :teams, :only => [:index,:new,:create,:edit,:update,:destroy]
-      resources :rules, :only => [:new,:create,:edit,:update,:destroy]
+    resources :events do
+      resources :teams, :except => :show
+      resources :rules, :except => :show
+      resources :matches, :except => :show
     end
     resources :users, :except => :show
   end

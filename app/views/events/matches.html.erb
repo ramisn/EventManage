@@ -1,0 +1,50 @@
+<style type="text/css">
+table {
+  border:1px solid;
+  border-collapse:collapse;
+  width: 100%;
+}
+th {
+  border:1px solid;
+  padding: 5px;
+  border-color: #000080;
+}
+td {
+  border:1px solid;
+  border-color: #000080;
+  text-align: center;
+  padding: 5px;
+}
+</style>
+
+<h1><%= @event.title.titleize %>&nbsp;Matches</h1>
+<% if @matches.any? %>
+  <table>
+    <tr>
+      <th >Sr No.</th>
+      <th>Match</th>
+      <th>Teams</th>
+      <th>Details</th>
+      <th>Result</th>
+    </tr>
+    <% @matches.each_with_index do |match,index| %>
+      <% unless match.nil? %>
+        <tr>
+          <td><%= index +1 %></td>
+          <td style="text-align: left;">Match&nbsp;<%= match.title %></td>
+          <td>Team &nbsp;<%= match.t1 %> v/s Team &nbsp;<%= match.t2 %></td>
+          <td><%= match.description %></td>
+          <% unless match.result.nil? %>
+            <td>Team &nbsp;<%= match.result %> Won</td>
+          <% else %>
+            <td></td>
+          <% end %>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+<% else %>
+  No matches!
+<% end %>
+
+<p><%= link_to 'back', event_path(@event.id) %></p>

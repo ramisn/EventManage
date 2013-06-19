@@ -1,0 +1,18 @@
+<h1><%= @event.title.titleize %>&nbsp;Rules</h1>
+
+<% if @rules.any? %>
+  <% @rules.each_with_index do |rule,index| %>
+    <p>
+      <%= index + 1 %> >
+      <%= rule.description %>
+      <%= link_to 'edit', edit_admin_event_rule_path(params[:event_id],rule.id)%>
+      <%= link_to 'destroy', admin_event_rule_path(params[:event_id],rule.id), :method => :delete, :confirm => "Are you sure?" %>
+    </p>
+  <% end %>
+<% else %>
+  <p>Sorry! There is no rules selected yet.</p>
+<% end %>
+
+<p><%= button_to "Create a Rule", new_admin_event_rule_path(@event.id), :method => "get" %></p>
+
+<%= link_to 'back', admin_event_path(params[:event_id]) %>

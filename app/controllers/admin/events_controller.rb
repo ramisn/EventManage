@@ -18,6 +18,10 @@ class Admin::EventsController < ApplicationController
     @events = Event.all
   end
 
+  def show
+    @event_id = params[:id]
+  end
+
   def edit
     @event = Event.find(params[:id])
   end

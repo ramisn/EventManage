@@ -1,0 +1,14 @@
+<h1><%= @event.title.titleize %>&nbsp;Rules</h1>
+
+<% if @rules.any? %>
+  <% @rules.each_with_index do |rule,index| %>
+    <p>
+      (<%= index + 1 %>)
+      <%= rule.description %>
+    </p>
+  <% end %>
+<% else %>
+  <p>Why should all the games have rules!! Cheers!</p>
+<% end %>
+
+<p><%= link_to 'back', event_path(@event.id) %></p>

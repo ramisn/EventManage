@@ -4,7 +4,7 @@ class Admin::TeamsController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
     @teams = @event.teams
-    @rules = @event.rules
+    @users = User.all
   end
 
   def new

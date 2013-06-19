@@ -6,12 +6,16 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= params[:controller] %>">
+<body>
   <% if logged_in? %>
-    Logged in as <b><%= current_user.name %></b>
-    <%= link_to 'Logout', logout_path %></br>
-    <%= link_to 'Admin Panel | Home', admin_path %>
+  <span>
+    <p style="text-align: right">Logged in as <b><%= current_user.name %></b>
+    <%= link_to 'Logout', logout_path %></p>
+    <%= link_to 'Admin Panel', admin_path %>
   <% end %>
+  </span>
+  <p><%= link_to 'Home', root_path %></p>
+
   <div id="container">
     <% flash.each do |name,msg| %>
       <%= content_tag(:div, msg, :id => "flash_#{name}")%>
