@@ -7,8 +7,7 @@
 
 <%= form_for [:admin,:event, @match],:url => admin_event_match_path(params[:event_id],@match) do |f| %>
   <%= render 'fields', f: f %>
-  <%= f.submit %></p>
-
+  <%= f.submit %>
 <% end %>
 
 <%= link_to 'back',admin_event_matches_path %>

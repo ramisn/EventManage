@@ -8,6 +8,6 @@ class Match < ActiveRecord::Base
   validate :cannot_add_same_team
 
   def cannot_add_same_team
-    errors[:base] << "You cannot add identical teams." if self.t1 == self.t2
+    errors[:base] << "You cannot add identical teams." if self.t1 == self.t2 || self.t1_desc == self.t2_desc
   end
 end

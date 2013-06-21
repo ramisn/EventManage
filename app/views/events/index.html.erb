@@ -20,12 +20,13 @@ td {
 
 <table>
   <tr>
-    <th>No.</th>
+    <th>Sr No.</th>
     <th>Event</th>
     <th>Description</th>
     <th>Venue</th>
     <th>Starts at</th>
     <th>Ends at</th>
+    <th>Time</th>
   </tr>
   
   <% @events.each_with_index do |event,index| %>
@@ -34,8 +35,16 @@ td {
     <td><%= link_to "#{event.title.titleize}", event_path(event.id), :title => "See Event Details" %></td>
     <td><%= event.description %></td>
     <td><%= event.venue %></td>
-    <td><%= time_ago_in_words event.starts_at %></td>
-    <td><%= time_ago_in_words event.ends_at  %></td>
+    <td><b>Date :</b><%= event.starts_at.strftime("%d-%b-%Y") %></br>
+        <b>Time :</b><%= event.starts_at.strftime("%I:%M %p") %>
+    </td>
+    <td><b>Date :</b><%= event.ends_at.strftime("%d-%b-%Y") %></br>
+        <b>Time :</b><%= event.ends_at.strftime("%I:%M %p") %>
+    </td>
+    <td>
+      <b>Date :</b><%= event.starts_at.strftime("%d-%b-%Y") %></br>
+      <b>Time :</b><%= event.starts_at.strftime("%I:%M %p") %><b>--</b><%= event.ends_at.strftime("%I:%M %p") %>
+    </td>
   </tr>
   <% end %>
 </table>

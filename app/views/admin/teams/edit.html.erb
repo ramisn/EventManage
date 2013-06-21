@@ -6,15 +6,8 @@
 <% end %>
 
 <%= form_for [:admin,:event, @team],:url => admin_event_team_path(params[:event_id],@team) do |f| %>
-  <p>
-  <%= f.label :title %>
-  <%= f.text_field :title %></p>
-  <p>
-  <%= f.label :description %>
-  <%= f.text_field :description %></p>
-  <p>
-  <%= f.submit %></p>
-
+  <%= render 'fields', f: f %>
+  <%= f.submit %>
 <% end %>
 
 <%= link_to 'back',admin_event_teams_path %>

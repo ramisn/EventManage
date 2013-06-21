@@ -4,24 +4,8 @@
   <li><%= error %><li>
 <% end %>
 <%= form_for [:admin, @event] do |f| %>
-  <p>
-  <%= f.label :title %>
-  <%= f.text_field :title %></p>
-  <p>
-  <%= f.label :description %>
-  <%= f.text_field :description %></p>
-  <p>
-  <%= f.label :venue %>
-  <%= f.text_field :venue %></p>
-  <p>
-  <%= f.label :starts_at %>
-  <%= f.datetime_select :starts_at, :ampm => true, :minute_step => 15 %></p>
-  <p>
-  <%= f.label :ends_at %>
-  <%= f.datetime_select :ends_at, :ampm => true, :minute_step => 15 %></p>
-  <p>
+  <%= render 'fields', f: f %>
   <%= f.submit %></p>
-
 <% end %>
 
 <%= link_to 'back',admin_events_path %>

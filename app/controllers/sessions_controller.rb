@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
   def new
+    if logged_in?
+      redirect_to root_url, :notice => "User already Logged in. Logout first!"
+    end
   end
 
   def create
@@ -9,6 +12,7 @@ class SessionsController < ApplicationController
       if user.role == 'admin'
         redirect_back_or_to admin_url, :notice => "Signed in"
       else
+        logout
         flash.now.alert = "You are not admin. Sorry!"
         render 'new'
       end

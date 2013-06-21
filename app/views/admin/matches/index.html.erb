@@ -1,27 +1,31 @@
+<style type="text/css">
+table {
+  text-align: center;
+}
+td,th {
+  padding-left: 8px;
+}
+</style>
 <h1><%= @event.title.titleize %>&nbsp;Matches </h1>
-
 <% if @matches.any? %>
-  <% @matches.each do |match| %>
-    <p>
-      <h4>Match &nbsp;<%= match.title %></h4>
-      <%= raw match.description %>
-      <%= link_to 'edit', edit_admin_event_match_path(params[:event_id],match.id)%>
-      <%= link_to 'destroy', admin_event_match_path(params[:event_id],match.id), :method => :delete, :confirm => "Are you sure?" %>
-    </p>
-    <p>Team &nbsp;<%= match.t1 %>(<%= match.t1_desc %>) <b>v/s</b> Team &nbsp;<%= match.t2 %>(<%= match.t2_desc %>)</p>
-    <% if match.result.nil? %>
-      <p>No match played!</p>
-      <%= form_tag update_result_path(params[:event_id],match.id), :method => :post do %>
-        <div class="field">
-          <%= text_field_tag :result,'',:placeholder => 'Enter Team title', :size => 8 %>
-          <%= submit_tag "Update Result" %>
-        </div>
-      <% end %>
-    <% else %>
-      <p>Match Result : Team <%= match.result %> won.</p>
+  <table>
+    <tr>
+      <th>Sr No.</th>
+      <th>Match</th>
+      <th></th>
+      <th></th>
+      <th>Teams</th>
+    </tr>
+    <% @matches.each_with_index do |match, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= link_to "Match #{match.title}", admin_event_match_path(params[:event_id],match.id) %></td>
+        <td><%= link_to 'edit', edit_admin_event_match_path(params[:event_id],match.id)%></td>
+        <td><%= link_to 'destroy', admin_event_match_path(params[:event_id],match.id), :method => :delete, :confirm => "Are you sure?" %></td>
+        <td>Team &nbsp;<%= match.t1 %>(<%= match.t1_desc %>) <b>v/s</b> Team &nbsp;<%= match.t2 %>(<%= match.t2_desc %>)</td>
+      </tr>
     <% end %>
------------------------------------------
-  <% end %>
+  </table>
   <h4><%= link_to 'Reset Matches' , reset_matches_path(@event.id), :confirm => "Are you sure?"%></h4>
 <% else %>
   <p>Sorry! There is no Matches.</p>
@@ -30,4 +34,3 @@
 <p><%= button_to "Create a Match", new_admin_event_match_path(params[:event_id]), :method => "get" %></p>
 
 <%= link_to 'back', admin_event_path(params[:event_id]) %>
-

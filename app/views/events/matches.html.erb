@@ -34,7 +34,7 @@ td {
           <td style="text-align: left;">Match&nbsp;<%= match.title %></td>
           <td>Team &nbsp;<%= match.t1 %> v/s Team &nbsp;<%= match.t2 %></td>
           <td style="text-align: left;"><%= raw match.description %></td>
-          <% unless match.result.nil? %>
+          <% unless match.result.nil? || match.result == 'nil' %>
             <td>Team &nbsp;<%= match.result %> Won</td>
           <% else %>
             <td></td>

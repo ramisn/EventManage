@@ -7,14 +7,19 @@ class Admin::MatchesController < ApplicationController
   end
 
   def new
-    @match = Match.new
-    @teams = Event.find(params[:event_id]).teams
+    @event = Event.find(params[:event_id])
+    @teams = @event.teams
+    if( @teams.size >= 2 )
+      @match = @event.matches.new
+    else
+      redirect_to new_admin_event_team_path(params[:event_id]), :notice => "Create atlest Two Teams First to set Match"
+    end
   end
 
   def create
-    @teams = Event.find(params[:event_id]).teams
-    @match = Match.new(params[:match])
-    @match.event_id = params[:event_id]
+    @event = Event.find(params[:event_id])
+    @teams = @event.teams
+    @match = @event.matches.new(params[:match])
 
     if @match.save
       redirect_to admin_event_matches_path, :notice => "Match created!"
@@ -24,15 +29,15 @@ class Admin::MatchesController < ApplicationController
   end
 
   def edit
-    @match = Match.find(params[:id])
     @teams = Event.find(params[:event_id]).teams
+    @match = Match.find(params[:id])
   end
 
   def update
     @teams = Event.find(params[:event_id]).teams
     @match = Match.find(params[:id])
     if @match.update_attributes(params[:match])
-     redirect_to admin_event_matches_path, :notice => "Match updated!"
+     redirect_to admin_event_matches_path(params[:event_id]), :notice => "Match updated!"
     else
       render 'edit'
     end
@@ -42,6 +47,18 @@ class Admin::MatchesController < ApplicationController
     @match = Match.find(params[:id])
     @match.destroy
     redirect_to admin_event_matches_path, :notice => "Match Deleted"
+  end
+
+  def show
+    @event = Event.find(params[:event_id])
+    @matches = @event.matches.order(:title)
+    @team_result_holder = {}
+    @matches.each do |match|
+      @team_one_result = @event.teams.where(:title => match.t1).first.result
+      @team_two_result = @event.teams.where(:title => match.t2).first.result
+      @team_result_holder["#{match.id}"] = [@team_one_result,@team_two_result]
+    end
+    @match = @matches.find(params[:id])
   end
 
   def reset_matches
@@ -54,14 +71,61 @@ class Admin::MatchesController < ApplicationController
     end
   end
 
-  def update_result
-    @match = Match.find(params[:match_id])
-    @match.result = params[:result].to_s
-
-    if @match.save
-      redirect_to admin_event_matches_path, :notice => "Result Updated!"
+  def match_team_result
+    @result = Team.find(params[:team_id]).result
+    if params[:result_action] == "played"
+      if(@result.played - @result.won - @result.lost - @result.tie - @result.nr ) < 1
+        @result.played += 1
+        @result.save
+        redirect_to admin_event_match_path(params[:event_id],params[:match_id])
+      else
+        redirect_to admin_event_match_path(params[:event_id],params[:match_id]), :notice => "Sorry! Wrong Entry!"
+      end
+    elsif params[:result_action] == "won"
+      if @result.played > @result.won + @result.lost + @result.tie + @result.nr
+        @result.won += 1
+        @result.points += 2
+        @result.save
+        redirect_to admin_event_match_path(params[:event_id],params[:match_id])
+      else
+        redirect_to admin_event_match_path(params[:event_id],params[:match_id]), :notice => "Sorry! Wrong Entry!"
+      end
+    elsif params[:result_action] == "lost"
+      if @result.played > @result.won + @result.lost + @result.tie + @result.nr
+        @result.lost += 1
+        @result.save
+        redirect_to admin_event_match_path(params[:event_id],params[:match_id])
+      else
+        redirect_to admin_event_match_path(params[:event_id],params[:match_id]), :notice => "Sorry! Wrong Entry!"
+      end
+    elsif params[:result_action] == "tie"
+      if @result.played > @result.won + @result.lost + @result.tie + @result.nr
+        @result.tie += 1
+        @result.save
+        redirect_to admin_event_match_path(params[:event_id],params[:match_id])
+      else
+        redirect_to admin_event_match_path(params[:event_id],params[:match_id]), :notice => "Sorry! Wrong Entry!"
+      end
+    elsif params[:result_action] == "nr"
+      if @result.played > @result.won + @result.lost + @result.tie + @result.nr
+        @result.nr += 1
+        @result.save
+        redirect_to admin_event_match_path(params[:event_id],params[:match_id])
+      else
+        redirect_to admin_event_match_path(params[:event_id],params[:match_id]), :notice => "Sorry! Wrong Entry!"
+      end
     else
-      redirect_to admin_event_matches_path, :notice => "Failed to update result!"
+      redirect_to admin_event_match_path(params[:event_id],params[:match_id]), :notice => 'sorry!'
+    end
+  end
+
+  def reset_result
+    @team = Team.find(params[:team_id])
+    begin
+      @team.result.update_attributes(:played=>0,:won=>0,:lost=>0,:tie=>0,:nr=>0,:points=>0)
+      redirect_to admin_event_match_path(params[:event_id],params[:match_id]), :notice => "Result Reset!"
+    rescue
+      redirect_to admin_event_match_path(params[:event_id],params[:match_id]), :notice => "Result reset failed!"
     end
   end
 end

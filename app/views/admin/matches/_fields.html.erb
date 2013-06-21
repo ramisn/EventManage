@@ -1,11 +1,11 @@
 <p>
   <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, :placeholder => "e.g 1" %>
 </p>
 
 <p>
   <%= f.label :description %>
-  <%= f.cktext_area :description, :ckeditor => {:uiColor => "#AADC6E"} %>
+  <%= f.cktext_area :description, :ckeditor => {:uiColor => "#E0E0E0"} %>
 </p>
 
 <p>
@@ -22,4 +22,9 @@
 
   <%= f.label :description %>
   <%= f.select :t2_desc, options_from_collection_for_select(@teams, :description, :description),:prompt=> "--select descripton--" %>
+</p>
+
+<p>
+  <%= f.label :result_who_won? %>
+  <%= f.text_field :result, :value => 'nil' %>
 </p>
