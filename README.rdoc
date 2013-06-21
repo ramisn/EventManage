@@ -1,22 +1,25 @@
 = Welcome to EventManagement
-*tool to handle all events happenings
+* tool to handle all events happenings
 
-Work is in progress
+:: Work is in progress. . . ::
 
 Work done till now.
-  Admin Interface
-    * View Dashboard,Event,Users(Admin/Players)
-    * Create/Edit/Destroy Event
-    * Create/Edit/Destroy Team for particular Event
-    * Add/Remove Player for each Team
-    * Reset Team
-    * Add Rules for each event
-    * Create/Reset Result
-  User Interface
-    * View Events
-    * View Result(Point Table)
-    * View Team-players & Rules
+==== Admin Interface
+* View Dashboard,Event,Users(Admin/Players)
+* Create/Edit/Destroy Event
+* Create/Edit/Destroy Team for particular Event
+* Add/Remove Player for each Team
+* Reset Team
+* Add Rules for each event
+* Reset Result
+* Create/Edit/Remove Matches
+==== User Interface
+* View Events
+* View Result(Point Table)
+* View Team-players
+* View Rules
+* View Matches
 
-Last Updated: 18-jun-13
+Last Updated: 21-jun-13
 
 Parth.
