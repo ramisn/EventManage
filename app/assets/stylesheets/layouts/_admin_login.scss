@@ -1,0 +1,38 @@
+#login_bar {
+  background: none repeat scroll 0 0 #6AC071;
+  border-bottom: 1px solid #6AC071;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  position: fixed;
+
+  .name {
+    line-height: 35px;
+    font-weight: 600;
+    color: #FFF;
+    width: 960px;
+    margin: 0 auto;
+
+    .link {
+      float: right;
+      padding-right: 20px;
+      a {
+        font-weight: 600;
+        color: #23654A;
+      }
+    }
+
+    .logout {
+      float: right;
+      a {
+        font-weight: 300;
+        color: #23654A;
+      }
+    }
+
+    strong {
+      color: #23654A;
+      font-weight: 600;
+    }
+  }
+}

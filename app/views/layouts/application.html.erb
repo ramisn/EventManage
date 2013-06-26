@@ -6,14 +6,8 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <% if logged_in? %>
-  <span>
-    <p style="text-align: right">Logged in as <b><%= current_user.name %></b>
-    <%= link_to 'Logout', logout_path %></p>
-    <%= link_to 'Admin Panel', admin_path %>
-  <% end %>
-  </span>
+<body class="<%= "with-login" if logged_in? %>" >
+  <%= render 'shared/admin_login' %>
   <p><%= link_to 'Home', root_path %></p>
 
   <div id="container">
