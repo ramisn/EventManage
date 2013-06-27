@@ -1,0 +1,13 @@
+<h1>Edit a Group</h1>
+</br>
+
+<% @group.errors.full_messages.each do |error| %>
+  <li><%= error %><li>
+<% end %>
+
+<%= form_for [:admin,:event, @group],:url => admin_event_group_path(params[:event_id],@group) do |f| %>
+  <%= render 'fields', f: f %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to 'back',admin_event_groups_path %>

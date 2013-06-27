@@ -7,4 +7,5 @@ class Event < ActiveRecord::Base
   has_many :teams, :dependent => :destroy
   has_many :rules, :dependent => :destroy
   has_many :matches, :dependent => :destroy
+  has_many :groups, :dependent => :destroy
 end

@@ -26,24 +26,24 @@ td {
 
 <%= render 'tabs' %>
 
-<h1>Teams</h1>
-<% if @teams.any? %>
+<h1>Groups</h1>
+<% if @groups.any? %>
   <table>
     <tr>
-      <% @teams.each_with_index do |team,index| %>
-        <th><%= team.title %>(<%= team.description %>)</th>
+      <% @groups.each_with_index do |group,index| %>
+        <th><%= group.title %></th>
       <% end %>
     </tr>
     <tr>
-      <% @teams.each_with_index do |team,index| %>
+      <% @groups.each_with_index do |group,index| %>
         <td>
           <ul>
-            <% if team.players.any? %>
-              <% team.players.each do |player| %>
-                <li><%= player.name %></li>
+            <% if group.teams.any? %>
+              <% group.teams.each do |team| %>
+                <li><%= team.title %></li>
               <% end %>
             <% else %>
-              No players selected!
+              No Teams selected!
             <% end %>
           </ul>
         </td>
@@ -51,7 +51,7 @@ td {
     </tr>
   </table>
 <% else %>
-  No Teams selected!
+  No Group selected!
 <% end %>
 
 <p><%= link_to 'back', event_path(@event.id) %></p>

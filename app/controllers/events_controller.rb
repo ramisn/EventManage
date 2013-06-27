@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event_id = params[:id]
+    redirect_to matches_event_path
   end
 
   def teams
@@ -26,5 +26,10 @@ class EventsController < ApplicationController
   def rules
     @event = Event.find(params[:id])
     @rules = @event.rules
+  end
+
+  def groups
+    @event = Event.find(params[:id])
+    @groups = @event.groups
   end
 end

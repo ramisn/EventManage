@@ -5,6 +5,7 @@ EventManagement::Application.routes.draw do
   resources :events, :only => [:index,:show] do
     member do
       get 'teams'
+      get 'groups'
       get 'results'
       get 'matches'
       get 'rules'
@@ -24,6 +25,10 @@ EventManagement::Application.routes.draw do
   match 'admin/events/:event_id/matches/:team_id/reset_result' => 'admin/matches#reset_result', :as => 'reset_result'
   match 'admin/events/:event_id/matches/:team_id/match_team_result' => 'admin/matches#match_team_result', :as => 'match_team_result'
 
+  match 'admin/events/:event_id/groups/:group_id/add_team' => 'admin/groups#add_team', :as => 'add_team'
+  match 'admin/events/:event_id/groups/:group_id/:team_id/remove_team' => 'admin/groups#remove_team', :as => 'remove_team'
+  match 'admin/events/:event_id/groups/:group_id/reset_group' => 'admin/groups#reset_group', :as => 'reset_group'
+
   resources :sessions, :only => [:new,:create,:destroy]
   resources :password_resets, :only => [:create,:edit,:update]
 
@@ -32,6 +37,7 @@ EventManagement::Application.routes.draw do
       resources :teams, :except => :show
       resources :rules, :except => :show
       resources :matches
+      resources :groups, :except => :show
     end
     resources :users, :except => :show
   end

@@ -1,5 +1,18 @@
-<h1><p>Welcome to dashboard of admin panel.</p></h1>
+<style type="text/css">
+ul {
+  height: 27px;
+  padding-left: 0px;
+}
+li {
+  list-style-type: none;
+  float: left;
+  padding: 5px;
+}
+</style>
 
-<p><%= link_to 'Dashboard', admin_path %></p>
-<p><%= link_to 'Events', admin_events_path %></p>
-<p><%= link_to 'Users', admin_users_path %></p>
+<h1><p>Welcome to dashboard of admin panel.</p></h1>
+<ul>
+  <li><%= link_to 'Dashboard', admin_path %></li>
+  <li><%= link_to 'Events', admin_events_path %></li>
+  <li><%= link_to 'Users', admin_users_path %></li>
+</ul>

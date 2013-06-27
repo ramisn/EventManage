@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619130403) do
+ActiveRecord::Schema.define(:version => 20130626141048) do
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(:version => 20130619130403) do
     t.datetime "ends_at"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "groups", :force => true do |t|
+    t.string   "title"
+    t.integer  "event_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "matches", :force => true do |t|
@@ -86,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20130619130403) do
     t.integer  "event_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "group_id"
   end
 
   create_table "users", :force => true do |t|

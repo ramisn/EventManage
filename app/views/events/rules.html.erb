@@ -1,4 +1,18 @@
-<h1><%= @event.title.titleize %>&nbsp;Rules</h1>
+<style type="text/css">
+.tab-container {
+  height: 27px;
+  padding-left: 0px;
+}
+.tabs li {
+  list-style-type: none;
+  float: left;
+  padding: 5px;
+}
+</style>
+
+<%= render 'tabs' %>
+
+<h1>Rules</h1>
 
 <% if @rules.any? %>
   <% @rules.each do |rule| %>

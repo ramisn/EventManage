@@ -14,8 +14,20 @@ td {
   text-align: center;
   padding: 5px;
 }
+.tab-container {
+  height: 27px;
+  padding-left: 0px;
+}
+.tabs li {
+  list-style-type: none;
+  float: left;
+  padding: 5px;
+}
 </style>
-<h1><%= @event.title.titleize %>&nbsp;Results</h1>
+
+<%= render 'tabs' %>
+
+<h1>Results</h1>
 <% if @teams.any? %>
   <table>
     <tr>
@@ -33,7 +45,7 @@ td {
       <% unless team.result.nil? %>
         <tr>
           <td><%= index +1 %></td>
-          <td style="text-align: left;">Team&nbsp;<%= team.title %>(<%= team.description %>)</td>
+          <td style="text-align: left;"><%= team.title %>(<%= team.description %>)</td>
           <td><%= team.result.played %></td>
           <td><%= team.result.won %></td>
           <td><%= team.result.lost %></td>
