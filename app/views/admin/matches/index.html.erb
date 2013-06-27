@@ -6,7 +6,9 @@ td,th {
   padding-left: 8px;
 }
 </style>
-<h1><%= @event.title.titleize %>&nbsp;Matches </h1>
+
+<%= render 'admin/shared/tabs' %>
+<h1>Matches </h1>
 <% if @matches.any? %>
   <table>
     <tr>
@@ -19,10 +21,10 @@ td,th {
     <% @matches.each_with_index do |match, index| %>
       <tr>
         <td><%= index + 1 %></td>
-        <td><%= link_to "Match #{match.title}", admin_event_match_path(params[:event_id],match.id) %></td>
+        <td><%= link_to "#{match.title}", admin_event_match_path(params[:event_id],match.id) %></td>
         <td><%= link_to 'edit', edit_admin_event_match_path(params[:event_id],match.id)%></td>
         <td><%= link_to 'destroy', admin_event_match_path(params[:event_id],match.id), :method => :delete, :confirm => "Are you sure?" %></td>
-        <td>Team &nbsp;<%= match.t1 %>(<%= match.t1_desc %>) <b>v/s</b> Team &nbsp;<%= match.t2 %>(<%= match.t2_desc %>)</td>
+        <td><%= match.t1 %>(<%= match.t1_desc %>) <b>v/s</b> <%= match.t2 %>(<%= match.t2_desc %>)</td>
       </tr>
     <% end %>
   </table>
@@ -33,4 +35,4 @@ td,th {
 
 <p><%= button_to "Create a Match", new_admin_event_match_path(params[:event_id]), :method => "get" %></p>
 
-<%= link_to 'back', admin_event_path(params[:event_id]) %>
+<%= link_to 'back', admin_events_path %>

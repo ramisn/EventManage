@@ -1,14 +1,14 @@
 <p>
-  <h4>Match &nbsp;<%= @match.title %></h4>
+  <h4><%= @match.title %></h4>
   <%= raw @match.description %>
   <%= link_to 'edit', edit_admin_event_match_path(params[:event_id],@match.id)%>
   <%= link_to 'destroy', admin_event_match_path(params[:event_id],@match.id), :method => :delete, :confirm => "Are you sure?" %>
 </p>
-<p>Team &nbsp;<%= @match.t1 %>(<%= @match.t1_desc %>) <b>v/s</b> Team &nbsp;<%= @match.t2 %>(<%= @match.t2_desc %>)</p>
+<p><%= @match.t1 %>(<%= @match.t1_desc %>) <b>v/s</b> <%= @match.t2 %>(<%= @match.t2_desc %>)</p>
 <% if @match.result.nil? || @match.result == 'nil' %>
   <p>No match played!</p>
 <% else %>
-  <p>Match Result : Team <%= @match.result %> won.</p>
+  <p>Match Result : <%= @match.result %></p>
 <% end %>
 
 <% @team_result= @team_result_holder["#{@match.id}"][0] %></br>

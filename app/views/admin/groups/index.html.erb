@@ -1,9 +1,11 @@
-<h1><%= @event.title.titleize %>&nbsp;Groups</h1>
+<%= render 'admin/shared/tabs' %>
+
+<h1>Groups</h1>
 
 <% if @groups.any? %>
   <% @groups.each do |group| %>
     <p>
-      Group Name&nbsp;<%= group.title %>
+      <%= group.title %>
       <%= link_to 'edit', edit_admin_event_group_path(params[:event_id],group.id)%>
       <%= link_to 'destroy', admin_event_group_path(params[:event_id],group.id), :method => :delete, :confirm => "Are you sure?" %>
     </p>

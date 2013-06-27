@@ -1,5 +1,5 @@
 <% unless @team_result.nil? %>
-  <b>Team &nbsp;<%= match_team %></b>&nbsp;
+  <b><%= match_team %></b>&nbsp;
   Played : <%= @team_result.played %>&nbsp;<%= link_to image_tag("plus_one.png"), match_team_result_path(params[:event_id], @team_result.team_id, :result_action => "played", :match_id => @match.id) %>&nbsp;
 
   Won : <%= @team_result.won %>&nbsp;<%= link_to image_tag("plus_one.png"), match_team_result_path(params[:event_id], @team_result.team_id, :result_action => "won", :match_id => @match.id) %>&nbsp;

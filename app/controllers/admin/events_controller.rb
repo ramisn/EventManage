@@ -19,7 +19,7 @@ class Admin::EventsController < ApplicationController
   end
 
   def show
-    @event_id = params[:id]
+    redirect_to admin_event_matches_path(params[:id])
   end
 
   def edit

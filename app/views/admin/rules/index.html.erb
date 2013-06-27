@@ -1,4 +1,6 @@
-<h1><%= @event.title.titleize %>&nbsp;Rules</h1>
+<%= render 'admin/shared/tabs' %>
+
+<h1>Rules</h1>
 
 <% if @rules.any? %>
   <% @rules.each do |rule| %>
