@@ -1,6 +1,4 @@
-class Admin::GroupsController < ApplicationController
-  before_filter :require_login
-
+class Admin::GroupsController < AdminController
   def index
     @event = Event.find(params[:event_id])
     @groups = @event.groups

@@ -1,0 +1,16 @@
+<style type="text/css">
+.path-bar {
+  margin: 40px;
+}
+</style>
+<div class="path-bar">
+  <% if params[:controller] == "home" || params[:controller] == "events" || params[:controller] == "sessions" %>
+    <% if params[:controller] == 'home' %>
+        <%= "Here you are : " + params[:controller].titleize %>
+      <% else %>
+        <%= "Here you are : Home > " + params[:controller].titleize %>
+      <% end %>
+  <% else %>
+    <%= "Here you are : Home > " +@event.title.titleize + " > " + params[:action].titleize %>
+  <% end %>
+</div>

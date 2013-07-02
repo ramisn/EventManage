@@ -1,0 +1,13 @@
+<style type="text/css">
+.tabs {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+</style>
+<% tabs = { 'Home'=> root_path, 'Events' => events_path, 'Fixtures' => "#", 'Results' => "#", 'News' => "#", 'Photos' => "#", 'Contact us' => "#", 'About us' => "#", 'Feedback' => "#" } %>
+<p class="tabs">
+  <% tabs.keys.each_with_index do |key,index| %>
+    <%= link_to "#{key}", tabs[key] %>
+    <%= "|" unless index == tabs.length - 1 %>
+  <% end %>
+</p>

@@ -1,6 +1,4 @@
-class Admin::EventsController < ApplicationController
-  before_filter :require_login
-
+class Admin::EventsController < AdminController
   def new
     @event = Event.new
   end
