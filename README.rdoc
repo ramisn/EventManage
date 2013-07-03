@@ -13,13 +13,22 @@ Work done till now.
 * Add Rules for each event
 * Reset Result
 * Create/Edit/Remove Matches
+* Create/Edit/Remove Groups
+* Path of current link
+* Tabs for Dashboard, Events, Users
+* Subtabs for Events
+
 ==== User Interface
 * View Events
 * View Result(Point Table)
 * View Team-players
 * View Rules
 * View Matches
+* View Groups
+* Path of current link
+* Main Tabs for Home, Events etc
+* Subtabs for Events
 
-Last Updated: 21-jun-13
+Last Updated: 03-jul-13
 
 Parth.
