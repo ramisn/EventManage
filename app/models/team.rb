@@ -7,5 +7,5 @@ class Team < ActiveRecord::Base
   belongs_to :group
 
   validates :title, :presence => true, :uniqueness => {:scope => :event_id}
-  validates :description, :presence => true, :uniqueness => {:scope => :event_id}
+  #validates :description, :presence => true, :uniqueness => {:scope => :event_id}
 end

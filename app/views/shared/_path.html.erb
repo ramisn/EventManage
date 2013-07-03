@@ -11,6 +11,6 @@
         <%= "Here you are : Home > " + params[:controller].titleize %>
       <% end %>
   <% else %>
-    <%= "Here you are : Home > " +@event.title.titleize + " > " + params[:action].titleize %>
+    <%= "Here you are : Home > " +@event.title.titleize + " > " + params[:action].titleize unless @event.nil? %>
   <% end %>
 </div>
