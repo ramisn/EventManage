@@ -21,6 +21,7 @@ class Admin::GroupsController < AdminController
   end
 
   def edit
+    @event = Event.find(params[:event_id]) #To show path from admin layout
     @group = Group.find(params[:id])
   end
 
@@ -36,6 +37,7 @@ class Admin::GroupsController < AdminController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
+    @group.teams.clear
     redirect_to admin_event_groups_path, :notice => "Group Deleted!"
   end
 

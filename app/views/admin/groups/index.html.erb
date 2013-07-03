@@ -18,11 +18,13 @@
         </ul>
     <% end %>
 
-    <%= form_tag add_team_path(params[:event_id],group.id), :method => :post do %>
-      <div class="field">
-        Team &nbsp;<%= select_tag :team_id, options_from_collection_for_select(@teams, :id, :title) %>
-        <%= submit_tag "Add" %>
-      </div>
+    <% unless @teams.empty? %>
+      <%= form_tag add_team_path(params[:event_id],group.id), :method => :post do %>
+        <div class="field">
+          Team &nbsp;<%= select_tag :team_id, options_from_collection_for_select(@teams, :id, :title) %>
+          <%= submit_tag "Add" %>
+        </div>
+      <% end %>
     <% end %>
 
     <p><%= link_to 'Reset Group', reset_group_path(params[:event_id],group.id),:confirm => "Are you sure?" if group.teams.any? %></p>

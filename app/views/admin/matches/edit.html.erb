@@ -1,3 +1,5 @@
+<%= render 'admin/shared/tabs' %>
+
 <h1>Edit a Match <%= @match.title %></h1>
 <h3>Team &nbsp;<%= @match.t1 %> <b>v/s</b> Team &nbsp;<%= @match.t2 %></h3>
 
@@ -10,4 +12,4 @@
   <%= f.submit %>
 <% end %>
 
-<%= link_to 'back',admin_event_matches_path %>
+<p><%= link_to 'back',admin_event_matches_path %></p>

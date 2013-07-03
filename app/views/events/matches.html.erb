@@ -33,7 +33,7 @@ td {
         <tr>
           <td><%= index +1 %></td>
           <td style="text-align: left;"><%= match.title %></td>
-          <td><%= match.t1 %> v/s <%= match.t2 %></td>
+          <td><%= @team_1[index].title %> v/s <%= @team_2[index].title %></td>
           <td style="text-align: left;"><%= raw match.description %></td>
           <% unless match.result.nil? || match.result == 'nil' %>
             <td><%= match.result %></td>

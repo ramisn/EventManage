@@ -21,6 +21,12 @@ class EventsController < ApplicationController
   def matches
     @event = Event.find(params[:id])
     @matches = @event.matches.order(:title)
+    @team_1 = []
+    @team_2 = []
+    @matches.each do |match|
+      @team_1 << Team.find(match.t1)
+      @team_2 << Team.find(match.t2)
+    end
   end
 
   def rules

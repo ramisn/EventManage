@@ -24,7 +24,7 @@ td,th {
         <td><%= link_to "#{match.title}", admin_event_match_path(params[:event_id],match.id) %></td>
         <td><%= link_to 'edit', edit_admin_event_match_path(params[:event_id],match.id)%></td>
         <td><%= link_to 'destroy', admin_event_match_path(params[:event_id],match.id), :method => :delete, :confirm => "Are you sure?" %></td>
-        <td><%= match.t1 %>(<%= match.t1_desc %>) <b>v/s</b> <%= match.t2 %>(<%= match.t2_desc %>)</td>
+        <td><%= @team_1[index].title %> <b>v/s</b> <%= @team_2[index].title %></td>
       </tr>
     <% end %>
   </table>

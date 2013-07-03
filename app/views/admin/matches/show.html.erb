@@ -1,10 +1,12 @@
+<%= render 'admin/shared/tabs' %>
+
 <p>
   <h4><%= @match.title %></h4>
   <%= raw @match.description %>
   <%= link_to 'edit', edit_admin_event_match_path(params[:event_id],@match.id)%>
   <%= link_to 'destroy', admin_event_match_path(params[:event_id],@match.id), :method => :delete, :confirm => "Are you sure?" %>
 </p>
-<p><%= @match.t1 %>(<%= @match.t1_desc %>) <b>v/s</b> <%= @match.t2 %>(<%= @match.t2_desc %>)</p>
+<p><%= @team_1[0].title %> <b>v/s</b> <%= @team_2[0].title %></p>
 <% if @match.result.nil? || @match.result == 'nil' %>
   <p>No match played!</p>
 <% else %>
@@ -12,11 +14,11 @@
 <% end %>
 
 <% @team_result= @team_result_holder["#{@match.id}"][0] %></br>
-<% match_team = @match.t1 %>
+<% match_team = @team_1[0].title %>
 <%= render 'match_result', match_team: match_team %>
 </br>
 <% @team_result= @team_result_holder["#{@match.id}"][1] %></br>
-<% match_team = @match.t2 %>
+<% match_team = @team_2[0].title %>
 <%= render 'match_result', match_team: match_team  %>
 
 <p><%= link_to 'back', admin_event_matches_path(params[:event_id]) %></p>

@@ -22,6 +22,7 @@ class Admin::TeamsController < AdminController
   end
 
   def edit
+    @event = Event.find(params[:event_id])
     @team = Team.find(params[:id])
   end
 

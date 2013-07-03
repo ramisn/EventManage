@@ -22,7 +22,7 @@ td {
   <table>
     <tr>
       <% @teams.each_with_index do |team,index| %>
-        <th><%= team.title %>(<%= team.description %>)</th>
+        <th><%= team.title %><%= team.description %></th>
       <% end %>
     </tr>
     <tr>

@@ -5,8 +5,7 @@
 <% if @teams.any? %>
   <% @teams.each do |team| %>
     <p>
-      <%= team.title %>
-      (<%= team.description %>)
+      <%= team.title + team.description %>
       <%= link_to 'edit', edit_admin_event_team_path(params[:event_id],team.id)%>
       <%= link_to 'destroy', admin_event_team_path(params[:event_id],team.id), :method => :delete, :confirm => "Are you sure?" %>
     </p>

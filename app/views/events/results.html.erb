@@ -36,7 +36,7 @@ td {
       <% unless team.result.nil? %>
         <tr>
           <td><%= index +1 %></td>
-          <td style="text-align: left;"><%= team.title %>(<%= team.description %>)</td>
+          <td style="text-align: left;"><%= team.title %><%= team.description %></td>
           <td><%= team.result.played %></td>
           <td><%= team.result.won %></td>
           <td><%= team.result.lost %></td>

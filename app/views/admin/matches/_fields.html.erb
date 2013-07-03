@@ -10,18 +10,13 @@
 
 <p>
   <%= f.label :first_team %>
-  <%= f.select :t1, options_from_collection_for_select(@teams, :title, :title), :prompt=> "--select first team--" %>
-
-  <%= f.label :description %>
-  <%= f.select :t1_desc, options_from_collection_for_select(@teams,:description, :description),:prompt=> "--select descripton--" %>
+  <%= f.select :t1, options_from_collection_for_select(@teams, :id, :title), :prompt=> "--select first team--" %>
 </p>
 
 <p>
   <%= f.label :second_team %>
-  <%= f.select :t2, options_from_collection_for_select(@teams, :title, :title),:prompt=> "--select second team --" %>
+  <%= f.select :t2, options_from_collection_for_select(@teams, :id, :title),:prompt=> "--select second team --" %>
 
-  <%= f.label :description %>
-  <%= f.select :t2_desc, options_from_collection_for_select(@teams, :description, :description),:prompt=> "--select descripton--" %>
 </p>
 
 <p>
