@@ -17,12 +17,13 @@
           <% end %>
         </ul>
     <% end %>
-
-    <%= form_tag add_player_path(params[:event_id],team.id), :method => :post do %>
-      <div class="field">
-        <%= select_tag :user_id, options_from_collection_for_select(@users, :id, :name) %>
-        <%= submit_tag "Add" %>
-      </div>
+    <% unless @dropdown_users.empty? %>
+      <%= form_tag add_player_path(params[:event_id],team.id), :method => :post do %>
+        <div class="field">
+          <%= select_tag :user_id, options_from_collection_for_select(@dropdown_users, :id, :name) %>
+          <%= submit_tag "Add" %>
+        </div>
+      <% end %>
     <% end %>
 
     <p><%= link_to 'Reset Team', reset_team_path(params[:event_id],team.id),:confirm => "Are you sure?" if team.players.any? %></p>
