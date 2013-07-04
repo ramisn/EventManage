@@ -3,6 +3,12 @@ class Admin::TeamsController < AdminController
     @event = Event.find(params[:event_id])
     @teams = @event.teams
     @users = User.all
+    @dropdown_users = []
+    @users.each do |user|
+      if user.teams.where(:event_id=>params[:event_id]).empty?
+        @dropdown_users << user
+      end
+    end
   end
 
   def new
