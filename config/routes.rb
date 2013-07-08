@@ -11,7 +11,7 @@ EventManagement::Application.routes.draw do
       get 'rules'
     end
   end
-
+  resources :feedback, :only => [:new,:create]
   #Admin UI routes
   get "admin" => "admin::dashboard#index"
   get 'login' => 'sessions#new', :as => 'login'

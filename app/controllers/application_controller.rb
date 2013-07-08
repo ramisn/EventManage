@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
+  before_filter :feedback
+
+  def feedback
+    @feedback =Feedback.new
+  end
 
   private
 
