@@ -28,7 +28,8 @@ Work done till now.
 * Path of current link
 * Main Tabs for Home, Events etc
 * Subtabs for Events
+* Feedback form
 
-Last Updated: 03-jul-13
+Last Updated: 10-jul-13
 
 Parth.
