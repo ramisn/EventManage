@@ -38,6 +38,8 @@ $(function() {
     height: 340,
     width: 550,
     position: [350,100],
+    resizable: false,
+    draggable: false,
     modal: true,
     buttons: [ { 
       text: "Submit",

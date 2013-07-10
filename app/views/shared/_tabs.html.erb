@@ -1,12 +1,9 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 
 <style type="text/css">
-.tabs {
-  margin-left: 40px;
-  margin-right: 40px;
-}
 #dialog-form {
   font-size: 62.5%;
+  display: none;
 }
 #success {
   margin: 40px;
@@ -18,20 +15,42 @@
 .validateTips {
   color: red;
 }
+.tabs-bar {
+  background: none repeat scroll 0 0 #87CEEB;
+  top: 0;
+  width: 96%;
+  padding: 1px 2%;
+}
+#new_feedback table {
+  border: none !important;
+}
+#new_feedback td {
+  border: none !important;
+  padding: 2px;
+  text-align: left;
+}
+#feedback_feedback {
+  max-width: 430px;
+  max-height: 117px;
+  min-height: 76px;
+  min-width: 190px;
+}
+
 </style>
 
 <% tabs = { 'Home'=> root_path, 'Events' => events_path, 'Fixtures' => "#", 'Results' => "#", 'News' => "#", 'Photos' => "#", 'Contact us' => "#", 'About us' => "#", 'Feedback' => "#" } %>
-
-<p class="tabs">
-  <% tabs.keys.each_with_index do |key,index| %>
-    <% unless key == 'Feedback'%>
-      <%= link_to "#{key}", tabs[key] %>
-    <% else %>
-      <span id="create-feedback"><%= link_to "#{key}", tabs[key] %></span>
+<div class="tabs-bar">
+  <p>
+    <% tabs.keys.each_with_index do |key,index| %>
+      <% unless key == 'Feedback'%>
+        <%= link_to "#{key}", tabs[key] %>
+      <% else %>
+        <span id="create-feedback"><%= link_to "#{key}", tabs[key] %></span>
+      <% end %>
+      <%= "|" unless index == tabs.length - 1 %>
     <% end %>
-    <%= "|" unless index == tabs.length - 1 %>
-  <% end %>
-</p>
+  </p>
+</div>
 
 <p id="success" style="display: none"> Thank you for your valuable Feedback! </p>
 <div id="dialog-form" title="Feedback Form">

@@ -10,10 +10,11 @@ body {
   }
   &.admin-panel {
     padding-top: 35px;
-      background: none repeat scroll 0 0 #DDE9F4;
+    background: none repeat scroll 0 0 #DDE9F4;
   }
   #container {
-    margin: 40px;
+    padding: 10px 2%;
+    width: 96%;
   }
   a {
   text-decoration: none;

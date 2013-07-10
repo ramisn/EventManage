@@ -1,6 +1,5 @@
 #login_bar {
-  background: none repeat scroll 0 0 #6AC071;
-  border-bottom: 1px solid #6AC071;
+  background: none repeat scroll 0 0 #3C3B37;
   top: 0;
   width: 100%;
   z-index: 9999;
@@ -18,7 +17,7 @@
       padding-right: 20px;
       a {
         font-weight: 600;
-        color: #23654A;
+        color: grey;
       }
     }
 
@@ -26,12 +25,12 @@
       float: right;
       a {
         font-weight: 300;
-        color: #23654A;
+        color: grey;
       }
     }
 
     strong {
-      color: #23654A;
+      color: grey;
       font-weight: 600;
     }
   }
