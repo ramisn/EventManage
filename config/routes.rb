@@ -40,6 +40,7 @@ EventManagement::Application.routes.draw do
       resources :groups, :except => :show
     end
     resources :users, :except => :show
+    resources :feedbacks, :only => :index
   end
 
   # The priority is based upon order of creation:

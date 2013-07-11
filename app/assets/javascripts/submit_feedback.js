@@ -48,8 +48,8 @@ $(function() {
         allFields.removeClass( "ui-state-error" );
         bValid = bValid && checkLength( email, "email", 6, 80 );
 
-        bValid = bValid && checkRegexp( email, /^(\w+\.)*\w + @(\w+\.) + \w + $/, "invalid email. e.g ui@gmail.com" );
-        bValid = bValid && checkLength( feedback, "feedback", 1, 255 );
+        bValid = bValid && checkRegexp( email, /^(\w+\.)*\w+@(\w+\.)+\w+$/, "invalid email. e.g yourname@gmail.com" );
+        bValid = bValid && checkLength( feedback, "feedback", 1, 1000 );
 
         if ( bValid ) {
           $.ajax({
@@ -74,12 +74,4 @@ $(function() {
   $( "#create-feedback" ).click(function() {
     $( "#dialog-form" ).dialog( "open" );
     });
-
-  function stopRKey(evt) {
-    var evt = (evt) ? evt : ((event) ? event : null);
-    var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
-    if ((evt.keyCode == 13) && (node.type=="text"))  {return false;}
-  }
-
-  document.onkeypress = stopRKey; //to prevent user from pressing enter key.
 });
