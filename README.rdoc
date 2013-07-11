@@ -17,6 +17,8 @@ Work done till now.
 * Path of current link
 * Tabs for Dashboard, Events, Users
 * Subtabs for Events
+* See feedbacks entered by users
+* Search feedback by name/email, sorting feedback-table column by AJAX request
 
 ==== User Interface
 * View Events
@@ -30,6 +32,6 @@ Work done till now.
 * Subtabs for Events
 * Feedback form
 
-Last Updated: 10-jul-13
+Last Updated: 11-jul-13
 
 Parth.
