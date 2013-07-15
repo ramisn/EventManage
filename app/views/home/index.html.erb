@@ -1,1 +1,71 @@
+<style type="text/css">
+.results {
+  display: block;
+}
+.fixtures {
+  display: none;
+}
+.fixtures-results-subtabs {
+  float: right;
+  background: #E8E7E6;
+}
+.results, .fixtures {
+  font-size: 12px;
+  padding: 0 15px 0 33px;
+}
+</style>
 <h1>Welcome to Home</h1>
+<aside class="fixtures-results-subtabs">
+  <%= link_to "Fixtures", "#" , :id => "fixtures" %> |
+  <%= link_to "Results", "#" , :id => "results" %>
+  <% events = @events.collect(&:title) %>
+  <% if @match_results.any? %>
+   <ul class="results">
+    <% @match_results.each_with_index do |match_result,index| %>
+        <% unless match_result.empty? %>
+          <h4><%= events[index] %> | Results</h4>
+          <% match_result.each_with_index do |match,index| %>
+            <li><%= match.title unless match.nil? %> <br>
+                <%= @team_1[index].title unless @team_1[index].nil? %> v/s <%= @team_2[index].title unless @team_2[index].nil? %> </br>
+                <%= match.result unless match.nil? %> </br>
+                <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
+            </li>
+          <% end %>
+        <% end %>
+    <% end %>
+   </ul>
+  <% else %>
+    No matches!
+  <% end %>
+
+
+  <% if @match_fixtures.any? %>
+   <ul class="fixtures">
+    <% @match_fixtures.each_with_index do |match_fixture,index| %>
+      <% unless match_fixture.empty? %>
+        <h4><%= events[index] %> | Fixtures</h4>
+        <% match_fixture.each_with_index do |match,index| %>
+          <li><%= match.title unless match.nil? %> </br>
+              <%= @team_one[index].title unless @team_one[index].nil? %> v/s <%= @team_two[index].title unless @team_two[index].nil? %> </br>
+              <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
+          </li>
+        <% end %>
+      <% end %>
+    <% end %>
+   </ul>
+  <% else %>
+    No matches Fixtures!
+  <% end %>
+</aside>
+
+<script type="text/javascript">
+$("#fixtures").click(function () {
+  $(".fixtures").show();
+  $(".results").hide();
+})
+
+$("#results").click(function () {
+  $(".results").show();
+  $(".fixtures").hide();
+})
+</script>

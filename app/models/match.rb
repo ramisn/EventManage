@@ -9,4 +9,6 @@ class Match < ActiveRecord::Base
   def cannot_add_same_team
     errors[:base] << "You cannot add identical teams." if self.t1 == self.t2
   end
+
+  scope :result_not_nil, where("result != ?","nil")
 end

@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-
 <style type="text/css">
 #dialog-form {
   font-size: 62.5%;
@@ -15,11 +13,20 @@
 .validateTips {
   color: red;
 }
-.tabs-bar {
+header {
   background: none repeat scroll 0 0 #87CEEB;
   top: 0;
   width: 96%;
   padding: 1px 2%;
+  height: 54px;
+}
+.tabs-bar {
+  margin-top: 33px;
+}
+.tabs-bar li {
+  list-style-type: none;
+  float: left;
+  padding: 5px;
 }
 #new_feedback table {
   border: none !important;
@@ -35,22 +42,52 @@
   min-height: 76px;
   min-width: 190px;
 }
-
+.with-menu {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-top: none;
+  border-radius: 0 0px 3px 3px;
+  display: block;
+  width: 7%;
+  position: absolute;
+  top: 56px;
+  z-index: 2;
+  margin: 0 -6px;
+  padding: 0;
+}
+.with-menu li {
+  list-style-type: none;
+  padding: 5px;
+  width: 87%;
+}
+.highlight {
+  background: #FFF;
+  border-radius: 3px 3px 0 0;
+}
+.current {
+  background: #E5E4E3;
+}
 </style>
-
-<% tabs = { 'Home'=> root_path, 'Events' => events_path, 'Fixtures' => "#", 'Results' => "#", 'News' => "#", 'Photos' => "#", 'Contact us' => "#", 'About us' => "#", 'Feedback' => "#" } %>
-<div class="tabs-bar">
-  <p>
-    <% tabs.keys.each_with_index do |key,index| %>
-      <% unless key == 'Feedback'%>
-        <%= link_to "#{key}", tabs[key] %>
-      <% else %>
-        <span id="create-feedback"><%= link_to "#{key}", tabs[key] %></span>
-      <% end %>
-      <%= "|" unless index == tabs.length - 1 %>
-    <% end %>
-  </p>
-</div>
+<header>
+  <ul class="tabs-bar">
+    <li><%= link_to 'Home', root_path %></li>
+    <li id="events"><%= link_to 'Events', events_path %>
+      <ul class="with-menu" style="display: none;">
+        <% @events.each do |event| %>
+          <li><%= link_to "#{event.title.titleize}", event_path(event.id) %></li>
+        <% end %>
+      </ul>
+    </li>
+    <li><%= link_to 'Photos', "#" %></li>
+    <li><%= link_to 'Contact us', "#" %></li>
+    <li><%= link_to 'About us', "#" %></li>
+    <li>
+      <span id="create-feedback">
+        <%= link_to 'Feedback', "#" %>
+      </span>
+    </li>
+  </ul>
+</header>
 
 <p id="success" style="display: none"> Thank you for your valuable Feedback! </p>
 <div id="dialog-form" title="Feedback Form">
@@ -77,3 +114,14 @@
 </div>
 
 <%= javascript_include_tag "submit_feedback" %>
+
+<script type="text/javascript">
+$("#events").hover(function() {
+  $(".with-menu").toggle();
+  $("#events").toggleClass("highlight");
+})
+$(".with-menu li").hover(function() {
+  $(this).toggleClass("current");
+})
+
+</script>
