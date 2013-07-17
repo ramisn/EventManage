@@ -1,5 +1,4 @@
 EventManagement::Application.routes.draw do
-
   #Front UI routes
   root :to => "home#index"
   resources :events, :only => [:index,:show] do
@@ -12,6 +11,7 @@ EventManagement::Application.routes.draw do
     end
   end
   resources :feedback, :only => [:new,:create]
+
   #Admin UI routes
   get "admin" => "admin::dashboard#index"
   get 'login' => 'sessions#new', :as => 'login'
@@ -29,6 +29,8 @@ EventManagement::Application.routes.draw do
   match 'admin/events/:event_id/groups/:group_id/:team_id/remove_team' => 'admin/groups#remove_team', :as => 'remove_team'
   match 'admin/events/:event_id/groups/:group_id/reset_group' => 'admin/groups#reset_group', :as => 'reset_group'
 
+  match 'admin/photos/:event/photos' => 'admin/photos#event_photos', :as => 'admin_event_photos'
+
   resources :sessions, :only => [:new,:create,:destroy]
   resources :password_resets, :only => [:create,:edit,:update]
 
@@ -41,6 +43,7 @@ EventManagement::Application.routes.draw do
     end
     resources :users, :except => :show
     resources :feedbacks, :only => :index
+    resources :photos, :except => :show
   end
 
   # The priority is based upon order of creation:

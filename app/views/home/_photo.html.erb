@@ -1,0 +1,5 @@
+<li>
+  <%= image_tag(photo.image.url(:full), :alt => "#{photo.title}") %>
+  <p><%= photo.title %></p>
+  <span><%= photo.image_updated_at.strftime("%d-%b-%Y %I:%M %p") %></span>
+</li>

@@ -1,3 +1,79 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.photos {
+  display: block;
+  position:relative;
+  ul {
+    display: block;
+    width: 10000px;
+    li {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: normal;
+      margin: 0 5px;
+      padding: 0;
+      width: 1200px;
+      float: left;
+      display: block;
+      img {
+        display: block;
+        margin: 0 0 15px 0;
+        width: 576px;
+        height: 324px;
+        background-color: black;
+        border: 1px solid #CCCCCC;
+        padding: 5px;
+        box-shadow: 10px 10px 5px #888888;
+      }
+      span {
+        color: #0b75b9;
+        margin: 0 auto;
+        padding: 0;
+        width: 95%;
+        display: block;
+        margin-bottom: 5px;
+      }
+      p {
+        color: #6b6262;
+        margin: 0 auto;
+        padding: 0;
+        width: 95%;
+        line-height: 18px;
+      }
+    }
+  }
+}
+
+.photo-carousel-cointainer {
+  overflow: hidden;
+  position: relative;
+  > * {
+    position: relative;
+  }
+}
+
+.scroll-left, .scroll-right {
+  display: none;
+  position: absolute;
+  top: 72px;
+  cursor: pointer;
+  width: 21px;
+  height: 205px;
+  background: transparent image-url("slider_arrows_sprite.png") 0 center no-repeat;
+}
+
+.scroll-left {
+  left: 9px;
+  &:hover {
+    background-position: -21px center;
+  }
+}
+
+.scroll-right {
+  left: 651px;
+  background-position: -42px center;
+  &:hover {
+    background-position: -63px center;
+  }
+}

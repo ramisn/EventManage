@@ -8,4 +8,5 @@ class Event < ActiveRecord::Base
   has_many :rules, :dependent => :destroy
   has_many :matches, :dependent => :destroy
   has_many :groups, :dependent => :destroy
+  has_many :photos
 end

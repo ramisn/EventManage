@@ -1,0 +1,13 @@
+<h1>Add a Event Photo</h1>
+</br>
+
+<% @photo.errors.full_messages.each do |error| %>
+  <li><%= error %><li>
+<% end %>
+
+<%= form_for [:admin, @photo], :html => { :multipart => true } do |f| %>
+  <%= render 'fields', f: f %>
+  <%= f.submit %>
+<% end %>
+
+<p><%= link_to 'back',admin_photos_path %></p>

@@ -1,0 +1,22 @@
+<style type="text/css">
+.tiny {
+  margin-left: 4px;
+  color: #4C4C4C;
+  font-size: 10px;
+}
+</style>
+<p>
+  <%= f.label :title %>
+  <%= f.text_field :title, :placeholder => "add a photo title" %>
+</p>
+
+<p>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+  <span class="tiny">Hint : upload image of size 576 X 324 </span>
+</p>
+
+<p>
+  <%= f.label :events %>
+  <%= f.select :event_id, options_from_collection_for_select(@events, :id, :title), :prompt=> "--select event--" %>
+</p>

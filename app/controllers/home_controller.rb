@@ -25,6 +25,7 @@ class HomeController < ApplicationController
       end
     end
 
+    @photos = Photo.all
     #code if we want to show all fixtures,results together
 
     #@match_results = Match.result_not_nil

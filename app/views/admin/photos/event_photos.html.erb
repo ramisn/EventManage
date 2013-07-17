@@ -1,0 +1,33 @@
+<style type="text/css">
+table {
+  font-size: 9px;
+  color: #4C4C4C;
+}
+td {
+  padding: 4px;
+}
+</style>
+<table>
+  <tr>
+    <% @photos.each do |photo| %>
+    <td>
+      <%= image_tag photo.image.url(:thumb), :title => photo.title %>
+    </td>
+    <% end %>
+  </tr>
+  <tr>
+    <% @photos.each do |photo| %>
+    <td>
+      <%= photo.image_updated_at.strftime("%d-%b-%Y, %I:%M %p") %>
+    </td>
+    <% end %>
+  </tr>
+  <tr>
+    <% @photos.each do |photo| %>
+    <td>
+      <%= link_to image_tag("edit.png", :border => 0), edit_admin_photo_path(photo), :title => "edit" %>
+      <%= link_to image_tag("remove.gif", :border => 0), admin_photo_path(photo), :method => :delete, :confirm => "Are you sure?", :title => "remove" %>
+    </td>
+    <% end %>
+  </tr>
+</table>

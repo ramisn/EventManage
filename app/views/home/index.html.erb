@@ -13,8 +13,21 @@
   font-size: 12px;
   padding: 0 15px 0 33px;
 }
+
 </style>
 <h1>Welcome to Home</h1>
+
+<div class="photos" style="display: block;">
+  <div class="photo-carousel-cointainer" style="">
+    <ul id="photo-listing-cointainer">
+      <%= render(:partial => 'photo', :collection => @photos) %>
+    </ul>
+  </div>
+
+  <div class="scroll-left" style="display: block;">&nbsp;</div>
+  <div class="scroll-right" style="display: none;">&nbsp;</div>
+</div>
+
 <aside class="fixtures-results-subtabs">
   <%= link_to "Fixtures", "#" , :id => "fixtures" %> |
   <%= link_to "Results", "#" , :id => "results" %>
@@ -57,6 +70,8 @@
     No matches Fixtures!
   <% end %>
 </aside>
+
+<%= javascript_include_tag "photo_scroll" %>
 
 <script type="text/javascript">
 $("#fixtures").click(function () {
