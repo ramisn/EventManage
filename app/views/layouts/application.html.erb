@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>EM</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body class="<%= "with-login" if logged_in? %>" >
-  <%= render 'shared/admin_login' %>
-  <%= render 'shared/tabs' %>
-  <%= render 'shared/path' %>
+  <head>
+    <title>EM</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="<%= "with-login" if logged_in? %>" >
+    <%= render 'shared/admin_login' %>
+    <%= render 'shared/header' %>
+    <%= render 'shared/path' %>
 
-  <div id="container">
-    <% flash.each do |name,msg| %>
-      <%= content_tag(:div, msg, :id => "flash_#{name}")%>
-    <% end %>
+    <div id="container">
+      <% flash.each do |name,msg| %>
+        <%= content_tag(:div, msg, :id => "flash_#{name}")%>
+      <% end %>
 
-    <%= yield %>
-  </div>
-  <%= render 'shared/footer' %>
-</body>
+      <%= yield %>
+    </div>
+    <%= render 'shared/footer' %>
+  </body>
 </html>

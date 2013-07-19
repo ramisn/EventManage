@@ -83,27 +83,33 @@
 }
 
 </style>
-<header>
-  <ul id="nav">
-    <li><%= link_to 'Home', root_path %></li>
-    <li><%= link_to 'Events', events_path %>
-      <ul>
-        <% @events.each do |event| %>
-          <li><%= link_to "#{event.title.titleize}", event_path(event.id) %></li>
-        <% end %>
-      </ul>
-    </li>
-    <li><%= link_to 'Photos', photos_path %></li>
-    <li><%= link_to 'Contact us', "#" %></li>
-    <li><%= link_to 'About us', "#" %></li>
-    <li>
-      <span id="create-feedback">
-        <%= link_to 'Feedback', "#" %>
-      </span>
-    </li>
-  </ul>
-</header>
-
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <%= link_to "Event Management", root_path , :class => "brand" %>
+      <div class="nav-collapse collapse">
+        <ul class="nav" id="nav">
+          <li><%= link_to 'Home', root_path %></li>
+          <li><%= link_to 'Events', events_path %>
+            <ul>
+              <% @events.each do |event| %>
+                <li><%= link_to "#{event.title.titleize}", event_path(event.id) %></li>
+              <% end %>
+          </ul>
+          </li>
+          <li><%= link_to 'Photos', photos_path %></li>
+          <li><%= link_to 'Contact us', "#" %></li>
+          <li><%= link_to 'About us', "#" %></li>
+          <li>
+            <span id="create-feedback">
+              <%= link_to 'Feedback', "#" %>
+            </span>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
 <p id="alert_success" class="alert_success">Thank you for your valuable Feedback!</p>
 
 <div id="dialog-form" title="Feedback Form">
