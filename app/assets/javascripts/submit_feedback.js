@@ -58,11 +58,10 @@ $(function() {
             data: $('form').serializeArray()
             });
           $( this ).dialog( "close" );
-          $('#success').show();
-          $('#success').addClass( "ui-state-highlight" );
+          $('#alert_success').show();
           setTimeout(function() {
-            $('#success').hide();
-          }, 2000 );
+            $('#alert_success').hide();
+          }, 3000 );
         }
       }
     } ],

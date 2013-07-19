@@ -3,22 +3,12 @@
   font-size: 62.5%;
   display: none;
 }
-#success {
-  margin: 40px;
-}
 .required:after {
   content:"*";
   color: red;
 }
 .validateTips {
   color: red;
-}
-header {
-  background: none repeat scroll 0 0 #87CEEB;
-  top: 0;
-  width: 96%;
-  padding: 1px 2%;
-  height: 54px;
 }
 #new_feedback table {
   border: none !important;
@@ -50,10 +40,10 @@ header {
 #nav a:link, #nav a:active, #nav a:visited{
   display:block;
   padding:0px 5px;
-  border:1px solid #87CEEB;
   color: #000;
   text-decoration:none;
   background-color: #87CEEB;
+  border:1px solid #87CEEB;
   outline: none;
 }
 
@@ -103,7 +93,7 @@ header {
         <% end %>
       </ul>
     </li>
-    <li><%= link_to 'Photos', "#" %></li>
+    <li><%= link_to 'Photos', photos_path %></li>
     <li><%= link_to 'Contact us', "#" %></li>
     <li><%= link_to 'About us', "#" %></li>
     <li>
@@ -114,7 +104,8 @@ header {
   </ul>
 </header>
 
-<p id="success" style="display: none"> Thank you for your valuable Feedback! </p>
+<p id="alert_success" class="alert_success">Thank you for your valuable Feedback!</p>
+
 <div id="dialog-form" title="Feedback Form">
   <p class="validateTips">* indicates required fields.</p>
 

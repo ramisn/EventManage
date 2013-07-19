@@ -1,0 +1,25 @@
+<style type="text/css">
+table {
+  font-size: 12px;
+  color: #4C4C4C;
+}
+td {
+  padding: 7px;
+}
+</style>
+<table>
+  <tr>
+  <% @events.each do |event| %>
+    <td>
+      <%= link_to image_tag("folder_icon.png", :border => 0), event_photos_path(event.title) if event.photos.any? %>
+    </td>
+  <% end %>
+  </tr>
+  <tr>
+  <% @events.each do |event| %>
+    <td>
+      <%= event.title if event.photos.any? %>
+    </td>
+  <% end %>
+  </tr>
+</table>

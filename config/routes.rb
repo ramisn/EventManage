@@ -11,6 +11,8 @@ EventManagement::Application.routes.draw do
     end
   end
   resources :feedback, :only => [:new,:create]
+  resources :photos, :only => [:index]
+  match 'photos/:event' => 'photos#photos', :as => 'event_photos'
 
   #Admin UI routes
   get "admin" => "admin::dashboard#index"

@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require_tree .
 //= require ckeditor/init
+//= require vendor/lightbox-2.6.min
+
+

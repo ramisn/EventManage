@@ -19,4 +19,23 @@ body {
   a {
   text-decoration: none;
   }
+  .alert_success {
+    display: none;
+    width: 96%;
+    margin: 20px 2% 10px 2%;
+    border-radius: 5px;
+    border: 1px solid #79C20D;
+    color: #32510F;
+    padding: 6px 0;
+    text-indent: 35px;
+    font-size: 12px;
+    background: #EDFCED;
+  }
+  header {
+    background: none repeat scroll 0 0 #87CEEB;
+    top: 0;
+    width: 96%;
+    padding: 1px 2%;
+    height: 54px;
+  }
 }
