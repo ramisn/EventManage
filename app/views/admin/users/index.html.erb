@@ -1,50 +1,85 @@
-<style type="text/css">
-td {
-  text-align: left;
-}
-th,td {
-  padding: 5px;
-}
-</style>
-<h2>Listing Admins</h2>
-<table>
-  <tr>
-    <th>Sr No.</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% @admin_users.each_with_index do |admin,index| %>
-    <tr>
-      <td><%= index + 1 %></td>
-      <td><%= admin.name.capitalize %></td>
-      <td><%= admin.email %></td>
-      <td><%= link_to 'Edit', edit_admin_user_path(admin) if current_user.name != admin.name %></td>
-      <td><%= link_to 'Destroy', admin_user_path(admin), :method => :delete, :confirm => " are you sure?" if current_user.name != admin.name %></td>
-    </tr>
-  <% end %>
-</table>
+<div id="content">
+  <!-- Box -->
+  <div class="box">
+    <!-- Box Head -->
+    <div class="box-head">
+      <h2 class="left">Listing Admins</h2>
+    </div>
+    <!-- End Box Head --> 
+      <!-- Table -->
+      <div class="table">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th>Sr No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th width="110" class="ac">Content Control</th>
+          </tr>
+          <% @admin_users.each_with_index do |admin,index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= admin.name.capitalize %></td>
+            <td><%= admin.email %></td>
+            <td><%= link_to 'Edit', edit_admin_user_path(admin),:class => "ico edit" if current_user.name != admin.name %>
+                <%= link_to 'Destroy', admin_user_path(admin), :class => "ico del", :method => :delete, :confirm => " are you sure?" if current_user.name != admin.name %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+      <!-- Table -->
+  </div>
+  <!-- End Box -->
 
-<h2>Listing Players</h2>
-<table>
-  <tr>
-    <th>Sr No.</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% @players.each_with_index do |player,index| %>
-    <tr>
-      <td><%= index + 1 %></td>
-      <td><%= player.name.capitalize %></td>
-      <td><%= player.email %></td>
-      <td><%= link_to 'Edit', edit_admin_user_path(player) if current_user.name != player.name %></td>
-      <td><%= link_to 'Destroy', admin_user_path(player), :method => :delete, :confirm => " are you sure?" if current_user.name != player.name %></td>
-    </tr>
-  <% end %>
-</table>
+  <!-- Box -->
+  <div class="box">
+    <!-- Box Head -->
+    <div class="box-head">
+      <h2 class="left">Listing Players</h2>
+    </div>
+    <!-- End Box Head --> 
+    <% if @players.any? %>
+      <!-- Table -->
+      <div class="table">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th>Sr No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th width="110" class="ac">Content Control</th>
+          </tr>
+          <% @players.each_with_index do |player,index| %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= player.name.capitalize %></td>
+              <td><%= player.email %></td>
+              <td><%= link_to 'Edit', edit_admin_user_path(player), :class => "ico edit" if current_user.name != player.name %>
+                  <%= link_to 'Destroy', admin_user_path(player), :class => "ico del", :method => :delete, :confirm => " are you sure?" if current_user.name != player.name %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <!-- Table -->
+    <% else %>
+     <p>Sorry! There is no players created yet.</p>
+    <% end %>
+  </div>
+  <!-- End Box -->
+   <p><%= link_to 'back',admin_path %></p>
+</div>
 
-<h3><p><%= link_to 'Create User',new_admin_user_path %></p></h3>
-<p><%= link_to 'back',admin_path %></p>
+<!-- Sidebar -->
+  <div id="sidebar">
+    <!-- Box -->
+    <div class="box">
+      <div class="box-head">
+        <h2>Management</h2>
+      </div>
+      <div class="box-content">
+        <%= link_to content_tag(:span, "Create User"), new_admin_user_path, :class => "add-button", :method => "get" %>
+        <div class="cl">&nbsp;</div>
+      </div>
+    </div>
+    <!-- End Box -->
+  </div>
+<!-- End Sidebar -->

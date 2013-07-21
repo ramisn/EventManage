@@ -1,10 +1,10 @@
 body {
   &.with-login {
-    margin-top: 35px;
-  }
-  &.admin-panel {
-    padding-top: 35px;
-    background: none repeat scroll 0 0 #DDE9F4;
+    padding-top: 97px;
+    .navbar-fixed-top
+    {
+      padding-top: 35px;
+    }
   }
   .alert_success {
     display: none;

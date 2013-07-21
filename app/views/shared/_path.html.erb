@@ -1,17 +1,11 @@
-<style type="text/css">
-.path-bar {
-  width: 96%;
-  padding: 10px 2%;
-}
-</style>
-<div class="path-bar">
+<ul class="breadcrumb">
   <% if params[:controller] == "home" || params[:controller] == "events" || params[:controller] == "sessions" %>
     <% if params[:controller] == 'home' %>
         <%= "Here you are : " + params[:controller].titleize %>
       <% else %>
-        <%= "Here you are : Home > " + params[:controller].titleize %>
+        <%= "Here you are : Home >> " + params[:controller].titleize %>
       <% end %>
   <% else %>
-    <%= "Here you are : Home > " +@event.title.titleize + " > " + params[:action].titleize unless @event.nil? %>
+    <%= "Here you are : Home >> " +@event.title.titleize + " >> " + params[:action].titleize unless @event.nil? %>
   <% end %>
-</div>
+</ul>

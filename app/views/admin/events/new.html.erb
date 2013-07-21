@@ -1,11 +1,20 @@
-<h1>Create an Event</h1>
-</br>
-<% @event.errors.full_messages.each do |error| %>
-  <li><%= error %><li>
-<% end %>
-<%= form_for [:admin, @event] do |f| %>
-  <%= render 'fields', f: f %>
-  <%= f.submit %></p>
-<% end %>
-
+<div class="msg msg-error">
+  <% @event.errors.full_messages.each do |error| %>
+    <p><strong><%= error %></strong></p>
+  <% end %>
+</div>
+<div class="content">
+<!-- Box -->
+  <div class="box">
+    <div class="box-head">
+      <h2>Create an Event</h2>
+    </div>
+    <%= form_for [:admin, @event] do |f| %>
+      <%= render 'fields', f: f %>
+      <%= f.submit :class => "add-button" %>
+      <div class="cl">&nbsp;</div>
+    <% end %>
+  </div>
+<!-- End Box -->
+</div>
 <%= link_to 'back',admin_events_path %>

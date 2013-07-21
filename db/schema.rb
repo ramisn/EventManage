@@ -128,7 +128,6 @@ ActiveRecord::Schema.define(:version => 20130715095455) do
     t.datetime "reset_password_email_sent_at"
     t.string   "name"
     t.string   "role",                            :default => "player"
-    t.integer  "event_id"
   end
 
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"

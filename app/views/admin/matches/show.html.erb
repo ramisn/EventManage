@@ -1,24 +1,30 @@
-<%= render 'admin/shared/tabs' %>
+<div class="shell"><%= render 'admin/shared/tabs' %></div>
 
-<p>
-  <h4><%= @match.title %></h4>
-  <%= raw @match.description %>
-  <%= link_to 'edit', edit_admin_event_match_path(params[:event_id],@match.id)%>
-  <%= link_to 'destroy', admin_event_match_path(params[:event_id],@match.id), :method => :delete, :confirm => "Are you sure?" %>
-</p>
-<p><%= @team_1[0].title %> <b>v/s</b> <%= @team_2[0].title %></p>
-<% if @match.result.nil? || @match.result == 'nil' %>
-  <p>No match played!</p>
-<% else %>
-  <p>Match Result : <%= @match.result %></p>
-<% end %>
+<div class="content">
+  <div class="box">
+      <div class="box-head">
+        <h2><%= @match.title %>
+            <strong>&nbsp;<%= @team_1[0].title %> <b>v/s</b> <%= @team_2[0].title %></strong>
+            <%= link_to 'edit', edit_admin_event_match_path(params[:event_id],@match.id), :class => "ico edit" %>
+            <%= link_to 'destroy', admin_event_match_path(params[:event_id],@match.id), :class => "ico del", :method => :delete, :confirm => "Are you sure?" %>
+        </h2>
+      </div>
+      <div class="box-content">
+        <%= raw @match.description %>
+        <% if @match.result.nil? || @match.result == 'nil' %>
+          <p>No match played!</p>
+        <% else %>
+          <p>Match Result : <%= @match.result %></p>
+        <% end %>
 
-<% @team_result= @team_result_holder["#{@match.id}"][0] %></br>
-<% match_team = @team_1[0].title %>
-<%= render 'match_result', match_team: match_team %>
-</br>
-<% @team_result= @team_result_holder["#{@match.id}"][1] %></br>
-<% match_team = @team_2[0].title %>
-<%= render 'match_result', match_team: match_team  %>
-
+        <% @team_result= @team_result_holder["#{@match.id}"][0] %></br>
+        <% match_team = @team_1[0].title %>
+        <%= render 'match_result', match_team: match_team %>
+        </br>
+        <% @team_result= @team_result_holder["#{@match.id}"][1] %></br>
+        <% match_team = @team_2[0].title %>
+        <%= render 'match_result', match_team: match_team  %>
+      </div>
+  </div>
+</div>
 <p><%= link_to 'back', admin_event_matches_path(params[:event_id]) %></p>

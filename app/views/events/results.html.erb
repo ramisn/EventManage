@@ -5,46 +5,48 @@ table {
 }
 th {
   border:1px solid;
-  padding: 5px;
   border-color: #000080;
 }
 td {
   border:1px solid;
   border-color: #000080;
   text-align: center;
-  padding: 5px;
 }
 </style>
 
 <%= render 'tabs' %>
 
-<h1>Results</h1>
+<h3>Results</h3>
 <% if @teams.any? %>
-  <table>
-    <tr>
-      <th >Sr No.</th>
-      <th>Team Name</th>
-      <th>Played</th>
-      <th>Won</th>
-      <th>Lost</th>
-      <th>Tie</th>
-      <th>NR</th>
-      <th>Points</th>
-      <th>NRR</th>
-    </tr>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th >Sr No.</th>
+        <th>Team Name</th>
+        <th>Played</th>
+        <th>Won</th>
+        <th>Lost</th>
+        <th>Tie</th>
+        <th>NR</th>
+        <th>Points</th>
+        <th>NRR</th>
+      </tr>
+    </thead>
     <% @teams.each_with_index do |team,index| %>
       <% unless team.result.nil? %>
-        <tr>
-          <td><%= index +1 %></td>
-          <td style="text-align: left;"><%= team.title %><%= team.description %></td>
-          <td><%= team.result.played %></td>
-          <td><%= team.result.won %></td>
-          <td><%= team.result.lost %></td>
-          <td><%= team.result.tie %></td>
-          <td><%= team.result.nr %></td>
-          <td><%= team.result.points %></td>
-          <td><%= team.result.nrr %></td>
-        </tr>
+        <tbody>
+          <tr>
+            <td><%= index +1 %></td>
+            <td style="text-align: left;"><%= team.title %><%= team.description %></td>
+            <td><%= team.result.played %></td>
+            <td><%= team.result.won %></td>
+            <td><%= team.result.lost %></td>
+            <td><%= team.result.tie %></td>
+            <td><%= team.result.nr %></td>
+            <td><%= team.result.points %></td>
+            <td><%= team.result.nrr %></td>
+          </tr>
+        </tbody>
       <% end %>
     <% end %>
   </table>

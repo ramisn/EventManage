@@ -8,14 +8,21 @@
 </head>
 <body class="admin-panel">
   <%= render 'admin/shared/header' %>
-  <%= render 'admin/shared/path' %>
 
   <div id="container">
-    <% flash.each do |name,msg| %>
-      <%= content_tag(:div, msg, :id => "flash_#{name}")%>
-    <% end %>
-
-    <%= yield %>
+    <div class="shell">
+      <div class="small-nav">
+        <%= render 'admin/shared/path' %>
+      </div>
+      <div class="msg">
+        <% flash.each do |name,msg| %>
+          <%= content_tag(:div, msg, :id => "flash_#{name}")%>
+        <% end %>
+      </div>
+      <div id="main">
+        <%= yield %>
+      </div>
+    </div>
   </div>
 </body>
 </html>

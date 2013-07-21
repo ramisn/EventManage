@@ -1,45 +1,32 @@
-<style type="text/css">
-table {
-  border:1px solid;
-  border-collapse:collapse;
-}
-th {
-  border:1px solid;
-  padding: 5px;
-  border-color: #000080;
-}
-td {
-  border:1px solid;
-  border-color: #000080;
-  width: 136px;
-}
-</style>
-
 <%= render 'tabs' %>
 
-<h1>Teams</h1>
+<h3>Teams</h3>
 <% if @teams.any? %>
-  <table>
-    <tr>
-      <% @teams.each_with_index do |team,index| %>
-        <th><%= team.title %><%= team.description %></th>
-      <% end %>
-    </tr>
-    <tr>
-      <% @teams.each_with_index do |team,index| %>
-        <td>
-          <ul>
-            <% if team.players.any? %>
-              <% team.players.each do |player| %>
-                <li><%= player.name %></li>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <% @teams.each_with_index do |team,index| %>
+          <th><%= team.title %><%= team.description %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @teams.each_with_index do |team,index| %>
+          <td>
+            <ul>
+              <% if team.players.any? %>
+                <% team.players.each do |player| %>
+                  <li><%= player.name %></li>
+                <% end %>
+              <% else %>
+                No players selected!
               <% end %>
-            <% else %>
-              No players selected!
-            <% end %>
-          </ul>
-        </td>
-      <% end %>
-    </tr>
+            </ul>
+          </td>
+        <% end %>
+      </tr>
+    </tbody>
   </table>
 <% else %>
   No Teams selected!

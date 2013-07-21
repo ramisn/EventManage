@@ -1,38 +1,58 @@
-<style type="text/css">
-table {
-  text-align: center;
-}
-td,th {
-  padding-left: 8px;
-}
-</style>
+<div class="shell"><%= render 'admin/shared/tabs' %></div>
 
-<%= render 'admin/shared/tabs' %>
-<h1>Matches </h1>
-<% if @matches.any? %>
-  <table>
-    <tr>
-      <th>Sr No.</th>
-      <th>Match</th>
-      <th></th>
-      <th></th>
-      <th>Teams</th>
-    </tr>
-    <% @matches.each_with_index do |match, index| %>
-      <tr>
-        <td><%= index + 1 %></td>
-        <td><%= link_to "#{match.title}", admin_event_match_path(params[:event_id],match.id) %></td>
-        <td><%= link_to 'edit', edit_admin_event_match_path(params[:event_id],match.id)%></td>
-        <td><%= link_to 'destroy', admin_event_match_path(params[:event_id],match.id), :method => :delete, :confirm => "Are you sure?" %></td>
-        <td><%= @team_1[index].title %> <b>v/s</b> <%= @team_2[index].title %></td>
-      </tr>
+<div id="content">
+  <!-- Box -->
+  <div class="box">
+    <!-- Box Head -->
+    <div class="box-head">
+      <h2 class="left">Matches</h2>
+    </div>
+    <!-- End Box Head --> 
+    <% if @matches.any? %>
+      <!-- Table -->
+      <div class="table">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th>Sr No</th>
+            <th>Match</th>
+            <th>Teams</th>
+            <th width="110" class="ac">Content Control</th>
+          </tr>
+          <% @matches.each_with_index do |match, index| %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= link_to "#{match.title}", admin_event_match_path(params[:event_id],match.id) %></td>
+              <td><%= @team_1[index].title %> <b>v/s</b> <%= @team_2[index].title %></td>
+              <td><%= link_to 'edit', edit_admin_event_match_path(params[:event_id],match.id), :class => "ico edit" %>
+                  <%= link_to 'destroy', admin_event_match_path(params[:event_id],match.id), :class => "ico del", :method => :delete, :confirm => "Are you sure?" %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <!-- Table -->
+    <% else %>
+     <p>Sorry! There is no Matches.</p>
     <% end %>
-  </table>
-  <h4><%= link_to 'Reset Matches' , reset_matches_path(@event.id), :confirm => "Are you sure?"%></h4>
-<% else %>
-  <p>Sorry! There is no Matches.</p>
-<% end %>
+  </div>
+  <!-- End Box -->
+   <p><%= link_to 'back',admin_events_path %></p>
+</div>
 
-<p><%= button_to "Create a Match", new_admin_event_match_path(params[:event_id]), :method => "get" %></p>
-
-<%= link_to 'back', admin_events_path %>
+<!-- Sidebar -->
+  <div id="sidebar">
+    <!-- Box -->
+    <div class="box">
+      <div class="box-head">
+        <h2>Management</h2>
+      </div>
+      <div class="box-content">
+        <%= link_to content_tag(:span, "Create a Match"),new_admin_event_match_path(params[:event_id]), :class => "add-button", :method => "get" %>
+        <div class="cl">&nbsp;</div>
+        <p><%= link_to 'Reset Matches' , reset_matches_path(@event.id), :confirm => "Are you sure?"%></p>
+      </div>
+      
+    </div>
+    <!-- End Box -->
+  </div>
+<!-- End Sidebar -->

@@ -35,7 +35,7 @@ $(function() {
 
   $( "#dialog-form" ).dialog({
     autoOpen: false,
-    height: 340,
+    height: 400,
     width: 550,
     position: [350,100],
     resizable: false,

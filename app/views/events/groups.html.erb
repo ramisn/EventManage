@@ -1,45 +1,32 @@
-<style type="text/css">
-table {
-  border:1px solid;
-  border-collapse:collapse;
-}
-th {
-  border:1px solid;
-  padding: 5px;
-  border-color: #000080;
-}
-td {
-  border:1px solid;
-  border-color: #000080;
-  width: 136px;
-}
-</style>
-
 <%= render 'tabs' %>
 
-<h1>Groups</h1>
+<h3>Groups</h3>
 <% if @groups.any? %>
-  <table>
-    <tr>
-      <% @groups.each_with_index do |group,index| %>
-        <th><%= group.title %></th>
-      <% end %>
-    </tr>
-    <tr>
-      <% @groups.each_with_index do |group,index| %>
-        <td>
-          <ul>
-            <% if group.teams.any? %>
-              <% group.teams.each do |team| %>
-                <li><%= team.title %></li>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <% @groups.each_with_index do |group,index| %>
+          <th><%= group.title %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @groups.each_with_index do |group,index| %>
+          <td>
+            <ul>
+              <% if group.teams.any? %>
+                <% group.teams.each do |team| %>
+                  <li><%= team.title %></li>
+                <% end %>
+              <% else %>
+                No Teams selected!
               <% end %>
-            <% else %>
-              No Teams selected!
-            <% end %>
-          </ul>
-        </td>
-      <% end %>
-    </tr>
+            </ul>
+          </td>
+        <% end %>
+      </tr>
+    </tbody>
   </table>
 <% else %>
   No Group selected!

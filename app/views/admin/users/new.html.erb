@@ -1,18 +1,20 @@
-<h1>Sign Up</h1>
-
-<%= form_for [:admin, @user] do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+<div class="msg msg-error">
+  <% @user.errors.full_messages.each do |error| %>
+    <p><strong><%= error %></strong></p>
   <% end %>
-  <%= render 'fields', f: f %>
-  <div class="actions"><%= f.submit %></div>
-<% end %>
-
+</div>
+<div class="content">
+<!-- Box -->
+  <div class="box">
+    <div class="box-head">
+      <h2>Sign Up</h2>
+    </div>
+    <%= form_for [:admin, @user] do |f| %>
+      <%= render 'fields', f: f %>
+      <%= f.submit  :class => "add-button" %>
+      <div class="cl">&nbsp;</div>
+    <% end %>
+  </div>
+<!-- End Box -->
+</div>
 <p><%= link_to 'back',admin_users_path %></p>

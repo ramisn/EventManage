@@ -11,6 +11,8 @@ gem 'thin'  #For faster application server
 gem "ckeditor"  #For great WYSIWYG editor for form_for/form_tag etc.
 gem "paperclip", "~> 3.0" #For uploading files
 
+gem 'execjs'
+gem 'therubyracer'  #Needed to solve javascript error
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

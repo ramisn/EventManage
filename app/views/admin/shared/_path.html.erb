@@ -1,13 +1,5 @@
-<style type="text/css">
-.path-bar {
-  margin: 38px 0 -13px 2%;
-  width: 96%;
-}
-</style>
-<div class="path-bar">
-  <% if params[:controller] == "admin/dashboard" || params[:controller] == "admin/events" || params[:controller] == "admin/users" %>
-    <%= "Here you are : Admin > " + params[:controller].split('/').last.titleize %>
-  <% else %>
-    <%= "Here you are : Admin > " + @event.title.titleize + " > " + params[:controller].split('/').last.titleize unless @event.nil? %>
-  <% end %>
-</div>
+<% if params[:controller] == "admin/dashboard" || params[:controller] == "admin/events" || params[:controller] == "admin/users" %>
+  <%= "Here you are : Admin > " + params[:controller].split('/').last.titleize %>
+<% else %>
+  <%= "Here you are : Admin > " + @event.title.titleize + " > " + params[:controller].split('/').last.titleize unless @event.nil? %>
+<% end %>

@@ -5,72 +5,68 @@
 .fixtures {
   display: none;
 }
-.fixtures-results-subtabs {
-  float: right;
-  background: #E8E7E6;
-}
+
 .results, .fixtures {
   font-size: 12px;
   padding: 0 15px 0 33px;
 }
 
 </style>
-<h1>Welcome to Home</h1>
+<div class="row">
+  <div class="photos span9" style="display: block;">
+    <div class="photo-carousel-cointainer" style="">
+      <ul id="photo-listing-cointainer">
+        <%= render(:partial => 'photo', :collection => @photos) %>
+      </ul>
+    </div>
 
-<div class="photos" style="display: block;">
-  <div class="photo-carousel-cointainer" style="">
-    <ul id="photo-listing-cointainer">
-      <%= render(:partial => 'photo', :collection => @photos) %>
-    </ul>
+    <div class="scroll-left" style="display: block;">&nbsp;</div>
+    <div class="scroll-right" style="display: none;">&nbsp;</div>
   </div>
 
-  <div class="scroll-left" style="display: block;">&nbsp;</div>
-  <div class="scroll-right" style="display: none;">&nbsp;</div>
-</div>
+  <div class="span3">
+    <%= link_to "Fixtures", "#" , :id => "fixtures" %> |
+    <%= link_to "Results", "#" , :id => "results" %>
+    <% events = @events.collect(&:title) %>
+    <% if @match_results.any? %>
+     <ul class="results">
+      <% @match_results.each_with_index do |match_result,index| %>
+          <% unless match_result.empty? %>
+            <h4><%= events[index] %> | Results</h4>
+            <% match_result.each_with_index do |match,index| %>
+              <li><%= match.title unless match.nil? %> <br>
+                  <%= @team_1[index].title unless @team_1[index].nil? %> v/s <%= @team_2[index].title unless @team_2[index].nil? %> </br>
+                  <%= match.result unless match.nil? %> </br>
+                  <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
+              </li>
+            <% end %>
+          <% end %>
+      <% end %>
+     </ul>
+    <% else %>
+      No matches!
+    <% end %>
 
-<aside class="fixtures-results-subtabs">
-  <%= link_to "Fixtures", "#" , :id => "fixtures" %> |
-  <%= link_to "Results", "#" , :id => "results" %>
-  <% events = @events.collect(&:title) %>
-  <% if @match_results.any? %>
-   <ul class="results">
-    <% @match_results.each_with_index do |match_result,index| %>
-        <% unless match_result.empty? %>
-          <h4><%= events[index] %> | Results</h4>
-          <% match_result.each_with_index do |match,index| %>
-            <li><%= match.title unless match.nil? %> <br>
-                <%= @team_1[index].title unless @team_1[index].nil? %> v/s <%= @team_2[index].title unless @team_2[index].nil? %> </br>
-                <%= match.result unless match.nil? %> </br>
+
+    <% if @match_fixtures.any? %>
+     <ul class="fixtures">
+      <% @match_fixtures.each_with_index do |match_fixture,index| %>
+        <% unless match_fixture.empty? %>
+          <h4><%= events[index] %> | Fixtures</h4>
+          <% match_fixture.each_with_index do |match,index| %>
+            <li><%= match.title unless match.nil? %> </br>
+                <%= @team_one[index].title unless @team_one[index].nil? %> v/s <%= @team_two[index].title unless @team_two[index].nil? %> </br>
                 <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
             </li>
           <% end %>
         <% end %>
-    <% end %>
-   </ul>
-  <% else %>
-    No matches!
-  <% end %>
-
-
-  <% if @match_fixtures.any? %>
-   <ul class="fixtures">
-    <% @match_fixtures.each_with_index do |match_fixture,index| %>
-      <% unless match_fixture.empty? %>
-        <h4><%= events[index] %> | Fixtures</h4>
-        <% match_fixture.each_with_index do |match,index| %>
-          <li><%= match.title unless match.nil? %> </br>
-              <%= @team_one[index].title unless @team_one[index].nil? %> v/s <%= @team_two[index].title unless @team_two[index].nil? %> </br>
-              <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
-          </li>
-        <% end %>
       <% end %>
+     </ul>
+    <% else %>
+      No matches Fixtures!
     <% end %>
-   </ul>
-  <% else %>
-    No matches Fixtures!
-  <% end %>
-</aside>
-
+  </div>
+</div>
 <%= javascript_include_tag "photo_scroll" %>
 
 <script type="text/javascript">

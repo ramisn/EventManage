@@ -9,9 +9,9 @@
   <body class="<%= "with-login" if logged_in? %>" >
     <%= render 'shared/admin_login' %>
     <%= render 'shared/header' %>
-    <%= render 'shared/path' %>
 
-    <div id="container">
+    <div class="container">
+      <%= render 'shared/path' %>
       <% flash.each do |name,msg| %>
         <%= content_tag(:div, msg, :id => "flash_#{name}")%>
       <% end %>

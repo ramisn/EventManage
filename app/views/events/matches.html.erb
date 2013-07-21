@@ -1,46 +1,32 @@
-<style type="text/css">
-table {
-  border:1px solid;
-  border-collapse:collapse;
-  width: 100%;
-}
-th {
-  border:1px solid;
-  padding: 5px;
-  border-color: #000080;
-}
-td {
-  border:1px solid;
-  border-color: #000080;
-  text-align: center;
-  padding: 5px;
-}
-</style>
 <%= render 'tabs' %>
 
-<h1>Matches</h1>
+<h3>Matches</h3>
 <% if @matches.any? %>
-  <table>
-    <tr>
-      <th >Sr No.</th>
-      <th>Match</th>
-      <th>Teams</th>
-      <th>Details</th>
-      <th>Result &nbsp;<%= link_to 'Point Table', results_event_path(@event.id) %></th>
-    </tr>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th >Sr No.</th>
+        <th>Match</th>
+        <th>Teams</th>
+        <th>Details</th>
+        <th>Result &nbsp;<%= link_to 'Point Table', results_event_path(@event.id) %></th>
+      </tr>
+    </thead>
     <% @matches.each_with_index do |match,index| %>
       <% unless match.nil? %>
-        <tr>
-          <td><%= index +1 %></td>
-          <td style="text-align: left;"><%= match.title %></td>
-          <td><%= @team_1[index].title %> v/s <%= @team_2[index].title %></td>
-          <td style="text-align: left;"><%= raw match.description %></td>
-          <% unless match.result.nil? || match.result == 'nil' %>
-            <td><%= match.result %></td>
-          <% else %>
-            <td></td>
-          <% end %>
-        </tr>
+        <tbody>
+          <tr>
+            <td><%= index +1 %></td>
+            <td style="text-align: left;"><%= match.title %></td>
+            <td><%= @team_1[index].title %> v/s <%= @team_2[index].title %></td>
+            <td style="text-align: left;"><%= raw match.description %></td>
+            <% unless match.result.nil? || match.result == 'nil' %>
+              <td><%= match.result %></td>
+            <% else %>
+              <td></td>
+            <% end %>
+          </tr>
+        </tbody>
       <% end %>
     <% end %>
   </table>
