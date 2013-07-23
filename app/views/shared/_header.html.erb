@@ -1,56 +1,28 @@
-<style type="text/css">
-#dialog-form {
-  font-size: 62.5%;
-  display: none;
-}
-.required:after {
-  content:"*";
-  color: red;
-}
-.validateTips {
-  color: red;
-}
-#new_feedback table {
-  border: none !important;
-}
-#new_feedback td {
-  border: none !important;
-  padding: 2px;
-  text-align: left;
-}
-#feedback_feedback {
-  max-width: 430px;
-  max-height: 117px;
-  min-height: 76px;
-  min-width: 190px;
-}
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-</style>
-<div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container-fluid">
-      <%= link_to "Event Management", root_path , :class => "brand" %>
-      <div class="nav-collapse collapse">
-        <ul class="nav">
-          <li><%= link_to 'Home', root_path %></li>
-          <li class=" dropdown"><%= link_to 'Events', events_path, :class => "dropdown-toggle" %>
-            <ul class="dropdown-menu">
-              <% @events.each do |event| %>
-                <li><%= link_to "#{event.title.titleize}", event_path(event.id) %></li>
-              <% end %>
-            </ul>
-          </li>
-          <li><%= link_to 'Photos', photos_path %></li>
-          <li><%= link_to 'Contact us', "#" %></li>
-          <li><%= link_to 'About us', "#" %></li>
-          <li><%= link_to 'Feedback', "#", :id => "create-feedback" %></li>
-        </ul>
-      </div><!--/.nav-collapse -->
+<header>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <%= link_to "Event Management", root_path , :class => "brand" %>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li><%= link_to 'Home', root_path %></li>
+            <li class=" dropdown"><%= link_to 'Events', events_path, :class => "dropdown-toggle" %>
+              <ul class="dropdown-menu">
+                <% @events.each do |event| %>
+                  <li><%= link_to "#{event.title.titleize}", event_path(event.id) %></li>
+                <% end %>
+              </ul>
+            </li>
+            <li><%= link_to 'Photos', photos_path %></li>
+            <li><%= link_to 'Contact us', "#" %></li>
+            <li><%= link_to 'About us', "#" %></li>
+            <li><%= link_to 'Feedback', "#", :id => "create-feedback" %></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</header>
 <p id="alert_success" class="alert_success">Thank you for your valuable Feedback!</p>
 
 <div id="dialog-form" title="Feedback Form">

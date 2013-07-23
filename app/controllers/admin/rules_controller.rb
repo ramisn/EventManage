@@ -5,28 +5,33 @@ class Admin::RulesController < AdminController
   end
 
   def new
-    @rule = Rule.new
+    @event = Event.find(params[:event_id])
+    @rule = @event.rules.new
   end
 
   def create
-    @rule = Rule.new(params[:rule])
-    @rule.event_id = params[:event_id]
+    @event = Event.find(params[:event_id])
+    @rule = @event.rules.new(params[:rule])
 
     if @rule.save
-      redirect_to admin_event_rules_path, :notice => "Rule created!"
+      flash[:success] = "Rule created!"
+      redirect_to admin_event_rules_path
     else
       render :new
     end
   end
 
   def edit
+    @event = Event.find(params[:event_id])
     @rule = Rule.find(params[:id])
   end
 
   def update
+    @event = Event.find(params[:event_id])
     @rule = Rule.find(params[:id])
     if @rule.update_attributes(params[:rule])
-     redirect_to admin_event_rules_path, :notice => "Rule updated!"
+      flash[:success] = "Rule updated!"
+     redirect_to admin_event_rules_path
     else
       render 'edit'
     end
@@ -35,7 +40,7 @@ class Admin::RulesController < AdminController
   def destroy
     @rule = Rule.find(params[:id])
     @rule.destroy
-    redirect_to admin_event_rules_path, :notice => "Rule Deleted"
+    flash[:success] = "Rule Deleted"
+    redirect_to admin_event_rules_path
   end
-
 end

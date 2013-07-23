@@ -14,11 +14,11 @@
       <div class="small-nav">
         <%= render 'admin/shared/path' %>
       </div>
-      <div class="msg">
         <% flash.each do |name,msg| %>
-          <%= content_tag(:div, msg, :id => "flash_#{name}")%>
+          <div class="msg <%= "msg-ok" if name == :success %> <%= "msg-error" if name == :error %>" >
+            <p><strong><%= msg %></strong></p>
+          </div>
         <% end %>
-      </div>
       <div id="main">
         <%= yield %>
       </div>

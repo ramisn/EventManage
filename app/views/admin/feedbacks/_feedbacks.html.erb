@@ -1,38 +1,21 @@
-<table>
-  <tr> 
-    <td>
-      Sr No.
-    </td>
-    <td >
-      Feedback
-    </td>
-    <td>
-      <%= sortable 'name' %>
-    </td>
-    <td>
-      <%= sortable 'email' %>
-    </td>
-    <td>
-      <%= sortable 'created_at', "Created at" %>
-    </td>
-  </tr>
-  <% @feedbacks.each_with_index do |feedback, index| %>
-    <tr>
-      <td>
-        <%= index +1 %>
-      </td>
-      <td>
-        <%= feedback.feedback %>
-      </td>
-      <td>
-        <%= feedback.name %>
-      </td>
-      <td>
-        <%= mail_to "#{feedback.email}" %>
-      </td>
-      <td>
-        <%= feedback.created_at.strftime("%d-%b-%Y %I:%M %p") %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<!-- Table -->
+  <div class="table">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th>Sr No</th>
+        <th>Feedback</th>
+        <th><%= sortable 'name' %></th>
+        <th><%= sortable 'email' %></th>
+        <th><%= sortable 'created_at', "Created at" %></th>
+      </tr>
+      <% @feedbacks.each_with_index do |feedback, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= feedback.feedback %></td>
+        <td><%= feedback.name %></td>
+        <td><%= mail_to "#{feedback.email}" %></td>
+        <td><%= feedback.created_at.strftime("%d-%b-%Y %I:%M %p") %></td>
+      <% end %>
+    </table>
+  </div>
+<!-- Table -->

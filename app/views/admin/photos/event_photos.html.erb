@@ -1,33 +1,32 @@
-<style type="text/css">
-table {
-  font-size: 9px;
-  color: #4C4C4C;
-}
-td {
-  padding: 4px;
-}
-</style>
-<table>
-  <tr>
-    <% @photos.each do |photo| %>
-    <td>
-      <%= image_tag photo.image.url(:thumb), :title => photo.title %>
-    </td>
-    <% end %>
-  </tr>
-  <tr>
-    <% @photos.each do |photo| %>
-    <td>
-      <%= photo.image_updated_at.strftime("%d-%b-%Y, %I:%M %p") %>
-    </td>
-    <% end %>
-  </tr>
-  <tr>
-    <% @photos.each do |photo| %>
-    <td>
-      <%= link_to image_tag("edit.png", :border => 0), edit_admin_photo_path(photo), :title => "edit" %>
-      <%= link_to image_tag("remove.gif", :border => 0), admin_photo_path(photo), :method => :delete, :confirm => "Are you sure?", :title => "remove" %>
-    </td>
-    <% end %>
-  </tr>
-</table>
+<div id="content">
+  <!-- Box -->
+  <div class="box">
+    <!-- Box Head -->
+    <div class="box-head">
+      <h2 class="left">Photos Gallery</h2>
+    </div>
+    <!-- End Box Head --> 
+      <!-- Table -->
+      <div class="table photos">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>
+              <% @photos.each do |photo| %>
+              <li>
+                <%= image_tag photo.image.url(:thumb), :title => photo.title %>
+                <p><%= photo.image_updated_at.strftime("%d-%b-%Y") %></p>
+                <p><%= photo.image_updated_at.strftime("%I:%M %p") %></p>
+                <p>
+                  <%= link_to image_tag("admin/edit.gif", :border => 0), edit_admin_photo_path(photo), :title => "edit" %>
+                  <%= link_to image_tag("remove.gif", :border => 0), admin_photo_path(photo), :method => :delete, :confirm => "Are you sure?", :title => "remove" %>
+                </p>
+              </li>
+              <% end %>
+            </td>
+        </table>
+      </div>
+      <!-- Table -->
+  </div>
+  <!-- End Box -->
+   <p><%= link_to 'back',admin_photos_path %></p>
+</div>

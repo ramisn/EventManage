@@ -1,5 +1,5 @@
 <% if @feedbacks.any? %>
-  $("#feedbacks").html('<%= escape_javascript(render("feedbacks")) %>').addClass("feedback-table");
+  $("#feedbacks").html('<%= escape_javascript(render("feedbacks")) %>')
 <% else %>
-  $("#feedbacks").html('<%= escape_javascript(render :text => "No results found for you search. Try again" ) %>').removeClass("feedback-table");
+  $("#feedbacks").html('<%= escape_javascript(render("no_result")) %>')
 <% end %>

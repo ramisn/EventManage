@@ -16,7 +16,8 @@ class Admin::MatchesController < AdminController
     if( @teams.size >= 2 )
       @match = @event.matches.new
     else
-      redirect_to new_admin_event_team_path(params[:event_id]), :notice => "Create atlest Two Teams First to set Match"
+      flash[:error] = "Create atlest Two Teams First to set Match"
+      redirect_to new_admin_event_team_path(params[:event_id])
     end
   end
 
@@ -26,7 +27,8 @@ class Admin::MatchesController < AdminController
     @match = @event.matches.new(params[:match])
 
     if @match.save
-      redirect_to admin_event_matches_path, :notice => "Match created!"
+      flash[:success] = "Match created!"
+      redirect_to admin_event_matches_path
     else
       render :new
     end
@@ -43,7 +45,8 @@ class Admin::MatchesController < AdminController
     @teams = @event.teams
     @match = Match.find(params[:id])
     if @match.update_attributes(params[:match])
-     redirect_to admin_event_matches_path(params[:event_id]), :notice => "Match updated!"
+      flash[:success] = "Match updated!"
+      redirect_to admin_event_matches_path(params[:event_id])
     else
       render 'edit'
     end
@@ -52,7 +55,8 @@ class Admin::MatchesController < AdminController
   def destroy
     @match = Match.find(params[:id])
     @match.destroy
-    redirect_to admin_event_matches_path, :notice => "Match Deleted"
+    flash[:success] = "Match Deleted"
+    redirect_to admin_event_matches_path
   end
 
   def show
@@ -67,7 +71,8 @@ class Admin::MatchesController < AdminController
         @team_two_result = @team_two.result
         @team_result_holder["#{match.id}"] = [@team_one_result,@team_two_result]
       else
-        redirect_to admin_event_matches_path, :notice => "No result found! It may happen that one of the Team doesn't exist. Please Remove that match and create again"
+        flash[:error] = "No result found! It may happen that one of the Team doesn't exist. Please Remove that match and create again"
+        redirect_to admin_event_matches_path
       end
     end
     @match = @matches.find(params[:id])
@@ -81,9 +86,11 @@ class Admin::MatchesController < AdminController
     @event = Event.find(params[:event_id])
     begin
       @event.matches.clear
-      redirect_to admin_event_matches_path, :notice => "Matches Reset!"
+      flash[:success] = "Matches Reset!"
+      redirect_to admin_event_matches_path
     rescue
-      redirect_to admin_event_matches_path, :notice => "Matches reset failed!"
+      flash[:error] = "Matches reset failed!"
+      redirect_to admin_event_matches_path
     end
   end
 
@@ -95,7 +102,8 @@ class Admin::MatchesController < AdminController
         @result.save
         redirect_to admin_event_match_path(params[:event_id],params[:match_id])
       else
-        redirect_to admin_event_match_path(params[:event_id],params[:match_id]), :notice => "Sorry! Wrong Entry!"
+        flash[:error] = "Sorry! Wrong Entry!"
+        redirect_to admin_event_match_path(params[:event_id],params[:match_id])
       end
     elsif params[:result_action] == "won"
       if @result.played > @result.won + @result.lost + @result.tie + @result.nr
@@ -104,7 +112,8 @@ class Admin::MatchesController < AdminController
         @result.save
         redirect_to admin_event_match_path(params[:event_id],params[:match_id])
       else
-        redirect_to admin_event_match_path(params[:event_id],params[:match_id]), :notice => "Sorry! Wrong Entry!"
+        flash[:error] = "Sorry! Wrong Entry!"
+        redirect_to admin_event_match_path(params[:event_id],params[:match_id])
       end
     elsif params[:result_action] == "lost"
       if @result.played > @result.won + @result.lost + @result.tie + @result.nr
@@ -112,7 +121,8 @@ class Admin::MatchesController < AdminController
         @result.save
         redirect_to admin_event_match_path(params[:event_id],params[:match_id])
       else
-        redirect_to admin_event_match_path(params[:event_id],params[:match_id]), :notice => "Sorry! Wrong Entry!"
+        flash[:error] = "Sorry! Wrong Entry!"
+        redirect_to admin_event_match_path(params[:event_id],params[:match_id])
       end
     elsif params[:result_action] == "tie"
       if @result.played > @result.won + @result.lost + @result.tie + @result.nr
@@ -120,7 +130,8 @@ class Admin::MatchesController < AdminController
         @result.save
         redirect_to admin_event_match_path(params[:event_id],params[:match_id])
       else
-        redirect_to admin_event_match_path(params[:event_id],params[:match_id]), :notice => "Sorry! Wrong Entry!"
+        flash[:error] = "Sorry! Wrong Entry!"
+        redirect_to admin_event_match_path(params[:event_id],params[:match_id])
       end
     elsif params[:result_action] == "nr"
       if @result.played > @result.won + @result.lost + @result.tie + @result.nr
@@ -128,10 +139,12 @@ class Admin::MatchesController < AdminController
         @result.save
         redirect_to admin_event_match_path(params[:event_id],params[:match_id])
       else
-        redirect_to admin_event_match_path(params[:event_id],params[:match_id]), :notice => "Sorry! Wrong Entry!"
+        flash[:error] = "Sorry! Wrong Entry!"
+        redirect_to admin_event_match_path(params[:event_id],params[:match_id])
       end
     else
-      redirect_to admin_event_match_path(params[:event_id],params[:match_id]), :notice => 'sorry!'
+      flash[:error] = "Sorry! access denied"
+      redirect_to admin_event_match_path(params[:event_id],params[:match_id])
     end
   end
 
@@ -139,9 +152,11 @@ class Admin::MatchesController < AdminController
     @team = Team.find(params[:team_id])
     begin
       @team.result.update_attributes(:played=>0,:won=>0,:lost=>0,:tie=>0,:nr=>0,:points=>0)
-      redirect_to admin_event_match_path(params[:event_id],params[:match_id]), :notice => "Result Reset!"
+      flash[:success] = "Result Reset!"
+      redirect_to admin_event_match_path(params[:event_id],params[:match_id])
     rescue
-      redirect_to admin_event_match_path(params[:event_id],params[:match_id]), :notice => "Result reset failed!"
+      flash[:error] = "Result reset failed!"
+      redirect_to admin_event_match_path(params[:event_id],params[:match_id])
     end
   end
 end

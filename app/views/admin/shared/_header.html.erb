@@ -5,9 +5,9 @@
     <div id="top">
       <h1><%= link_to "Admin Panel", admin_path %></h1>
       <div id="top-navigation">
-        Welcome <a href="#"><strong>Administrator</strong></a>
+        Welcome <strong><%= current_user.name %></strong>
         <span>|</span>
-        <a href="#">Profile Settings</a>
+        <%= link_to 'Profile Settings', edit_admin_user_path(current_user) %>
         <span>|</span>
         <%= link_to 'Logout', logout_path %>
       </div>
@@ -17,7 +17,7 @@
     <!-- Main Nav -->
     <div id="navigation">
       <ul>
-          <li><%= link_to content_tag(:span, 'Dashboard'), admin_path, :class => "active" %></li>
+          <li><%= link_to content_tag(:span, 'Dashboard'), admin_path %></li>
           <li><%= link_to content_tag(:span, 'Events') , admin_events_path %></li>
           <li><%= link_to content_tag(:span, 'Users'), admin_users_path %></li>
           <li><%= link_to content_tag(:span, 'Photos'), admin_photos_path %></li>

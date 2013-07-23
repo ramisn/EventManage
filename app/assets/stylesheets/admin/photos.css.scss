@@ -1,3 +1,13 @@
 // Place all the styles related to the admin::photos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.photos {
+  li {
+    display: inline;
+    float: left;
+    padding: 15px;
+    p {
+      margin: 0;
+    }
+  }
+}

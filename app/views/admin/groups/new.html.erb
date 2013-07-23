@@ -1,14 +1,23 @@
-<%= render 'admin/shared/tabs' %>
-<h1>Create a Group</h1>
-</br>
+<div class="shell"><%= render 'admin/shared/tabs' %></div>
 
-<% @group.errors.full_messages.each do |error| %>
-  <li><%= error %><li>
-<% end %>
+<div class="msg msg-error">
+  <% @group.errors.full_messages.each do |error| %>
+    <p><strong><%= error %></strong></p>
+  <% end %>
+</div>
+<div class="content">
+<!-- Box -->
+  <div class="box">
+    <div class="box-head">
+      <h2>Create a Group</h2>
+    </div>
+    <%= form_for [:admin,:event, @group] do |f| %>
+      <%= render 'fields', f: f %>
+      <%= f.submit  :class => "add-button" %>
+      <div class="cl">&nbsp;</div>
+    <% end %>
+  </div>
+<!-- End Box -->
+</div>
 
-<%= form_for [:admin,:event, @group] do |f| %>
-  <%= render 'fields', f: f %>
-  <%= f.submit %>
-<% end %>
-
-<%= link_to 'back',admin_event_groups_path %>
+<p><%= link_to 'back',admin_event_groups_path %></p>

@@ -1,16 +1,27 @@
-<%= form_tag admin_feedbacks_path, :method => 'get', :remote => true, :id => "feedback-form" do %>
-  <%= hidden_field_tag :direction, params[:direction] %>
-  <%= hidden_field_tag :sort, params[:sort] %>
-  <p>
-    <%= text_field_tag :search, params[:search], :placeholder => "search by name/email" %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
-
-<% if @feedbacks.any? %>
-  <div class="feedback-table" id="feedbacks">
-    <%= render 'feedbacks' %>
+<div class="feedbacks">
+  <!-- Box -->
+  <div class="box">
+    <!-- Box Head -->
+    <div class="box-head">
+      <h2 class="left">Feedbacks</h2>
+      <div class="right">
+        <%= form_tag admin_feedbacks_path, :method => 'get', :remote => true, :id => "feedback-form" do %>
+          <%= hidden_field_tag :direction, params[:direction] %>
+          <%= hidden_field_tag :sort, params[:sort] %>
+          <%= text_field_tag :search, params[:search], :placeholder => "search by name/email" %>
+          <%= image_submit_tag("admin/icon_search.png", :name=> nil) %>
+        <% end %>
+      </div>
+    </div>
+    <!-- End Box Head --> 
+    <% if @feedbacks.any? %>
+      <div id="feedbacks">
+        <%= render 'feedbacks' %>
+      </div>
+    <% else %>
+    <p>No feedbacks yet!</p>
+    <% end %>
   </div>
-<% else %>
-  <p>No results found for you search. Try again</p>
-<% end %>
+  <!-- End Box -->
+   <p><%= link_to 'back',admin_path %></p>
+</div>

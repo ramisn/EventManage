@@ -11,7 +11,8 @@ class Admin::PhotosController < AdminController
   def create
     @photo = Photo.new(params[:photo])
     if @photo.save
-      redirect_to admin_photos_path, :notice => "Photo added"
+      flash[:success] = "Photo added"
+      redirect_to admin_photos_path
     else
       render :new
     end
@@ -24,7 +25,8 @@ class Admin::PhotosController < AdminController
   def update
     @photo = Photo.find(params[:id])
     if @photo.update_attributes(params[:photo])
-     redirect_to admin_photos_path, :notice => "Photo updated!"
+      flash[:success] = "Photo updated!"
+     redirect_to admin_photos_path
     else
       render 'edit'
     end
@@ -33,9 +35,11 @@ class Admin::PhotosController < AdminController
   def destroy
     @photo = Photo.find(params[:id])
     if @photo.destroy
-      redirect_to admin_photos_path, :notice => "photo was removed"
+      flash[:success] = "photo was removed"
+      redirect_to admin_photos_path
     else
-      redirect_to admin_photos_path, :notice => "failed to remove photo"
+      flash[:error] = "failed to remove photo"
+      redirect_to admin_photos_path
     end
   end
 

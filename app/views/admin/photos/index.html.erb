@@ -1,27 +1,47 @@
-<style type="text/css">
-table {
-  font-size: 12px;
-  color: #4C4C4C;
-}
-td {
-  padding: 7px;
-}
-</style>
-<table>
-  <tr>
-  <% @events.each do |event| %>
-    <td>
-      <%= link_to image_tag("folder_icon.png", :border => 0), admin_event_photos_path(event.title) if event.photos.any? %>
-    </td>
-  <% end %>
-  </tr>
-  <tr>
-  <% @events.each do |event| %>
-    <td>
-      <%= event.title if event.photos.any? %>
-    </td>
-  <% end %>
-  </tr>
-</table>
+<div id="content">
+  <!-- Box -->
+  <div class="box">
+    <!-- Box Head -->
+    <div class="box-head">
+      <h2 class="left">Photos</h2>
+    </div>
+    <!-- End Box Head --> 
+    <% if @events.any? %>
+      <!-- Table -->
+      <div class="table photos">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>
+              <% @events.each do |event| %>
+              <li>
+                <%= link_to image_tag("folder_icon.png", :border => 0), admin_event_photos_path(event.title) if event.photos.any? %>
+                <p><%= event.title if event.photos.any? %></p>
+              </li>
+              <% end %>
+            </td>
+        </table>
+      </div>
+      <!-- Table -->
+    <% else %>
+     <p>Sorry! There is no photos uploaded.</p>
+    <% end %>
+  </div>
+  <!-- End Box -->
+   <p><%= link_to 'back',admin_path %></p>
+</div>
 
-<%= button_to "Upload Photos", new_admin_photo_path, :method => "get" %>
+<!-- Sidebar -->
+  <div id="sidebar">
+    <!-- Box -->
+    <div class="box">
+      <div class="box-head">
+        <h2>Management</h2>
+      </div>
+      <div class="box-content">
+        <%= link_to content_tag(:span, "Upload Photos"), new_admin_photo_path, :class => "add-button", :method => "get" %>
+        <div class="cl">&nbsp;</div>
+      </div>
+    </div>
+    <!-- End Box -->
+  </div>
+<!-- End Sidebar -->

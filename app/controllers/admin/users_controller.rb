@@ -6,7 +6,8 @@ class Admin::UsersController < AdminController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to admin_users_url, :notice => "Signed up!"
+      flash[:success] = "Signed up!"
+      redirect_to admin_users_url
     else
       render :new
     end
@@ -25,7 +26,8 @@ class Admin::UsersController < AdminController
     @user = User.find(params[:id])
 
     if @user.update_attributes(params[:user])
-      redirect_to admin_users_path, :notice => "User Updated!"
+      flash[:success] = "User Updated!"
+      redirect_to admin_users_path
     else
       render 'edit'
     end
@@ -34,6 +36,7 @@ class Admin::UsersController < AdminController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to admin_users_path, :notice => "User Deleted!"
+    flash[:success] = "User Deleted!"
+    redirect_to admin_users_path
   end
 end

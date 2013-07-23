@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
 
     if user
       if user.role == 'admin'
-        redirect_back_or_to admin_url, :notice => "Signed in"
+        flash[:success] = "Signed in"
+        redirect_back_or_to admin_url
       else
         logout
         flash.now.alert = "You are not admin. Sorry!"

@@ -239,6 +239,19 @@ body {
       }
     }
     a.ico! {}
+    /* table sorting purpose */
+    .current {
+      padding-right: 12px;
+      background-repeat: no-repeat;
+      background-position: right center;
+    }
+    .asc {
+      background-image: image-url("upArrow.gif");
+    }
+    .desc {
+      background-image: image-url("downArrow.gif");
+    }
+    /* table sorting purpose */
   }
 
   .box {
@@ -246,6 +259,9 @@ body {
     height: 100%;
     padding: 1px;
     margin-bottom: 20px;
+    p {
+      padding: 11px;
+    }
   }
 
   .box-head {
@@ -319,7 +335,7 @@ body {
     }
     &.edit {
       background-image: image-url("admin/edit.gif");
-      margin-left: 14px;
+      margin: 0;
     }
   }
 
@@ -328,11 +344,12 @@ body {
   }
 
   .box-content {
-    padding: 10px;
+    padding: 10px 0 10px 10px;
   }
 
   .box-content p {
-    padding-top: 10px;
+    padding-top: 6px;
+    margin: 0;
   }
 
   .add-button {
@@ -424,5 +441,23 @@ body {
   .msg p {
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
+  }
+
+  .small-field {
+    margin-left: -13px;
+    height: 11px;
+    width: 200px;
+    select {
+      width: 128px;
+      font-size: 12px;
+      height: 21px;
+      padding: 1px 6px;
+      option {
+        padding-left: 10px;
+      }
+    }
+    input {
+        margin: 0 0 9px 9px;
+      }
   }
 }

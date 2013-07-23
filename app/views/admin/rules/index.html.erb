@@ -1,19 +1,51 @@
-<%= render 'admin/shared/tabs' %>
+<div class="shell"><%= render 'admin/shared/tabs' %></div>
 
-<h1>Rules</h1>
+<div id="content">
+  <!-- Box -->
+  <div class="box">
+    <!-- Box Head -->
+    <div class="box-head">
+      <h2 class="left">Rules</h2>
+    </div>
+    <!-- End Box Head --> 
+    <% if @rules.any? %>
+      <!-- Table -->
+      <div class="table">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <% @rules.each do |rule| %>
+            <tr>
+              <td><%= raw rule.description %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <!-- Table -->
+    <% else %>
+     <p>Sorry! There is no rules selected yet.</p>
+    <% end %>
+  </div>
+  <!-- End Box -->
+   <p><%= link_to 'back', admin_event_path(params[:event_id]) %></p>
+</div>
 
-<% if @rules.any? %>
-  <% @rules.each do |rule| %>
-    <p>
-      <%= raw rule.description %>
-      <%= link_to 'edit', edit_admin_event_rule_path(params[:event_id],rule.id)%>
-      <%= link_to 'destroy', admin_event_rule_path(params[:event_id],rule.id), :method => :delete, :confirm => "Are you sure?" %>
-    </p>
-  <% end %>
-<% else %>
-  <p>Sorry! There is no rules selected yet.</p>
-<% end %>
-
-<p><%= button_to "Create a Rule", new_admin_event_rule_path(@event.id), :method => "get" %></p>
-
-<%= link_to 'back', admin_event_path(params[:event_id]) %>
+<!-- Sidebar -->
+  <div id="sidebar">
+    <!-- Box -->
+    <div class="box">
+      <div class="box-head">
+        <h2>Management</h2>
+      </div>
+      <div class="box-content">
+        <% if @rules.empty? %>
+          <%= link_to content_tag(:span, "Create a Rule"), new_admin_event_rule_path(@event.id), :class => "add-button", :method => "get"  %>
+        <% else %>
+          <% rule = @rules.first %>
+          <%= link_to 'edit', edit_admin_event_rule_path(params[:event_id],rule.id), :class => "ico edit" %>
+          <%= link_to 'destroy', admin_event_rule_path(params[:event_id],rule.id), :class => "ico del", :method => :delete, :confirm => "Are you sure?" %>
+        <% end %>
+        <div class="cl">&nbsp;</div>
+      </div>
+    </div>
+    <!-- End Box -->
+  </div>
+<!-- End Sidebar -->

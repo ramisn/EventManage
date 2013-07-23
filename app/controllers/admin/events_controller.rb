@@ -6,7 +6,8 @@ class Admin::EventsController < AdminController
   def create
     @event = Event.new(params[:event])
     if @event.save
-      redirect_to admin_events_url, :notice => "Event created!"
+      flash[:success] = "Event created!"
+      redirect_to admin_events_url
     else
       render :new
     end
@@ -28,7 +29,8 @@ class Admin::EventsController < AdminController
     @event = Event.find(params[:id])
 
     if @event.update_attributes(params[:event])
-      redirect_to admin_events_path(params[:event_id]), :notice => "Event Updated"
+      flash[:success] = "Event Updated"
+      redirect_to admin_events_path(params[:event_id])
     else
       render 'edit'
     end
@@ -37,7 +39,8 @@ class Admin::EventsController < AdminController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-    redirect_to admin_events_path, :notice => "Event Deleted"
+    flash[:success] = "Event Deleted"
+    redirect_to admin_events_path
   end
 
 end

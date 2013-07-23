@@ -18,4 +18,16 @@ body {
     font-size: 12px;
     background: #EDFCED;
   }
+  footer {
+    font-size: 12px;
+    font-family: arial, helvetica, sans-serif;
+    width: 96%;
+    padding: 15px 2%;
+    z-index: 9998;
+    bottom: 0;
+    position: fixed;
+    color: #5A5956;
+    margin-top: 20px;
+    background: -moz-linear-gradient(top,  #eeeeee 0%, #cccccc 100%);
+  }
 }

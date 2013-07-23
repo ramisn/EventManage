@@ -1,0 +1,37 @@
+/* Header */
+#dialog-form {
+  font-size: 62.5%;
+  display: none;
+}
+
+.required:after {
+  content: "*";
+  color: red;
+}
+
+.validateTips {
+  color: red;
+}
+
+#new_feedback {
+  table {
+    border: none !important;
+  }
+  td {
+    border: none !important;
+    padding: 2px;
+    text-align: left;
+  }
+}
+
+#feedback_feedback {
+  max-width: 430px;
+  max-height: 117px;
+  min-height: 76px;
+  min-width: 190px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+/* End of Header */

@@ -1,38 +1,71 @@
-<%= render 'admin/shared/tabs' %>
+<div class="shell"><%= render 'admin/shared/tabs' %></div>
 
-<h1>Groups</h1>
-
-<% if @groups.any? %>
-  <% @groups.each do |group| %>
-    <p>
-      <%= group.title %>
-      <%= link_to 'edit', edit_admin_event_group_path(params[:event_id],group.id)%>
-      <%= link_to 'destroy', admin_event_group_path(params[:event_id],group.id), :method => :delete, :confirm => "Are you sure?" %>
-    </p>
-    <% if group.teams.any? %>
-      <h4>teams</h4>
-        <ul>
-          <% group.teams.each do |team| %>
-            <li><%= team.title %>&nbsp;&nbsp;<%= link_to image_tag("remove.gif", :border => 0), remove_team_path(params[:event_id],group.id,team.id),:confirm => "Are you sure?" %></li>
+<div id="content">
+  <!-- Box -->
+  <div class="box">
+    <!-- Box Head -->
+    <div class="box-head">
+      <h2 class="left">Groups</h2>
+    </div>
+    <!-- End Box Head --> 
+    <% if @groups.any? %>
+      <!-- Table -->
+      <div class="table">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th>Sr No</th>
+            <th>Group</th>
+            <th>Teams</th>
+            <th width="110" class="ac">Content Control</th>
+          </tr>
+          <% @groups.each_with_index do |group, index| %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= group.title %></td>
+              <td>
+                <% if group.teams.any? %>
+                    <% group.teams.each do |team| %>
+                      <li>
+                        <%= team.title %>&nbsp;&nbsp;<%= link_to image_tag("remove.gif", :border => 0), remove_team_path(params[:event_id],group.id,team.id),:confirm => "Are you sure?" %>
+                      </li>
+                    <% end %>
+                <% end %>
+                <% unless @teams.empty? %>
+                  <%= form_tag add_team_path(params[:event_id],group.id), :class => "small-field", :method => :post do %>
+                    <%= select_tag :team_id, options_from_collection_for_select(@teams, :id, :title) %>
+                    <%= image_submit_tag("admin/add-button-tiny.gif") %>
+                  <% end %>
+                <% end %>
+                <%= link_to 'Reset Group', reset_group_path(params[:event_id],group.id),:confirm => "Are you sure?" if group.teams.any? %>
+              </td>
+              <td><%= link_to 'edit', edit_admin_event_group_path(params[:event_id],group.id), :class => "ico edit" %>
+                  <%= link_to 'destroy', admin_event_group_path(params[:event_id],group.id), :class => "ico del", :method => :delete, :confirm => "Are you sure?" %>
+              </td>
+            </tr>
           <% end %>
-        </ul>
+        </table>
+      </div>
+      <!-- Table -->
+    <% else %>
+     <p>Sorry! There is no groups selected yet.</p>
     <% end %>
+  </div>
+  <!-- End Box -->
+   <p><%= link_to 'back', admin_event_path(params[:event_id]) %></p>
+</div>
 
-    <% unless @teams.empty? %>
-      <%= form_tag add_team_path(params[:event_id],group.id), :method => :post do %>
-        <div class="field">
-          Team &nbsp;<%= select_tag :team_id, options_from_collection_for_select(@teams, :id, :title) %>
-          <%= submit_tag "Add" %>
-        </div>
-      <% end %>
-    <% end %>
-
-    <p><%= link_to 'Reset Group', reset_group_path(params[:event_id],group.id),:confirm => "Are you sure?" if group.teams.any? %></p>
------------------------------------------
-  <% end %>
-<% else %>
-  <p>Sorry! There is no groups selected yet.</p>
-<% end %>
-
-<p><%= button_to "Create a Group", new_admin_event_group_path(@event.id), :method => "get" %></p>
-<%= link_to 'back', admin_event_path(params[:event_id]) %>
+<!-- Sidebar -->
+  <div id="sidebar">
+    <!-- Box -->
+    <div class="box">
+      <div class="box-head">
+        <h2>Management</h2>
+      </div>
+      <div class="box-content">
+        <%= link_to content_tag(:span, "Create a Group"), new_admin_event_group_path(@event.id), :class => "add-button", :method => "get" %>
+        <div class="cl">&nbsp;</div>
+      </div>
+    </div>
+    <!-- End Box -->
+  </div>
+<!-- End Sidebar -->

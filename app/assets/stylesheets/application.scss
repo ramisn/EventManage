@@ -1,7 +1,9 @@
 @import "layouts/all";
 @import "admin/feedbacks";
 @import "admin/admin_panel";
+@import "admin/photos";
 @import "jquery-ui";  //for feedback form
 @import "home";  //home page photos scroll
 @import "lightbox"; //for photos modal
-@import "bootstrap/bootstrap.scss"; //for bootstrap web design
+@import "bootstrap/bootstrap"; //for bootstrap web design
+@import "custom"

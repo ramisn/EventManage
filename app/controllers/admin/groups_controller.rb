@@ -14,7 +14,8 @@ class Admin::GroupsController < AdminController
     @event = Event.find(params[:event_id])
     @group = @event.groups.new(params[:group])
     if @group.save
-      redirect_to admin_event_groups_path, :notice => "Group created!"
+      flash[:success] = "Group created!"
+      redirect_to admin_event_groups_path
     else
       render :new
     end
@@ -28,7 +29,8 @@ class Admin::GroupsController < AdminController
   def update
     @group = Group.find(params[:id])
     if @group.update_attributes(params[:group])
-     redirect_to admin_event_groups_path, :notice => "Group updated!"
+      flash[:success] = "Group updated!"
+     redirect_to admin_event_groups_path
     else
       render 'edit'
     end
@@ -38,7 +40,8 @@ class Admin::GroupsController < AdminController
     @group = Group.find(params[:id])
     @group.destroy
     @group.teams.clear
-    redirect_to admin_event_groups_path, :notice => "Group Deleted!"
+    flash[:success] = "Group Deleted!"
+    redirect_to admin_event_groups_path
   end
 
   def add_team
@@ -46,9 +49,11 @@ class Admin::GroupsController < AdminController
     @team = Team.find(params[:team_id])
     if @team.group_id.nil?
       @group.teams << @team
-      redirect_to admin_event_groups_path, :notice => "Team Added!"
+      flash[:success] = "Team Added!"
+      redirect_to admin_event_groups_path
     else
-      redirect_to admin_event_groups_path, :notice => "failed to add team."
+      flash[:error] = "failed to add team."
+      redirect_to admin_event_groups_path
     end
   end
 
@@ -56,9 +61,11 @@ class Admin::GroupsController < AdminController
     @team = Team.find(params[:team_id])
     begin
       @team.update_attributes(:group_id => nil)
-      redirect_to admin_event_groups_path, :notice => "Team removed!"
+      flash[:success] = "Team removed!"
+      redirect_to admin_event_groups_path
     rescue
-      redirect_to admin_event_groups_path, :notice => "failed to add team."
+      flash[:error] = "failed to add team."
+      redirect_to admin_event_groups_path
     end
   end
 
@@ -66,9 +73,11 @@ class Admin::GroupsController < AdminController
     @group = Group.find(params[:group_id])
     begin
       @group.teams.clear
-      redirect_to admin_event_groups_path, :notice => "Group Reset!"
+      flash[:success] = "Group Reset!"
+      redirect_to admin_event_groups_path
     rescue
-      redirect_to admin_event_groups_path, :notice => "Group reset failed!"
+      flash[:error] = "Group reset failed!"
+      redirect_to admin_event_groups_path
     end
   end
 end
