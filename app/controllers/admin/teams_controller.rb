@@ -1,6 +1,11 @@
 class Admin::TeamsController < AdminController
+  add_breadcrumb "home", :admin_path
+  add_breadcrumb "events", :admin_events_path
+
   def index
     @event = Event.find(params[:event_id])
+    add_breadcrumb "#{@event.title}"
+    add_breadcrumb "teams", :admin_event_teams_path
     @teams = @event.teams
     @users = User.all
     @dropdown_users = []
@@ -13,11 +18,18 @@ class Admin::TeamsController < AdminController
 
   def new
     @event = Event.find(params[:event_id])
+    add_breadcrumb "#{@event.title}"
+    add_breadcrumb "teams", :admin_event_teams_path
+    add_breadcrumb "new"
     @team = @event.teams.new
   end
 
   def create
     @event = Event.find(params[:event_id])
+    add_breadcrumb "#{@event.title}"
+    add_breadcrumb "teams", :admin_event_teams_path
+    add_breadcrumb "new"
+
     @team = @event.teams.new(params[:team])
     if @team.save
       @team.create_result
@@ -31,13 +43,21 @@ class Admin::TeamsController < AdminController
   def edit
     @event = Event.find(params[:event_id])
     @team = Team.find(params[:id])
+    add_breadcrumb "#{@event.title}"
+    add_breadcrumb "teams", :admin_event_teams_path
+    add_breadcrumb "#{@team.title}"
   end
 
   def update
+    @event = Event.find(params[:event_id])
     @team = Team.find(params[:id])
+    add_breadcrumb "#{@event.title}"
+    add_breadcrumb "teams", :admin_event_teams_path
+    add_breadcrumb "#{@team.title}"
+
     if @team.update_attributes(params[:team])
       flash[:success] = "Team updated!"
-     redirect_to admin_event_teams_path
+      redirect_to admin_event_teams_path
     else
       render 'edit'
     end

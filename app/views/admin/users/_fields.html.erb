@@ -14,7 +14,8 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
 </p>
-<p>
-  <%= f.label :role %>
-  <%= f.select :role, options_for_select([['select role' => ''],'player','admin']) %>
-</p>
+<div class="radio-button">
+  <%= f.label :role %></br>
+  <%= f.radio_button :role, "player" %> <%= f.label :player %>
+  <%= f.radio_button :role, "admin" %> <%= f.label :admin %>
+</div>

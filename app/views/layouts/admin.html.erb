@@ -12,7 +12,7 @@
   <div id="container">
     <div class="shell">
       <div class="small-nav">
-        <%= render 'admin/shared/path' %>
+        Here you are : <%= render_breadcrumbs %>
       </div>
         <% flash.each do |name,msg| %>
           <div class="msg <%= "msg-ok" if name == :success %> <%= "msg-error" if name == :error %>" >

@@ -1,11 +1,15 @@
 class SessionsController < ApplicationController
+  add_breadcrumb "home", :root_path
+
   def new
+    add_breadcrumb "sign in"
     if logged_in?
       redirect_to root_url, :notice => "User already Logged in. Logout first!"
     end
   end
 
   def create
+    add_breadcrumb "sign in"
     user = login(params[:email], params[:password], params[:remember_me])
 
     if user

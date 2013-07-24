@@ -9,7 +9,8 @@ gem 'mysql2'
 gem 'sorcery'  #For simple authentication
 gem 'thin'  #For faster application server
 gem "ckeditor"  #For great WYSIWYG editor for form_for/form_tag etc.
-gem "paperclip", "~> 3.0" #For uploading files
+gem "paperclip", "~> 3.0"  #For uploading files
+gem "breadcrumbs_on_rails"  #For adding breadcrumb
 
 gem 'execjs'
 gem 'therubyracer'  #Needed to solve javascript error

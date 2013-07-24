@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  add_breadcrumb "home", :root_path
+
   def index
     @events = Event.all
     @match_results = []

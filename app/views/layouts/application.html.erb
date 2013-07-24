@@ -11,7 +11,7 @@
     <%= render 'shared/header' %>
 
     <div class="container">
-      <%= render 'shared/path' %>
+      <div class="breadcrumb"><%= render_breadcrumbs %></div>
       <% flash.each do |name,msg| %>
         <%= content_tag(:div, msg, :id => "flash_#{name}")%>
       <% end %>

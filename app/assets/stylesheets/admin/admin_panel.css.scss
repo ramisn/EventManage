@@ -15,6 +15,11 @@ body {
     margin: 0;
   }
 }
+.hint {
+  margin-left: 4px;
+  color: #978B48;
+  font-size: 10px;
+}
 
 .admin-panel {
   .checkbox {
@@ -261,6 +266,12 @@ body {
     margin-bottom: 20px;
     p {
       padding: 11px;
+    }
+    form {
+      p {
+        margin: 0;
+        padding: 2px 0 2px;
+      }
     }
   }
 

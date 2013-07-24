@@ -1,6 +1,11 @@
 class Admin::MatchesController < AdminController
+  add_breadcrumb "home", :admin_path
+  add_breadcrumb "events", :admin_events_path
+
   def index
     @event = Event.find(params[:event_id])
+    add_breadcrumb "#{@event.title}"
+    add_breadcrumb "matches", :admin_event_matches_path
     @matches = @event.matches.order(:title)
     @team_1 = []
     @team_2 = []
@@ -12,6 +17,9 @@ class Admin::MatchesController < AdminController
 
   def new
     @event = Event.find(params[:event_id])
+    add_breadcrumb "#{@event.title}"
+    add_breadcrumb "matches", :admin_event_matches_path
+    add_breadcrumb "new"
     @teams = @event.teams
     if( @teams.size >= 2 )
       @match = @event.matches.new
@@ -23,6 +31,9 @@ class Admin::MatchesController < AdminController
 
   def create
     @event = Event.find(params[:event_id])
+    add_breadcrumb "#{@event.title}"
+    add_breadcrumb "matches", :admin_event_matches_path
+    add_breadcrumb "new"
     @teams = @event.teams
     @match = @event.matches.new(params[:match])
 
@@ -38,12 +49,19 @@ class Admin::MatchesController < AdminController
     @event = Event.find(params[:event_id])
     @teams = @event.teams
     @match = Match.find(params[:id])
+    add_breadcrumb "#{@event.title}"
+    add_breadcrumb "matches", :admin_event_matches_path
+    add_breadcrumb "#{@match.title}"
   end
 
   def update
     @event = Event.find(params[:event_id])
     @teams = @event.teams
     @match = Match.find(params[:id])
+    add_breadcrumb "#{@event.title}"
+    add_breadcrumb "matches", :admin_event_matches_path
+    add_breadcrumb "#{@match.title}"
+
     if @match.update_attributes(params[:match])
       flash[:success] = "Match updated!"
       redirect_to admin_event_matches_path(params[:event_id])
@@ -76,6 +94,10 @@ class Admin::MatchesController < AdminController
       end
     end
     @match = @matches.find(params[:id])
+    add_breadcrumb "#{@event.title}"
+    add_breadcrumb "matches", :admin_event_matches_path
+    add_breadcrumb "#{@match.title}"
+
     @team_1 = []
     @team_2 = []
     @team_1 << Team.find(@match.t1)
