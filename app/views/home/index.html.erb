@@ -1,17 +1,3 @@
-<style type="text/css">
-.results {
-  display: block;
-}
-.fixtures {
-  display: none;
-}
-
-.results, .fixtures {
-  font-size: 12px;
-  padding: 0 15px 0 33px;
-}
-
-</style>
 <div class="row">
   <div class="photos span9" style="display: block;">
     <div class="photo-carousel-cointainer" style="">
@@ -29,7 +15,7 @@
     <%= link_to "Results", "#" , :id => "results" %>
     <% events = @events.collect(&:title) %>
     <% if @match_results.any? %>
-     <ul class="results">
+     <div class="results">
       <% @match_results.each_with_index do |match_result,index| %>
           <% unless match_result.empty? %>
             <h4><%= events[index] %> | Results</h4>
@@ -42,14 +28,14 @@
             <% end %>
           <% end %>
       <% end %>
-     </ul>
+     </div>
     <% else %>
       No matches!
     <% end %>
 
 
     <% if @match_fixtures.any? %>
-     <ul class="fixtures">
+     <div class="fixtures">
       <% @match_fixtures.each_with_index do |match_fixture,index| %>
         <% unless match_fixture.empty? %>
           <h4><%= events[index] %> | Fixtures</h4>
@@ -61,7 +47,7 @@
           <% end %>
         <% end %>
       <% end %>
-     </ul>
+     </div>
     <% else %>
       No matches Fixtures!
     <% end %>

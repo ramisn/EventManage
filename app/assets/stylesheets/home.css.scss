@@ -1,6 +1,7 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/* photos-scroll */
 .photos {
   display: block;
   position:relative;
@@ -76,4 +77,17 @@
   &:hover {
     background-position: -63px center;
   }
+}
+
+/* fixture-results */
+.results {
+  display: block;
+}
+
+.fixtures {
+  display: none;
+}
+
+.results, .fixtures {
+  font-size: 12px;
 }

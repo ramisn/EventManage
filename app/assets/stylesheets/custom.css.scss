@@ -34,7 +34,7 @@
 .dropdown:hover .dropdown-menu {
   display: block;
 }
-/* End of Header */
+
 /* radio-button */
 .radio-button {
   padding-bottom: 10px;
@@ -46,4 +46,16 @@
     margin: -4px 0 0;
   }
 }
-/* end of  radio-button */
+
+/* events_controller */
+.tabs {
+  li {
+    list-style-type: none;
+    float: left;
+    padding: 5px;
+  }
+  margin: 0 0 0 -5px;
+  background: #D3F1FF;
+  height: 25px;
+  width: 310px;
+}

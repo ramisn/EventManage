@@ -10,22 +10,10 @@ class EventsController < ApplicationController
     redirect_to matches_event_path
   end
 
-  def teams
-    add_breadcrumb "teams"
-    @event = Event.find(params[:id])
-    @teams = @event.teams
-    @rules = @event.rules
-  end
-
-  def results
-    add_breadcrumb "results"
-    @event = Event.find(params[:id])
-    @teams = @event.teams
-  end
-
   def matches
-    add_breadcrumb "matches"
     @event = Event.find(params[:id])
+    add_breadcrumb "#{@event.title}"
+    add_breadcrumb "matches"
     @matches = @event.matches.order(:title)
     @team_1 = []
     @team_2 = []
@@ -35,15 +23,33 @@ class EventsController < ApplicationController
     end
   end
 
-  def rules
-    add_breadcrumb "rules"
+  def teams
     @event = Event.find(params[:id])
+    add_breadcrumb "#{@event.title}"
+    add_breadcrumb "teams"
+    @teams = @event.teams
     @rules = @event.rules
   end
 
   def groups
-    add_breadcrumb "groups"
     @event = Event.find(params[:id])
+    add_breadcrumb "#{@event.title}"
+    add_breadcrumb "groups"
     @groups = @event.groups
+  end
+
+  def results
+    @event = Event.find(params[:id])
+    add_breadcrumb "#{@event.title}"
+    add_breadcrumb "results"
+    @teams = @event.teams
+  end
+
+  
+  def rules
+    @event = Event.find(params[:id])
+    add_breadcrumb "#{@event.title}"
+    add_breadcrumb "rules"
+    @rules = @event.rules
   end
 end
