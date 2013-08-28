@@ -5,7 +5,6 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
 gem 'sorcery'  #For simple authentication
 gem 'thin'  #For faster application server
 gem "ckeditor"  #For great WYSIWYG editor for form_for/form_tag etc.
@@ -16,6 +15,17 @@ gem 'execjs'
 gem 'therubyracer'  #Needed to solve javascript error
 # Gems used only for assets and not required
 # in production environments by default.
+
+# If you use a different database in development, hide it from AppFog.
+group :development do
+  gem 'mysql2'
+end
+
+# Rails 3.1 can use the latest mysql2 gem.
+group :production do
+  gem 'mysql2'
+end
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
