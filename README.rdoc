@@ -21,17 +21,14 @@ Work done till now.
 * Search feedback by name/email, sorting feedback-table column by AJAX request
 
 ==== User Interface
-* View Events
-* View Result(Point Table)
-* View Team-players
-* View Rules
-* View Matches
-* View Groups
-* Path of current link
+* View Events/ Result(Point Table)/ Team-players/ Rules/ Matches/ Groups
+* Breadcrumb
 * Main Tabs for Home, Events etc
 * Subtabs for Events
 * Feedback form
+* Event Photos as slider
+* Fixtures/ Results at home page
 
-Last Updated: 11-jul-13
+Last Updated: 29-aug-13
 
 Parth.
