@@ -3,7 +3,6 @@ class PhotosController < ApplicationController
   add_breadcrumb "photos", :photos_path
 
   def index
-    @events = Event.all
   end
 
   def photos

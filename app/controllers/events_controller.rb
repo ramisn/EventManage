@@ -3,7 +3,6 @@ class EventsController < ApplicationController
   add_breadcrumb "events", :events_path
 
   def index
-    @events = Event.all
   end
 
   def show
@@ -42,7 +41,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "results"
-    @teams = @event.teams
+    @teams = @event.teams.find(:all, :include => :players)
   end
 
   
