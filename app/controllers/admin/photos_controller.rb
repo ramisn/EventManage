@@ -8,8 +8,13 @@ class Admin::PhotosController < AdminController
 
   def new
     add_breadcrumb "new"
-    @events =Event.all
-    @photo = Photo.new
+    @events = Event.all
+    if @events.any?
+      @photo = Photo.new
+    else
+      flash[:error] = "Create Event first"
+      redirect_to admin_events_path
+    end
   end
 
   def create

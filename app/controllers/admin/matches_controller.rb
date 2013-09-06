@@ -7,12 +7,6 @@ class Admin::MatchesController < AdminController
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "matches", :admin_event_matches_path
     @matches = @event.matches.order(:title)
-    @team_1 = []
-    @team_2 = []
-    @matches.each do |match|
-      @team_1 << Team.find(match.t1)
-      @team_2 << Team.find(match.t2)
-    end
   end
 
   def new
@@ -79,29 +73,10 @@ class Admin::MatchesController < AdminController
 
   def show
     @event = Event.find(params[:event_id])
-    @matches = @event.matches.order(:title)
-    @team_result_holder = {}
-    @matches.each do |match|
-      @team_one = @event.teams.where(:id => match.t1).first
-      @team_two = @event.teams.where(:id => match.t2).first
-      unless @team_one.nil? || @team_two.nil?
-        @team_one_result = @team_one.result
-        @team_two_result = @team_two.result
-        @team_result_holder["#{match.id}"] = [@team_one_result,@team_two_result]
-      else
-        flash[:error] = "No result found! It may happen that one of the Team doesn't exist. Please Remove that match and create again"
-        redirect_to admin_event_matches_path
-      end
-    end
-    @match = @matches.find(params[:id])
+    @match = Match.find(params[:id])
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "matches", :admin_event_matches_path
     add_breadcrumb "#{@match.title}"
-
-    @team_1 = []
-    @team_2 = []
-    @team_1 << Team.find(@match.t1)
-    @team_2 << Team.find(@match.t2)
   end
 
   def reset_matches

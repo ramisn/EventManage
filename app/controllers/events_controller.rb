@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   add_breadcrumb "events", :events_path
 
   def index
+    @events = Event.all
   end
 
   def show

@@ -4,7 +4,7 @@
   <div class="box">
       <div class="box-head">
         <h2><%= @match.title %>
-            <strong>&nbsp;<%= @team_1[0].title %> <b>v/s</b> <%= @team_2[0].title %></strong>
+            <strong>&nbsp;<%= @match.t1 %> <b>v/s</b> <%= @match.t2 %></strong>
             <%= link_to 'edit', edit_admin_event_match_path(params[:event_id],@match.id), :class => "ico edit" %>
             <%= link_to 'destroy', admin_event_match_path(params[:event_id],@match.id), :class => "ico del", :method => :delete, :confirm => "Are you sure?" %>
         </h2>
@@ -16,14 +16,6 @@
         <% else %>
           <p>Match Result : <%= @match.result %></p>
         <% end %>
-
-        <% @team_result= @team_result_holder["#{@match.id}"][0] %></br>
-        <% match_team = @team_1[0].title %>
-        <%= render 'match_result', match_team: match_team %>
-        </br>
-        <% @team_result= @team_result_holder["#{@match.id}"][1] %></br>
-        <% match_team = @team_2[0].title %>
-        <%= render 'match_result', match_team: match_team  %>
       </div>
   </div>
 </div>

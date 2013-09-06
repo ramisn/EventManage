@@ -22,10 +22,6 @@ class Admin::EventsController < AdminController
     end
   end
 
-  def show
-    redirect_to admin_event_matches_path(params[:id])
-  end
-
   def edit
     @event = Event.find(params[:id])
     add_breadcrumb "#{@event.title}"

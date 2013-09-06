@@ -37,7 +37,7 @@ EventManagement::Application.routes.draw do
   resources :password_resets, :only => [:create,:edit,:update]
 
   namespace :admin do
-    resources :events do
+    resources :events, :except => :show do
       resources :teams, :except => :show
       resources :rules, :except => :show
       resources :matches

@@ -6,14 +6,12 @@ class Admin::TeamsController < AdminController
     @event = Event.find(params[:event_id])
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "teams", :admin_event_teams_path
-    @teams = @event.teams
     @users = User.all
-    @dropdown_users = []
-    @users.each do |user|
-      if user.teams.where(:event_id=>params[:event_id]).empty?
-        @dropdown_users << user
-      end
-    end
+    @teams = @event.teams.includes(:players)
+    @selected_users = User.joins(:team_users).where(team_users: {event_id: params[:event_id]})
+
+    #@dropdown_users = User.where("id NOT IN (?)", @selected_users)
+    @dropdown_users = @users - @selected_users
   end
 
   def new
