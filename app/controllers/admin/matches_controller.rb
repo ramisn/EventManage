@@ -18,7 +18,7 @@ class Admin::MatchesController < AdminController
     if( @teams.size >= 2 )
       @match = @event.matches.new
     else
-      flash[:error] = "Create atlest Two Teams First to set Match"
+      flash[:error] = "Create atleast Two Teams First to set Match"
       redirect_to new_admin_event_team_path(params[:event_id])
     end
   end

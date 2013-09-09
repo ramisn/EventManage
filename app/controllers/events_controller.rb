@@ -6,11 +6,8 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
-  def show
-    redirect_to matches_event_path
-  end
-
   def matches
+    @events = Event.all
     @event = Event.find(params[:id])
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "matches"

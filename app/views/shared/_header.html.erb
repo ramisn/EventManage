@@ -7,11 +7,13 @@
           <ul class="nav">
             <li><%= link_to 'Home', root_path %></li>
             <li class=" dropdown"><%= link_to 'Events', events_path, :class => "dropdown-toggle" %>
-              <ul class="dropdown-menu">
-                <% @events.each do |event| %>
-                  <li><%= link_to "#{event.title.titleize}", event_path(event.id) %></li>
-                <% end %>
-              </ul>
+              <% if @events.any? %>
+                <ul class="dropdown-menu">
+                  <% @events.each do |event| %>
+                    <li><%= link_to "#{event.title.titleize}", matches_event_path(event.id) %></li>
+                  <% end %>
+                </ul>
+              <% end %>
             </li>
             <li><%= link_to 'Photos', photos_path %></li>
             <li><%= link_to 'Contact us', "#" %></li>
@@ -23,29 +25,6 @@
     </div>
   </div>
 </header>
-<p id="alert_success" class="alert_success">Thank you for your valuable Feedback!</p>
-
-<div id="dialog-form" title="Feedback Form">
-  <p class="validateTips">* indicates required fields.</p>
-
-  <%= form_for @feedback, :url => feedback_index_path, :remote => true do |f| %>
-    <table>
-      <tr>
-        <td><%= f.label :Name %></td>
-        <td><%= f.text_field :name %></td>
-      </tr>
-
-      <tr>
-        <td><%= f.label :Email, :class => "required" %></td>
-        <td><%= f.text_field :email %></td>
-      </tr>
-
-      <tr>
-        <td><%= f.label :Feedback , :class => "required" %></td>
-        <td><%= f.text_area :feedback, :size => "60x4" %></td>
-      </tr>
-    </table>
-  <% end %>
-</div>
+<%= render 'shared/feedback_form' %>
 
 <%= javascript_include_tag "submit_feedback" %>
