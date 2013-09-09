@@ -7,6 +7,12 @@ class Admin::MatchesController < AdminController
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "matches", :admin_event_matches_path
     @matches = @event.matches.order(:title)
+    @team_1 = []
+    @team_2 = []
+    @matches.each do |match|
+      @team_1 << Team.find(match.t1)
+      @team_2 << Team.find(match.t2)
+    end
   end
 
   def new

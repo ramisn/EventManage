@@ -10,12 +10,12 @@
 
 <p>
   <%= f.label :first_team %>
-  <%= f.select :t1, options_from_collection_for_select(@teams, :title, :title, @match.t1), :prompt=> "--select first team--" %>
+  <%= f.select :t1, options_from_collection_for_select(@teams, :id, :title, @match.t1), :prompt=> "--select first team--" %>
 </p>
 
 <p>
   <%= f.label :second_team %>
-  <%= f.select :t2, options_from_collection_for_select(@teams, :title, :title, @match.t2),:prompt=> "--select second team --" %>
+  <%= f.select :t2, options_from_collection_for_select(@teams, :id, :title, @match.t2),:prompt=> "--select second team --" %>
 
 </p>
 

@@ -21,7 +21,7 @@
               <h4><%= events[index] %> | Results</h4>
               <% match_result.each_with_index do |match,index| %>
                 <li><%= match.title unless match.nil? %> <br>
-                    <%= match.t1 unless match.t1.nil? %> v/s <%= match.t2 unless match.t2.nil? %> </br>
+                    <%= @team_1[index].title unless @team_1[index].nil? %> v/s <%= @team_2[index].title unless @team_2[index].nil? %> </br>
                     <%= match.result unless match.nil? %> </br>
                     <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
                 </li>
@@ -39,7 +39,7 @@
             <h4><%= events[index] %> | Fixtures</h4>
             <% match_fixture.each_with_index do |match,index| %>
               <li><%= match.title unless match.nil? %> </br>
-                  <%= match.t1 unless match.t1.nil? %> v/s <%= match.t2 unless match.t2.nil? %> </br>
+                  <%= @team_one[index].title unless @team_one[index].nil? %> v/s <%= @team_two[index].title unless @team_two[index].nil? %> </br>
                   <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
               </li>
             <% end %>
