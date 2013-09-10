@@ -4,7 +4,7 @@
   <div class="box">
       <div class="box-head">
         <h2><%= @match.title %>
-            <strong>&nbsp;<%= @match.t1 %> <b>v/s</b> <%= @match.t2 %></strong>
+            <strong>&nbsp;<%= @teams[0].title unless @teams[0].nil? %> <b>v/s</b> <%= @teams[1].title unless @teams[1].nil? %></strong>
             <%= link_to 'edit', edit_admin_event_match_path(params[:event_id],@match.id), :class => "ico edit" %>
             <%= link_to 'destroy', admin_event_match_path(params[:event_id],@match.id), :class => "ico del", :method => :delete, :confirm => "Are you sure?" %>
         </h2>

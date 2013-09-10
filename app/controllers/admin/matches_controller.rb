@@ -7,12 +7,11 @@ class Admin::MatchesController < AdminController
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "matches", :admin_event_matches_path
     @matches = @event.matches.order(:title)
-    @team_1 = []
-    @team_2 = []
+    @teams = []
     @matches.each do |match|
-      @team_1 << Team.find(match.t1)
-      @team_2 << Team.find(match.t2)
+      @teams << Team.where("id IN (?)", [match.t1,match.t2])
     end
+    #render :text=>@teams.inspect and return false
   end
 
   def new
@@ -80,6 +79,7 @@ class Admin::MatchesController < AdminController
   def show
     @event = Event.find(params[:event_id])
     @match = Match.find(params[:id])
+    @teams = Team.where("ID IN (?)", [@match.t1,@match.t2])
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "matches", :admin_event_matches_path
     add_breadcrumb "#{@match.title}"

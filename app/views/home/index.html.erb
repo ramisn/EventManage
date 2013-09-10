@@ -15,16 +15,18 @@
     <%= link_to "Results", "#" , :id => "results" %>
     <% events = @events.collect(&:title) %>
     <div class="results">
-      <% if @match_results.any? %>
+      <% if @match_results.flatten.any? %>
+        <% i = 0 %>
         <% @match_results.each_with_index do |match_result,index| %>
             <% unless match_result.empty? %>
-              <h4><%= events[index] %> | Results</h4>
+              <h6><%= events[index] %> | Results</h6>
               <% match_result.each_with_index do |match,index| %>
-                <li><%= match.title unless match.nil? %> <br>
-                    <%= @team_1[index].title unless @team_1[index].nil? %> v/s <%= @team_2[index].title unless @team_2[index].nil? %> </br>
-                    <%= match.result unless match.nil? %> </br>
-                    <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
+                <li><%= match.title unless match.nil? %> </br>
+                  <%= @teams_for_results[i][0].title unless @teams_for_results[i][0].nil? %> v/s <%= @teams_for_results[i][1].title unless @teams_for_results[i][1].nil? %> </br>
+                  <%= match.result unless match.nil? %> </br>
+                  <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
                 </li>
+                <% i+=1 %>
               <% end %>
             <% end %>
         <% end %>
@@ -33,15 +35,17 @@
       <% end %>
     </div>
     <div class="fixtures">
-      <% if @match_fixtures.any? %>
+      <% if @match_fixtures.flatten.any? %>
+        <% j = 0 %>
         <% @match_fixtures.each_with_index do |match_fixture,index| %>
           <% unless match_fixture.empty? %>
-            <h4><%= events[index] %> | Fixtures</h4>
-            <% match_fixture.each_with_index do |match,index| %>
+            <h6><%= events[index] %> | Fixtures</h6>
+            <% match_fixture.each do |match| %>
               <li><%= match.title unless match.nil? %> </br>
-                  <%= @team_one[index].title unless @team_one[index].nil? %> v/s <%= @team_two[index].title unless @team_two[index].nil? %> </br>
+                  <%= @teams_for_fixtures[j][0].title unless @teams_for_fixtures[j][0].nil? %> v/s <%= @teams_for_fixtures[j][1].title unless @teams_for_fixtures[j][1].nil? %> </br>
                   <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
               </li>
+              <% j+=1 %>
             <% end %>
           <% end %>
         <% end %>

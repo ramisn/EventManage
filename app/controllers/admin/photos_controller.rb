@@ -18,6 +18,7 @@ class Admin::PhotosController < AdminController
   end
 
   def create
+    @events = Event.all
     add_breadcrumb "new"
     @photo = Photo.new(params[:photo])
     if @photo.save
@@ -29,6 +30,7 @@ class Admin::PhotosController < AdminController
   end
 
   def edit
+    @events = Event.all
     @photo = Photo.find(params[:id])
     @event = Event.find(@photo.event_id)
     add_breadcrumb "#{@event.title}"

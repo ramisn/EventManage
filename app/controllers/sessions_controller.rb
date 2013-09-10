@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   add_breadcrumb "home", :root_path
 
   def new
+    @events = Event.all
     add_breadcrumb "sign in"
     if logged_in?
       redirect_to root_url, :notice => "User already Logged in. Logout first!"

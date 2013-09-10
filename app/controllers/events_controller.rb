@@ -21,6 +21,7 @@ class EventsController < ApplicationController
   end
 
   def teams
+    @events = Event.all
     @event = Event.find(params[:id])
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "teams"
@@ -29,6 +30,7 @@ class EventsController < ApplicationController
   end
 
   def groups
+    @events = Event.all
     @event = Event.find(params[:id])
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "groups"
@@ -36,14 +38,15 @@ class EventsController < ApplicationController
   end
 
   def results
+    @events = Event.all
     @event = Event.find(params[:id])
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "results"
     @teams = @event.teams.find(:all, :include => :players)
   end
 
-  
   def rules
+    @events = Event.all
     @event = Event.find(params[:id])
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "rules"

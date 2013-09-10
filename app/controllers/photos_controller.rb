@@ -7,7 +7,7 @@ class PhotosController < ApplicationController
   end
 
   def photos
-    
+    @events = Event.all
     @event = Event.find_by_title(params[:event])
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "thumbnails"
