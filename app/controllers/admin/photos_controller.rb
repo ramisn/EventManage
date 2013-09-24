@@ -3,7 +3,7 @@ class Admin::PhotosController < AdminController
   add_breadcrumb "photos", :admin_photos_path
 
   def index
-    @events = Event.all
+    @events = Event.includes(:photos)
   end
 
   def new
@@ -18,7 +18,6 @@ class Admin::PhotosController < AdminController
   end
 
   def create
-    @events = Event.all
     add_breadcrumb "new"
     @photo = Photo.new(params[:photo])
     if @photo.save

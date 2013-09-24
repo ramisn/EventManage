@@ -18,7 +18,7 @@
           <tr>
             <td><%= index +1 %></td>
             <td style="text-align: left;"><%= match.title %></td>
-            <td><%= @team_1[index].title %> v/s <%= @team_2[index].title %></td>
+            <td><%= @teams[index][0].title %> v/s <%= @teams[index][1].title %></td>
             <td style="text-align: left;"><%= raw match.description %></td>
             <% unless match.result.nil? || match.result == 'nil' %>
               <td><%= match.result %></td>

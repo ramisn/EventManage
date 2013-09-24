@@ -41,6 +41,7 @@ class Admin::EventsController < AdminController
 
   def destroy
     @event = Event.find(params[:id])
+    TeamUser.where(:event_id => id).delete_all
     @event.destroy
     flash[:success] = "Event Deleted"
     redirect_to admin_events_path

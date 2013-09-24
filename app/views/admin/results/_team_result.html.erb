@@ -1,0 +1,26 @@
+<% unless team.result.nil? %>
+  <tbody>
+    <tr>
+      <td style="text-align: left;"><%= team.title %><%= team.description %></td>
+      <td><%= team.result.played %>&nbsp;&nbsp;
+          <%= link_to image_tag("plus_one.png"), team_result_path(params[:event_id],team.id, :result_action => "played") %>
+      </td>
+      <td><%= team.result.won %>&nbsp;&nbsp;
+          <%= link_to image_tag("plus_one.png"), team_result_path(params[:event_id],team.id, :result_action => "won") %>&nbsp;
+      </td>
+      <td><%= team.result.lost %>&nbsp;&nbsp;
+          <%= link_to image_tag("plus_one.png"), team_result_path(params[:event_id],team.id, :result_action => "lost") %>&nbsp;
+      </td>
+      <td><%= team.result.tie %>&nbsp;&nbsp;
+          <%= link_to image_tag("plus_one.png"), team_result_path(params[:event_id],team.id, :result_action => "tie") %>&nbsp;
+      </td>
+      <td><%= team.result.nr %>&nbsp;&nbsp;
+          <%= link_to image_tag("plus_one.png"), team_result_path(params[:event_id],team.id, :result_action => "nr") %>&nbsp;
+      </td>
+      <td><%= team.result.points %></td>
+      <td><%= team.result.nrr %></td>
+      <td><%= link_to "Reset Result", reset_result_path(params[:event_id], team.id), :confirm => "Are You sure " if team.result.played != 0 %>
+      </td>
+    </tr>
+  </tbody>
+<% end %>

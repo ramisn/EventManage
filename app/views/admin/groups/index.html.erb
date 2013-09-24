@@ -24,11 +24,12 @@
               <td><%= group.title %></td>
               <td>
                 <% if group.teams.any? %>
-                    <% group.teams.each do |team| %>
-                      <li>
-                        <%= team.title %>&nbsp;&nbsp;<%= link_to image_tag("remove.gif", :border => 0), remove_team_path(params[:event_id],group.id,team.id),:confirm => "Are you sure?" %>
-                      </li>
-                    <% end %>
+                  <% group.teams.each do |team| %>
+                    <li>
+                      <%= team.title %>&nbsp;&nbsp;
+                      <%= link_to image_tag("remove.gif", :border => 0), remove_team_path(params[:event_id],group.id,team.id),:confirm => "Are you sure?" %>
+                    </li>
+                  <% end %>
                 <% end %>
                 <% unless @teams.empty? %>
                   <%= form_tag add_team_path(params[:event_id],group.id), :class => "small-field", :method => :post do %>

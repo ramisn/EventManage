@@ -39,7 +39,7 @@
                 <%= link_to 'Reset players', reset_team_path(params[:event_id],team.id),:confirm => "Are you sure?" if team.players.any? %>
               </td>
               <td><%= link_to 'edit', edit_admin_event_team_path(params[:event_id],team.id), :class => "ico edit" %>
-                  <%= link_to 'destroy', admin_event_team_path(params[:event_id],team.id), :class => "ico del", :method => :delete, :confirm => "Are you sure?" %>
+                  <%= link_to 'destroy', admin_event_team_path(params[:event_id],team.id), :class => "ico del", :method => :delete, :confirm => "Are you sure? Make sure to update the match/matches associated with it." %>
               </td>
             </tr>
           <% end %>

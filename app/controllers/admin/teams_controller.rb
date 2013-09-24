@@ -62,10 +62,18 @@ class Admin::TeamsController < AdminController
   end
 
   def destroy
-    @team = Team.find(params[:id])
-    @team.destroy
-    flash[:success] = "Team Deleted!"
-    redirect_to admin_event_teams_path
+    @event = Event.find(params[:event_id])
+    @team = @event.teams.where(:id=> params[:id]).first
+    begin
+      @team.destroy
+      @team.players.clear
+      flash[:success] = "Team Deleted!"
+      redirect_to admin_event_teams_path
+    rescue
+      flash[:error] = "Failed to delete Team"
+      redirect_to admin_event_teams_path
+    end
+
   end
 
   def add_player
@@ -87,7 +95,7 @@ class Admin::TeamsController < AdminController
       flash[:success] = "Player removed!"
       redirect_to admin_event_teams_path
     rescue
-      flash[:error] = "failed to add player."
+      flash[:error] = "failed to remove player."
       redirect_to admin_event_teams_path
     end
   end

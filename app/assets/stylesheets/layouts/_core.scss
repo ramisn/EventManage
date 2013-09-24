@@ -19,7 +19,7 @@ body {
     background: #EDFCED;
   }
   footer {
-    font-size: 12px;
+    font-size: 14px;
     font-family: arial, helvetica, sans-serif;
     width: 96%;
     padding: 15px 2%;
@@ -28,6 +28,10 @@ body {
     position: fixed;
     color: #5A5956;
     margin-top: 20px;
-    background: -moz-linear-gradient(top,  #eeeeee 0%, #cccccc 100%);
+    background: #eeeeee;
+    p {
+      font-size: 12px;
+      text-align: center;
+    }
   }
 }

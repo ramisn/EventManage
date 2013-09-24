@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    @events = Event.all
     add_breadcrumb "sign in"
     user = login(params[:email], params[:password], params[:remember_me])
 

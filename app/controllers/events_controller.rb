@@ -1,53 +1,56 @@
 class EventsController < ApplicationController
   add_breadcrumb "home", :root_path
   add_breadcrumb "events", :events_path
+  @@events = Event.all
 
   def index
-    @events = Event.all
+    @events = @@events
   end
 
   def matches
-    @events = Event.all
-    @event = Event.find(params[:id])
+    @events = @@events
+    #@event = @events.collect { |e| e if e.id.eql?(params[:id].to_i)}.reject { |e| e.nil? }.first
+    @event = Event.find(params[:id])  #improved performance
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "matches"
     @matches = @event.matches.order(:title)
-    @team_1 = []
-    @team_2 = []
+    @teams = []
     @matches.each do |match|
-      @team_1 << Team.find(match.t1)
-      @team_2 << Team.find(match.t2)
+      @teams << Team.where("id IN (?)", [match.t1,match.t2])
     end
   end
 
   def teams
-    @events = Event.all
-    @event = Event.find(params[:id])
+    @events = @@events
+    #@event = @events.collect { |e| e if e.id.eql?(params[:id].to_i)}.reject { |e| e.nil? }.first
+    @event = Event.find(params[:id])  #improved performance
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "teams"
-    @teams = @event.teams
-    @rules = @event.rules
+    @teams = @event.teams.includes(:players)
   end
 
   def groups
-    @events = Event.all
-    @event = Event.find(params[:id])
+    @events = @@events
+    #@event = @events.collect { |e| e if e.id.eql?(params[:id].to_i)}.reject { |e| e.nil? }.first
+    @event = Event.find(params[:id])  #improved performance
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "groups"
-    @groups = @event.groups
+    @groups = @event.groups.includes(:teams)
   end
 
   def results
-    @events = Event.all
-    @event = Event.find(params[:id])
+    @events = @@events
+    #@event = @events.collect { |e| e if e.id.eql?(params[:id].to_i)}.reject { |e| e.nil? }.first
+    @event = Event.find(params[:id])  #improved performance
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "results"
-    @teams = @event.teams.find(:all, :include => :players)
+    @teams = @event.teams.includes(:result)
   end
 
   def rules
-    @events = Event.all
-    @event = Event.find(params[:id])
+    @events = @@events
+    #@event = @events.collect { |e| e if e.id.eql?(params[:id].to_i)}.reject { |e| e.nil? }.first
+    @event = Event.find(params[:id])  #improved performance
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "rules"
     @rules = @event.rules

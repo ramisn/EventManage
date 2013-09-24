@@ -6,7 +6,7 @@ class Admin::GroupsController < AdminController
     @event = Event.find(params[:event_id])
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "groups", :admin_event_groups_path
-    @groups = @event.groups
+    @groups = @event.groups.includes(:teams)
     @teams = @event.teams.where(:group_id => nil)
   end
 

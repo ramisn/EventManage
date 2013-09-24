@@ -1,0 +1,36 @@
+<div class="shell"><%= render 'admin/shared/tabs' %></div>
+
+<div id="content">
+  <!-- Box -->
+  <div class="box">
+    <!-- Box Head -->
+    <div class="box-head">
+      <h2 class="left">Results</h2>
+    </div>
+    <!-- End Box Head --> 
+    <% if @teams.any? %>
+      <!-- Table -->
+      <div class="table">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th>Team Name</th>
+            <th>Played</th>
+            <th>Won</th>
+            <th>Lost</th>
+            <th>Tie</th>
+            <th>NR</th>
+            <th>Points</th>
+            <th>NRR</th>
+            <th width="110" class="ac">Content Control</th>
+          </tr>
+          <%= render(:partial => 'team_result', :collection => @teams, :as => :team) %>
+        </table>
+      </div>
+      <!-- Table -->
+    <% else %>
+     <p>Sorry! There is no Results.</p>
+    <% end %>
+  </div>
+  <!-- End Box -->
+   <p><%= link_to 'back',admin_events_path %></p>
+</div>

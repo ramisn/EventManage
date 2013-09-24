@@ -3,8 +3,8 @@ class Admin::UsersController < AdminController
   add_breadcrumb "users", :admin_users_path
 
   def index
-    @admin_users = User.admin_users
     @players = User.all
+    @admin_users  = @players.collect {|u| u if u.role.eql?('admin') }.reject {|u| u.nil? }
   end
 
   def new
@@ -42,8 +42,14 @@ class Admin::UsersController < AdminController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    flash[:success] = "User Deleted!"
-    redirect_to admin_users_path
+    begin
+      @user.destroy
+      @user.teams.clear
+      flash[:success] = "User Deleted!"
+      redirect_to admin_users_path
+    rescue
+      flash[:error] = "Failed to delete User"
+      redirect_to admin_users_path
+    end
   end
 end
