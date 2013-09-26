@@ -19,6 +19,7 @@ class Admin::PhotosController < AdminController
 
   def create
     add_breadcrumb "new"
+    @events = Event.all
     @photo = Photo.new(params[:photo])
     if @photo.save
       flash[:success] = "Photo added"
