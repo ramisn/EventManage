@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130715095455) do
+ActiveRecord::Schema.define(:version => 20130925132422) do
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
@@ -37,7 +37,10 @@ ActiveRecord::Schema.define(:version => 20130715095455) do
     t.datetime "ends_at"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "slug"
   end
+
+  add_index "events", ["slug"], :name => "index_events_on_slug", :unique => true
 
   create_table "feedbacks", :force => true do |t|
     t.text     "feedback"

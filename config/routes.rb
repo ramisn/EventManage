@@ -13,23 +13,9 @@ EventManagement::Application.routes.draw do
   resources :feedback, :only => [:new,:create]
   resources :photos, :only => [:index]
   match 'photos/:event' => 'photos#photos', :as => 'event_photos'
+  get '/events/:id', to: redirect('/events/%{id}/matches')
 
   #Admin UI routes
-  get "admin" => "admin::dashboard#index"
-  get 'login' => 'sessions#new', :as => 'login'
-  get 'logout' => 'sessions#destroy', :as => 'logout'
-  get 'signup' => 'admin::users#new', :as => 'signup'
-  match 'admin/events/:event_id/teams/:team_id/add_player' => 'admin/teams#add_player', :as => 'add_player'
-  match 'admin/events/:event_id/teams/:team_id/:user_id/remove_player' => 'admin/teams#remove_player', :as => 'remove_player'
-  match 'admin/events/:event_id/teams/:team_id/reset_team' => 'admin/teams#reset_team', :as => 'reset_team'
-  match 'admin/events/:event_id/matches/reset_matches' => 'admin/matches#reset_matches', :as => 'reset_matches'
-  match 'admin/events/:event_id/groups/:group_id/add_team' => 'admin/groups#add_team', :as => 'add_team'
-  match 'admin/events/:event_id/groups/:group_id/:team_id/remove_team' => 'admin/groups#remove_team', :as => 'remove_team'
-  match 'admin/events/:event_id/groups/:group_id/reset_group' => 'admin/groups#reset_group', :as => 'reset_group'
-  match 'admin/photos/:event/photos' => 'admin/photos#event_photos', :as => 'admin_event_photos'
-  match 'admin/events/:event_id/results/:team_id/team_result' => 'admin/results#team_result', :as => 'team_result'
-  match 'admin/events/:event_id/results/:team_id/reset_result' => 'admin/results#reset_result', :as => 'reset_result'
-
   resources :sessions, :only => [:new,:create,:destroy]
   resources :password_resets, :only => [:create,:edit,:update]
 
@@ -45,6 +31,23 @@ EventManagement::Application.routes.draw do
     resources :feedbacks, :only => :index
     resources :photos, :except => :show
   end
+
+  get "admin" => "admin::dashboard#index"
+  get 'login' => 'sessions#new', :as => 'login'
+  get 'logout' => 'sessions#destroy', :as => 'logout'
+  get 'signup' => 'admin::users#new', :as => 'signup'
+  get '/admin/events/:id', to: redirect('/admin/events/%{id}/matches')
+
+  match 'admin/events/:event_id/teams/:team_id/add_player' => 'admin/teams#add_player', :as => 'add_player'
+  match 'admin/events/:event_id/teams/:team_id/:user_id/remove_player' => 'admin/teams#remove_player', :as => 'remove_player'
+  match 'admin/events/:event_id/teams/:team_id/reset_team' => 'admin/teams#reset_team', :as => 'reset_team'
+  match 'admin/events/:event_id/matches/reset_matches' => 'admin/matches#reset_matches', :as => 'reset_matches'
+  match 'admin/events/:event_id/groups/:group_id/add_team' => 'admin/groups#add_team', :as => 'add_team'
+  match 'admin/events/:event_id/groups/:group_id/:team_id/remove_team' => 'admin/groups#remove_team', :as => 'remove_team'
+  match 'admin/events/:event_id/groups/:group_id/reset_group' => 'admin/groups#reset_group', :as => 'reset_group'
+  match 'admin/photos/:event/photos' => 'admin/photos#event_photos', :as => 'admin_event_photos'
+  match 'admin/events/:event_id/results/:team_id/team_result' => 'admin/results#team_result', :as => 'team_result'
+  match 'admin/events/:event_id/results/:team_id/reset_result' => 'admin/results#reset_result', :as => 'reset_result'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

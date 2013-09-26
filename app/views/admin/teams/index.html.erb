@@ -62,7 +62,7 @@
         <h2>Management</h2>
       </div>
       <div class="box-content">
-        <%= link_to content_tag(:span, "Create a Team"), new_admin_event_team_path(@event.id), :class => "add-button", :method => "get" %>
+        <%= link_to content_tag(:span, "Create a Team"), new_admin_event_team_path(@event.slug), :class => "add-button", :method => "get" %>
         <div class="cl">&nbsp;</div>
       </div>
       

@@ -5,11 +5,12 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sorcery'  #For simple authentication
-gem 'thin'  #For faster application server
-gem "ckeditor"  #For great WYSIWYG editor for form_for/form_tag etc.
-gem "paperclip", "~> 3.0"  #For uploading files
-gem "breadcrumbs_on_rails"  #For adding breadcrumb
+gem 'sorcery', '0.8.1'  #For simple authentication
+gem 'thin', '1.5.1'  #For faster application server
+gem "ckeditor", '4.0.4'  #For great WYSIWYG editor for form_for/form_tag etc.
+gem "paperclip", "3.4.1"  #For uploading files
+gem "breadcrumbs_on_rails", '2.3.0'  #For adding breadcrumb
+gem 'friendly_id', '4.0.10.1'
 
 gem 'execjs'
 gem 'therubyracer'  #Needed to solve javascript error

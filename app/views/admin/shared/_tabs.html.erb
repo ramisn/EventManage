@@ -1,7 +1,7 @@
 <ul class="tab-container">
-  <li><%= link_to 'Matches', admin_event_matches_path(@event.id) %> | </li>
-  <li><%= link_to 'Teams', admin_event_teams_path(@event.id) %> | </li>
-  <li><%= link_to 'Groups', admin_event_groups_path(@event.id) %> | </li>
-  <li><%= link_to 'Rules', admin_event_rules_path(@event.id) %> | </li>
-  <li><%= link_to 'Results', admin_event_results_path(@event.id) %> </li>
+  <li><%= link_to 'Matches', admin_event_matches_path(@event.slug) %> | </li>
+  <li><%= link_to 'Teams', admin_event_teams_path(@event.slug) %> | </li>
+  <li><%= link_to 'Groups', admin_event_groups_path(@event.slug) %> | </li>
+  <li><%= link_to 'Rules', admin_event_rules_path(@event.slug) %> | </li>
+  <li><%= link_to 'Results', admin_event_results_path(@event.slug) %> </li>
 </ul>

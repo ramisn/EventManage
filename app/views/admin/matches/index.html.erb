@@ -50,7 +50,7 @@
         <%= link_to content_tag(:span, "Create a Match"), new_admin_event_match_path(params[:event_id]), :class => "add-button", :method => "get" %>
         <div class="cl">&nbsp;</div>
         <% if @matches.any? %>
-          <p><%= link_to 'Reset Matches' , reset_matches_path(@event.id), :confirm => "Are you sure?"  %></p>
+          <p><%= link_to 'Reset Matches' , reset_matches_path(@event.slug), :confirm => "Are you sure?"  %></p>
         <% end %>
       </div>
     </div>

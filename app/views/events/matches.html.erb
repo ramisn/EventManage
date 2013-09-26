@@ -9,7 +9,7 @@
         <th>Match</th>
         <th>Teams</th>
         <th>Details</th>
-        <th>Result &nbsp;<%= link_to 'Point Table', results_event_path(@event.id) %></th>
+        <th>Result &nbsp;<%= link_to 'Point Table', results_event_path(@event.slug) %></th>
       </tr>
     </thead>
     <% @matches.each_with_index do |match,index| %>

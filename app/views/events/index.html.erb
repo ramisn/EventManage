@@ -14,7 +14,7 @@
   <tbody>
     <tr>
       <td><%= index + 1 %></td>
-      <td><%= link_to "#{event.title.titleize}", matches_event_path(event.id), :title => "See Event Details" %></td>
+      <td><%= link_to "#{event.title.titleize}", matches_event_path(event.slug), :title => "See Event Details" %></td>
       <td><%= event.description %></td>
       <td><%= event.venue %></td>
       <td>

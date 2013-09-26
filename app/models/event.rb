@@ -8,4 +8,7 @@ class Event < ActiveRecord::Base
   has_many :matches, :dependent => :destroy
   has_many :groups, :dependent => :destroy
   has_many :photos, :dependent => :destroy
+
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 end

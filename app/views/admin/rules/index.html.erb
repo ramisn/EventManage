@@ -37,7 +37,7 @@
       </div>
       <div class="box-content">
         <% if @rules.empty? %>
-          <%= link_to content_tag(:span, "Create a Rule"), new_admin_event_rule_path(@event.id), :class => "add-button", :method => "get"  %>
+          <%= link_to content_tag(:span, "Create a Rule"), new_admin_event_rule_path(@event.slug), :class => "add-button", :method => "get"  %>
         <% else %>
           <% rule = @rules.first %>
           <%= link_to 'edit', edit_admin_event_rule_path(params[:event_id],rule.id), :class => "ico edit" %>
