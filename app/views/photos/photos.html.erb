@@ -13,7 +13,7 @@ td {
   <tr>
     <% @photos.each do |photo| %>
     <td>
-      <%= link_to(image_tag(photo.image.url(:thumb)),"#{photo.image.url.split('?').first}", :data => {:lightbox => "photo-modal"}, :title => photo.title) %>
+      <%= link_to(image_tag(photo.image.url(:thumb)),"#{photo.image.url(:full).split('?').first}", :data => {:lightbox => "photo-modal"}, :title => photo.title) %>
     </td>
     <% end %>
   </tr>

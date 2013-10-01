@@ -16,3 +16,4 @@
 //= require ckeditor/init
 //= require vendor/lightbox-2.6.min
 //= require bootstrap/bootstrap.js
+//= require vendor/jquery.smoothDivScroll-1.3

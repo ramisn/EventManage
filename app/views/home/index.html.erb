@@ -1,5 +1,52 @@
+<% events = @events.collect(&:title) %>
 <div class="row">
-  <div class="photos span9" style="display: block;">
+  <span id="fixtures"><%= link_to "Fixtures", "#" %></span>
+  <span id="results" class="active"><%= link_to "Results", "#" %></span>
+  <div class="fixtures" style="display: none;">
+    <div id="fixture-scrollable">
+      <% if @match_fixtures.flatten.any? %>
+        <% j = 0 %>
+        <% @match_fixtures.each_with_index do |match_fixture,index| %>
+          <% unless match_fixture.empty? %>
+            <% match_fixture.each do |match| %>
+              <li><%= match.title unless match.nil? %> | <%= events[index] %> </br>
+                  <%= @teams_for_fixtures[j][0].title unless @teams_for_fixtures[j][0].nil? %> v/s <%= @teams_for_fixtures[j][1].title unless @teams_for_fixtures[j][1].nil? %> </br>
+                  <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
+              </li>
+              <% j+=1 %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <li>No Fixtures!</li>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="results">
+    <div id="result-scrollable">
+      <% if @match_results.flatten.any? %>
+        <% i = 0 %>
+        <% @match_results.each_with_index do |match_result,index| %>
+          <% unless match_result.empty? %>
+            <% match_result.each_with_index do |match,index| %>
+              <li><%= match.title unless match.nil? %> | <%= events[index] %></br>
+                <%= @teams_for_results[i][0].title unless @teams_for_results[i][0].nil? %> v/s <%= @teams_for_results[i][1].title unless @teams_for_results[i][1].nil? %> </br>
+                <%= match.result unless match.nil? %> </br>
+                <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
+              </li>
+              <% i+=1 %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <li>No Results!</li>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="photos" style="display: block;">
     <div class="photo-carousel-cointainer" style="">
       <ul id="photo-listing-cointainer">
         <%= render(:partial => 'photo', :collection => @photos) %>
@@ -9,51 +56,6 @@
     <div class="scroll-left" style="display: block;">&nbsp;</div>
     <div class="scroll-right" style="display: none;">&nbsp;</div>
   </div>
-
-  <div class="span3">
-    <%= link_to "Fixtures", "#" , :id => "fixtures" %> |
-    <%= link_to "Results", "#" , :id => "results" %>
-    <% events = @events.collect(&:title) %>
-    <div class="results">
-      <% if @match_results.flatten.any? %>
-        <% i = 0 %>
-        <% @match_results.each_with_index do |match_result,index| %>
-            <% unless match_result.empty? %>
-              <h6><%= events[index] %> | Results</h6>
-              <% match_result.each_with_index do |match,index| %>
-                <li><%= match.title unless match.nil? %> </br>
-                  <%= @teams_for_results[i][0].title unless @teams_for_results[i][0].nil? %> v/s <%= @teams_for_results[i][1].title unless @teams_for_results[i][1].nil? %> </br>
-                  <%= match.result unless match.nil? %> </br>
-                  <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
-                </li>
-                <% i+=1 %>
-              <% end %>
-            <% end %>
-        <% end %>
-      <% else %>
-        No Results!
-      <% end %>
-    </div>
-    <div class="fixtures">
-      <% if @match_fixtures.flatten.any? %>
-        <% j = 0 %>
-        <% @match_fixtures.each_with_index do |match_fixture,index| %>
-          <% unless match_fixture.empty? %>
-            <h6><%= events[index] %> | Fixtures</h6>
-            <% match_fixture.each do |match| %>
-              <li><%= match.title unless match.nil? %> </br>
-                  <%= @teams_for_fixtures[j][0].title unless @teams_for_fixtures[j][0].nil? %> v/s <%= @teams_for_fixtures[j][1].title unless @teams_for_fixtures[j][1].nil? %> </br>
-                  <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
-              </li>
-              <% j+=1 %>
-            <% end %>
-          <% end %>
-        <% end %>
-      <% else %>
-        No Fixtures!
-      <% end %>
-    </div>
-  </div>
 </div>
 <%= javascript_include_tag "photo_scroll" %>
 
@@ -61,10 +63,27 @@
 $("#fixtures").click(function () {
   $(".fixtures").show();
   $(".results").hide();
+  $("#fixtures").addClass("active");
+  $("#results").removeClass("active");
 })
 
 $("#results").click(function () {
   $(".results").show();
   $(".fixtures").hide();
+  $("#results").addClass("active");
+  $("#fixtures").removeClass("active");
 })
+
+$(document).ready(function () {
+    $("#fixture-scrollable").smoothDivScroll({
+      autoScrollingMode: "onStart"
+    });
+  });
+
+$(document).ready(function () {
+    $("#result-scrollable").smoothDivScroll({
+      autoScrollingMode: "onStart"
+    });
+  });
+
 </script>

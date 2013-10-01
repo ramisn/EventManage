@@ -251,7 +251,7 @@ a {
 }
 
 .row {
-  margin-left: -20px;
+  margin-left: 0px; //set to zero manually
   *zoom: 1;
   &:before {
     display: table;
