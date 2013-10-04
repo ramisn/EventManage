@@ -56,7 +56,26 @@
     <div class="scroll-left" style="display: block;">&nbsp;</div>
     <div class="scroll-right" style="display: none;">&nbsp;</div>
   </div>
+  
 </div>
+
+<div class="row">
+  <div class="span8 news-updates">
+    <h3>News and Recent Updates</h3>
+    <ul>
+      <li>news1</li>
+      <li>news2</li>
+      <li>news3</li>
+    </ul>
+  </div>
+  <div class="span3 social">
+    <h3>Stay Connected</h3>
+    <%= link_to image_tag('social-icons/facebook-social.png'),'https://www.facebook.com/parth.bharadiya', target:"_blank" %>
+    <%= link_to image_tag('social-icons/twitter-social.png'),"https://twitter.com/PjBharadiya", target: "_blank" %>
+    <%= link_to image_tag('social-icons/googleplus-social.png'),"https://plus.google.com/103631939310981313770/posts", target: "_blank" %>
+  </div>
+</div>
+
 <%= javascript_include_tag "photo_scroll" %>
 
 <script type="text/javascript">
@@ -74,16 +93,12 @@ $("#results").click(function () {
   $("#fixtures").removeClass("active");
 })
 
-$(document).ready(function () {
-    $("#fixture-scrollable").smoothDivScroll({
-      autoScrollingMode: "onStart"
-    });
-  });
+$("#fixture-scrollable").smoothDivScroll({
+  autoScrollingMode: "onStart"
+});
 
-$(document).ready(function () {
-    $("#result-scrollable").smoothDivScroll({
-      autoScrollingMode: "onStart"
-    });
-  });
+$("#result-scrollable").smoothDivScroll({
+  autoScrollingMode: "onStart"
+});
 
 </script>

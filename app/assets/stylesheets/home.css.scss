@@ -6,6 +6,7 @@
   display: block;
   position:relative;
   margin-top: 5px;
+  height: 336px;
   ul {
     display: block;
     width: 10000px;
@@ -17,6 +18,7 @@
       margin: 0;
       padding: 0;
       width: 1200px;
+      height: 336px;
       float: left;
       display: block;
       img {
@@ -79,8 +81,8 @@
 
 /* fixtures-results scrollbar*/
 .results, .fixtures {
-    font-family: Helvetica;
-    font-size: 11px;
+  font-family: Helvetica;
+  font-size: 11px;
 }
 
 #fixtures, #results {
@@ -90,5 +92,56 @@
   }
 }
 .active {
-  background-color: #D9E3EB;
+  background-color: #753D30;
+  a, a:hover, a:focus {
+    color: #FFFFFF;
+  }
+}
+
+/* Social buttons*/
+#facebook > a{
+  background: image-url("social-icons.png") 0 0 ;
+  height: 35px;
+  width: 35px;
+}
+.social, .news-updates {
+  margin-bottom: 90px;
+  float: right;
+  padding-left: 5px;
+  /*box-shadow: 0 0 9px -6px rgba(0, 0, 0, 0.5);*/
+  box-shadow: -1px 12px 9px -6px rgba(53, 85, 178, 0.63);
+  h3 {
+    color: #355193;
+  }
+}
+.span3.social {
+  width: 23%;
+}
+/* Hero-image box-caption */
+.box-caption {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.41);
+  border-radius: 4px 4px 4px 4px;
+  left: 16px;
+  position: relative;
+  top: -182px;
+  h4 {
+    color: #0B75B9;
+    padding: 5px;
+  }
+  a {
+    color: #FFFFFF;
+    padding-left: 10px;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  a:hover
+   {
+    color: #0B75B9;
+   }
+}
+
+/* News & Updates */
+.span8.news-updates {
+  height: 218px;
+  width: 71%;
 }
