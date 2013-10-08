@@ -4,19 +4,19 @@
   <span id="results" class="active"><%= link_to "Results", "#" %></span>
   <div class="fixtures" style="display: none;">
     <div id="fixture-scrollable">
-      <% if @match_fixtures.flatten.any? %>
+      <% if @match_fixtures.any? %>
         <% j = 0 %>
-        <% @match_fixtures.each_with_index do |match_fixture,index| %>
-          <% unless match_fixture.empty? %>
-            <% match_fixture.each do |match| %>
-              <li><%= match.title unless match.nil? %> | <%= events[index] %> </br>
-                  <%= @teams_for_fixtures[j][0].title unless @teams_for_fixtures[j][0].nil? %> v/s <%= @teams_for_fixtures[j][1].title unless @teams_for_fixtures[j][1].nil? %> </br>
-                  <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
-              </li>
-              <% j+=1 %>
-            <% end %>
+          <% @match_fixtures.each_with_index do |match,index| %>
+            <li>
+              <% @events.each do |event| %>
+                <%= event.title if event.id.eql?(match.event_id) %>
+              <% end %> |
+              <%= link_to match.title, matches_event_path(match.event_id) %> </br>
+              <%= @teams_for_fixtures[j][0].title unless @teams_for_fixtures[j][0].nil? %> v/s <%= @teams_for_fixtures[j][1].title unless @teams_for_fixtures[j][1].nil? %> </br>
+              <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
+            </li>
+            <% j+=1 %>
           <% end %>
-        <% end %>
       <% else %>
         <li>No Fixtures!</li>
       <% end %>
@@ -25,19 +25,19 @@
 
   <div class="results">
     <div id="result-scrollable">
-      <% if @match_results.flatten.any? %>
+      <% if @match_results.any? %>
         <% i = 0 %>
-        <% @match_results.each_with_index do |match_result,index| %>
-          <% unless match_result.empty? %>
-            <% match_result.each_with_index do |match,index| %>
-              <li><%= match.title unless match.nil? %> | <%= events[index] %></br>
-                <%= @teams_for_results[i][0].title unless @teams_for_results[i][0].nil? %> v/s <%= @teams_for_results[i][1].title unless @teams_for_results[i][1].nil? %> </br>
-                <%= match.result unless match.nil? %> </br>
-                <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
-              </li>
-              <% i+=1 %>
-            <% end %>
-          <% end %>
+        <% @match_results.each_with_index do |match,index| %>
+          <li>
+            <% @events.each do |event| %>
+              <%= event.title if event.id.eql?(match.event_id) %>
+            <% end %> |
+            <%= link_to match.title, matches_event_path(match.event_id) %> </br>
+            <%= @teams_for_results[i][0].title unless @teams_for_results[i][0].nil? %> v/s <%= @teams_for_results[i][1].title unless @teams_for_results[i][1].nil? %> </br>
+            <%= match.result unless match.nil? %> </br>
+            <%= match.updated_at.strftime("%d-%b-%Y %I:%M %p") unless match.nil? %>
+          </li>
+          <% i+=1 %>
         <% end %>
       <% else %>
         <li>No Results!</li>
