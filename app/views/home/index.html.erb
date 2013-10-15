@@ -1,5 +1,6 @@
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 <% events = @events.collect(&:title) %>
-<div class="row">
+<div class="row-fluid">
   <span id="fixtures"><%= link_to "Fixtures", "#" %></span>
   <span id="results" class="active"><%= link_to "Results", "#" %></span>
   <div class="fixtures" style="display: none;">
@@ -45,7 +46,7 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row-fluid">
   <div class="photos" style="display: block;">
     <div class="photo-carousel-cointainer" style="">
       <ul id="photo-listing-cointainer">
@@ -59,7 +60,7 @@
   
 </div>
 
-<div class="row">
+<div class="row-fluid">
   <div class="span8 news-updates">
     <h3>News and Recent Updates</h3>
     <ul>
