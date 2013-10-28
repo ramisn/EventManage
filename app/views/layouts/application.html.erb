@@ -3,22 +3,37 @@
   <head>
     <title>EM</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%= stylesheet_link_tag    "application", :media => "all" %>
+
+    <% theme = ["theme-lightblue","theme-saffron", "theme-lightsaffron"] %>
+    <%= stylesheet_link_tag theme.sample, :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
   </head>
+
   <body class="<%= "with-login" if logged_in? %>" >
     <%= render 'shared/admin_login' %>
     <%= render 'shared/header' %>
 
-    <div class="container">
-      <div class="breadcrumb"><%= render_breadcrumbs %></div>
-      <% flash.each do |name,msg| %>
-        <%= content_tag(:div, msg, :id => "flash_#{name}")%>
-      <% end %>
+    <div class="bg-content" style="background: black">
+      <div class="container">
+        <div id="contact-form">
+          <div id="alert_success" class="success">Thank you for your valuable Feedback!</div>
+        </div>
+        <div class="breadcrumb"><%= render_breadcrumbs %></div>
+        <% flash.each do |name,msg| %>
+         <% if msg %>
+          <div class="alert-error">
+            <%= content_tag(:div, msg, :id => "flash_#{name}")%>
+          </div>
+          <% end %>
+        <% end %>
 
-      <%= yield %>
+        <%= yield %>
+      </div>
     </div>
     <%= render 'shared/footer' %>
+
   </body>
 </html>

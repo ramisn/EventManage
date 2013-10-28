@@ -1,25 +1,10 @@
-<style type="text/css">
-table {
-  font-size: 12px;
-  color: #4C4C4C;
-}
-td {
-  padding: 7px;
-}
-</style>
-<table>
-  <tr>
+<ul class="thumbnails thumbnails-1 list-services">
   <% @events.each do |event| %>
-    <td>
-      <%= link_to image_tag("folder_icon.png", :border => 0), event_photos_path(event.title) if event.photos.any? %>
-    </td>
+    <li class="span2">
+      <div class="thumbnail thumbnail-1">
+        <%= link_to image_tag("folder_icon.png", :border => 0), event_photos_path(event.title) if event.photos.any? %>
+          <%= link_to event.title, "#", :class => "link-1" %>
+      </div>
+    </li>
   <% end %>
-  </tr>
-  <tr>
-  <% @events.each do |event| %>
-    <td>
-      <%= event.title if event.photos.any? %>
-    </td>
-  <% end %>
-  </tr>
-</table>
+</ul>

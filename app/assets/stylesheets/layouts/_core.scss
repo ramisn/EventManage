@@ -1,37 +1,9 @@
 body {
   &.with-login {
-    padding-top: 97px;
+    padding-top: 35px;
     .navbar-fixed-top
     {
       padding-top: 35px;
-    }
-  }
-  .alert_success {
-    display: none;
-    width: 96%;
-    margin: 20px 2% 10px 2%;
-    border-radius: 5px;
-    border: 1px solid #79C20D;
-    color: #32510F;
-    padding: 6px 0;
-    text-indent: 35px;
-    font-size: 12px;
-    background: #EDFCED;
-  }
-  footer {
-    font-size: 14px;
-    font-family: arial, helvetica, sans-serif;
-    width: 96%;
-    height: 35px;
-    padding: 15px 2%;
-    z-index: 9998;
-    bottom: 0;
-    position: fixed;
-    color: #5A5956;
-    background: #eeeeee;
-    p {
-      font-size: 12px;
-      text-align: center;
     }
   }
 }

@@ -1,6 +1,4 @@
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-<% events = @events.collect(&:title) %>
-<div class="row-fluid">
+<div class="row">
   <span id="fixtures"><%= link_to "Fixtures", "#" %></span>
   <span id="results" class="active"><%= link_to "Results", "#" %></span>
   <div class="fixtures" style="display: none;">
@@ -46,38 +44,46 @@
     </div>
   </div>
 </div>
-<div class="row-fluid">
-  <div class="photos" style="display: block;">
-    <div class="photo-carousel-cointainer" style="">
-      <ul id="photo-listing-cointainer">
+
+<div class="row">
+    <!-- slider -->
+    <div class="flexslider">
+      <ul class="slides">
         <%= render(:partial => 'photo', :collection => @photos) %>
       </ul>
     </div>
-
-    <div class="scroll-left" style="display: block;">&nbsp;</div>
-    <div class="scroll-right" style="display: none;">&nbsp;</div>
-  </div>
-  
+    <span id="responsiveFlag"></span>
 </div>
 
-<div class="row-fluid">
-  <div class="span8 news-updates">
-    <h3>News and Recent Updates</h3>
-    <ul>
-      <li>news1</li>
-      <li>news2</li>
-      <li>news3</li>
-    </ul>
+<div class="row">
+  <div class="ic"></div>
+  <div class="row-1">
+    <div class="row">
+    </div>
   </div>
-  <div class="span3 social">
-    <h3>Stay Connected</h3>
-    <%= link_to image_tag('social-icons/facebook-social.png'),'https://www.facebook.com/parth.bharadiya', target:"_blank" %>
-    <%= link_to image_tag('social-icons/twitter-social.png'),"https://twitter.com/PjBharadiya", target: "_blank" %>
-    <%= link_to image_tag('social-icons/googleplus-social.png'),"https://plus.google.com/103631939310981313770/posts", target: "_blank" %>
+
+  <div class="row-2">
+    <h3>News and Latest Updates</h3>
+    <%= link_to 'Read More', "#", :class => "btn btn-1" %>
+  </div>
+
+  <div class="row-1">
+    <div class="row">
+    </div>
   </div>
 </div>
 
-<%= javascript_include_tag "photo_scroll" %>
+<div class="row">
+  <article class="span6">
+    <h3>Shortly about us</h3>
+    <div class="wrapper">
+      <div class="inner-1 overflow extra">
+        <div class="txt-1">We are developers by passion!!</div>
+        Let's have some talk.
+      </div>
+    </div>
+  </article>
+</div>
 
 <script type="text/javascript">
 $("#fixtures").click(function () {

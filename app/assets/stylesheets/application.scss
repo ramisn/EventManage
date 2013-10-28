@@ -1,11 +1,16 @@
-@import "layouts/all";
+/* Admin scss */
 @import "admin/feedbacks";
 @import "admin/admin_panel";
 @import "admin/photos";
-@import "jquery-ui";  //for feedback form
-@import "home";  //home page photos scroll
-@import "lightbox"; //for photos modal
+
+/* Front scss */
 @import "bootstrap/bootstrap"; //for bootstrap web design
 @import "bootstrap/bootstrap-responsive";
-@import "custom";
+@import "home";  //home page photos scroll
 @import "smoothDivScroll";  //for home page smooth div scroll
+@import "kwicks-slider";  //for home page slider
+@import "lightbox"; //for photos modal
+@import "jquery-ui";  //for feedback form
+
+@import "layouts/all";
+@import "custom";

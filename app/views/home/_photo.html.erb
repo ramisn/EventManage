@@ -1,10 +1,10 @@
 <li>
   <%= image_tag(photo.image.url(:heroimage), :alt => "#{photo.title}") %>
-  <p><%= photo.title %></p>
-  <span><%= photo.image_updated_at.strftime("%d-%b-%Y %I:%M %p") %></span>
+  <p><%= photo.title %>
+  <br/><%= photo.image_updated_at.strftime("%d-%b-%Y %I:%M %p") %></p>
 
-  <div class="span3 box-caption">
-    <h4>Find More</h4>
+  <div class="box-caption">
+    <h3>Find More</h3>
     <%= link_to "Matches >", matches_event_path(photo.event_id) %></br>
     <%= link_to "Teams >", teams_event_path(photo.event_id) %></br>
     <%= link_to "Results >",results_event_path(photo.event_id) %></br>

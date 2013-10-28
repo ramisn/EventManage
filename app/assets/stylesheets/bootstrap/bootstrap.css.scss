@@ -159,11 +159,11 @@ body {
 }
 
 a {
-  color: #F25C27;
+  color: $TheMe_COLOR;
   text-decoration: none;
   outline: none;
   &:hover {
-    color: #FFFFFF;
+    color: #707070;
     text-decoration: none;
   }
 }
@@ -190,7 +190,7 @@ a {
 }
 
 .row {
-  margin-left: -20px;
+  margin-left: 0px;
   *zoom: 1;
   &:before {
     display: table;
@@ -208,7 +208,7 @@ a {
 [class*="span"] {
   float: left;
   min-height: 1px;
-  margin-left: 20px;
+  margin-left: 0px;
 }
 
 .container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container, .span12 {
@@ -1139,7 +1139,7 @@ input, textarea, .uneditable-input {
 }
 
 .controls-row [class*="span"] + [class*="span"] {
-  margin-left: 20px;
+  margin-left: 0px;
 }
 
 input.span12, textarea.span12, .uneditable-input.span12 {
@@ -3470,9 +3470,14 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 }
 
 .alert-danger, .alert-error {
-  background-color: #f2dede;
+  background: none repeat scroll 0 0 #f2dede;
   border-color: #eed3d7;
   color: #b94a48;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 12px 14px;
+  text-transform: none;
+  margin-bottom: 2px;
 }
 
 .alert-info {
@@ -3633,7 +3638,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
     margin-bottom: 2px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    border-radius: 5px;
+    
   }
   .active > a {
     color: #ffffff;
@@ -3936,14 +3941,19 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 .navbar .brand {
   float: left;
   display: block;
-  padding: 10px 20px 10px;
+  padding: 0px 20px 10px;
   margin-left: -20px;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 200;
   color: #777777;
-  text-shadow: 0 1px 0 #ffffff;
   &:hover {
     text-decoration: none;
+  }
+  a {
+    color: black;
+    &:hover {
+      color: #ffffff;
+    }
   }
 }
 
@@ -4416,9 +4426,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
   margin: 0 0 20px;
   list-style: none;
   background-color: #f5f5f5;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+
   li {
     display: inline-block;
     *display: inline;
@@ -4935,7 +4943,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 .thumbnails > li {
   float: left;
   margin-bottom: 20px;
-  margin-left: 20px;
+  margin-left: 0px;
 }
 
 .thumbnail {
@@ -5528,7 +5536,7 @@ a[href^="tel:"] {
 header {
   /*padding: 30px 0 29px;*/
   z-index: 50;
-  background: #f25c27;
+  background: $TheMe_COLOR;
 }
 
 /* navbar */
@@ -5603,7 +5611,7 @@ header {
           position: absolute;
           width: 9px;
           height: 6px;
-          background: url(../img/indicator1.png) no-repeat 0 0;
+          background: image-url("indicator1.png") no-repeat 0 0;
           left: 50%;
           bottom: 21px;
           margin-left: -5px;
@@ -5616,13 +5624,13 @@ header {
         }
       }
       &.sfHover > a {
-        background: url("../img/bg-content.jpg") repeat scroll 50% 50% transparent;
+        background: image-url("bg-content.jpg") repeat scroll 50% 50% transparent;
         color: #ffffff;
         -webkit-box-shadow: none;
         -moz-box-shadow: none;
         box-shadow: none;
         &:hover {
-          background: url("../img/bg-content.jpg") repeat scroll 50% 50% transparent;
+          background: image-url("bg-content.jpg") repeat scroll 50% 50% transparent;
           color: #ffffff;
           -webkit-box-shadow: none;
           -moz-box-shadow: none;
@@ -5630,20 +5638,20 @@ header {
         }
       }
       > a:hover {
-        background: url("../img/bg-content.jpg") repeat scroll 50% 50% transparent;
+        background: image-url("bg-content.jpg") repeat scroll 50% 50% transparent;
         color: #ffffff;
         -webkit-box-shadow: none;
         -moz-box-shadow: none;
         box-shadow: none;
       }
       &.active > a {
-        background: url("../img/bg-content.jpg") repeat scroll 50% 50% transparent;
+        background: image-url("bg-content.jpg") repeat scroll 50% 50% transparent;
         color: #ffffff;
         -webkit-box-shadow: none;
         -moz-box-shadow: none;
         box-shadow: none;
         &:hover {
-          background: url("../img/bg-content.jpg") repeat scroll 50% 50% transparent;
+          background: image-url("bg-content.jpg") repeat scroll 50% 50% transparent;
           color: #ffffff;
           -webkit-box-shadow: none;
           -moz-box-shadow: none;
@@ -5664,7 +5672,7 @@ header {
 .nav-collapse_ .nav {
   ul {
     position: absolute;
-    display: none;
+    
     width: 120px;
     left: -18px;
     top: 84px;
@@ -5693,7 +5701,7 @@ header {
     > a:hover, &.sfHover > a {
       text-decoration: none;
       color: #ffffff;
-      background: #F25C27;
+      background: $TheMe_COLOR;
     }
   }
   li ul ul li a:hover {
@@ -5721,7 +5729,7 @@ header {
 
 h1, h2, h3, h4, h5, h6 {
   text-transform: none;
-  color: #F25C27;
+  color: $TheMe_COLOR;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   letter-spacing: -1px;
@@ -5754,7 +5762,7 @@ h3 {
 }
 
 h4 {
-  font-size: 48px;
+  font-size: 32px;
   line-height: 50px;
   margin: 21px 0 20px;
 }
@@ -5769,6 +5777,7 @@ h5 {
 p {
   padding-bottom: 25px;
   margin: 0;
+  color: white;
 }
 
 /*--- header end ------*/
@@ -5780,7 +5789,7 @@ p {
 }
 
 .bg-content {
-  background: url(../img/bg-content.jpg) 50% 50%;
+  background: image-url("bg-content.jpg") 50% 50%;
 }
 
 .block-slogan {
@@ -5788,7 +5797,7 @@ p {
   padding-bottom: 44px;
   h2 {
     &:first-letter {
-      color: #F25C27;
+      color: $TheMe_COLOR;
       font-weight: normal;
     }
     float: left;
@@ -5858,7 +5867,7 @@ p {
     section {
       padding-top: 5px;
       h3 {
-        color: #F25C27;
+        color: $TheMe_COLOR;
         font-weight: normal;
         font-size: 16px;
         margin: 0 0 5px;
@@ -5972,10 +5981,10 @@ p {
     color: #7f7f7f;
   }
   &.extra1 a:hover, &.extra2 a:hover {
-    color: #F25C27;
+    color: $TheMe_COLOR;
   }
   li a {
-    color: #F25C27;
+    color: $TheMe_COLOR;
     display: inline-block;
     &:hover {
       text-decoration: none;
@@ -6066,7 +6075,7 @@ p {
   margin-bottom: 10px;
   overflow: hidden;
   a:hover {
-    color: #F25C27;
+    color: $TheMe_COLOR;
     text-decoration: underline;
   }
 }
@@ -6165,7 +6174,7 @@ p {
 
 .mail-1 {
   text-decoration: underline;
-  color: #F25C27;
+  color: $TheMe_COLOR;
   &:hover {
     text-decoration: none;
   }
@@ -6225,7 +6234,7 @@ p {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    border-bottom: 1px dashed #F25C27;
+    border-bottom: 1px dashed $TheMe_COLOR;
   }
   input {
     height: 30px;
@@ -6287,7 +6296,7 @@ p {
 
 .btn-1 {
   color: #fff;
-  background: #F25C27;
+  background: $TheMe_COLOR;
   padding: 5px 14px;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -6303,7 +6312,7 @@ p {
   transition: all 0.3s ease;
   &:hover {
     color: #fff;
-    background: #DB420E;
+    background: $TheMe_COLOR;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
@@ -6345,7 +6354,7 @@ p {
   padding: 42px 10px 0;
   overflow: hidden;
   h2 {
-    color: #F25C27;
+    color: $TheMe_COLOR;
     font-size: 80px;
     line-height: 84px;
     font-weight: normal;
@@ -6409,7 +6418,7 @@ footer {
   color: #1a1a1a;
   padding-top: 6px;
   a {
-    color: #F25C27;
+    color: $TheMe_COLOR;
   }
 }
 
@@ -6427,19 +6436,19 @@ footer {
     background-position: 0 0;
     background-repeat: no-repeat;
     &.icon-1 {
-      background-image: url(../img/soc-icon-1.png);
+      background: image-url("social-icons/soc-icon-1.png");
     }
     &.icon-2 {
-      background-image: url(../img/soc-icon-2.png);
+      background: image-url("social-icons/soc-icon-2.png");
     }
     &.icon-3 {
-      background-image: url(../img/soc-icon-3.png);
+      background: image-url("social-icons/soc-icon-3.png");
     }
     &.icon-4 {
-      background-image: url(../img/soc-icon-4.png);
+      background: image-url("social-icons/soc-icon-4.png");
     }
     &.icon-5 {
-      background-image: url(../img/soc-icon-5.png);
+      background: image-url("social-icons/soc-icon-5.png");
     }
   }
   li {
@@ -6595,7 +6604,7 @@ footer {
     .btn {
       display: inline-block;
       float: right;
-      background: #F25C27;
+      background: $TheMe_COLOR;
       padding: 18px 0 20px;
       text-decoration: none;
       margin: 0;
@@ -6640,7 +6649,7 @@ footer {
     zoom: 1;
     z-index: 999;
     width: 113px;
-    background: url("../img/bg-content.jpg") repeat scroll 50% 50% transparent;
+    background: image-url("bg-content.jpg") repeat scroll 50% 50% transparent;
     padding: 12px 0;
     margin: 0;
     -webkit-border-radius: 0;
@@ -6672,26 +6681,26 @@ footer {
       &.sfHover > a {
         text-decoration: none;
         color: #ffffff;
-        background: #F25C27;
+        background: $TheMe_COLOR;
         &:hover {
           text-decoration: none;
           color: #ffffff;
-          background: #F25C27;
+          background: $TheMe_COLOR;
         }
       }
       > a:hover {
         text-decoration: none;
         color: #ffffff;
-        background: #F25C27;
+        background: $TheMe_COLOR;
       }
       &.active > a {
         text-decoration: none;
         color: #ffffff;
-        background: #F25C27;
+        background: $TheMe_COLOR;
         &:hover {
           text-decoration: none;
           color: #ffffff;
-          background: #F25C27;
+          background: $TheMe_COLOR;
         }
       }
     }
@@ -6702,7 +6711,6 @@ footer {
   }
   .nav-collapse_ .nav ul {
     position: relative;
-    display: none;
     width: 100%;
     list-style: none;
     zoom: 1;

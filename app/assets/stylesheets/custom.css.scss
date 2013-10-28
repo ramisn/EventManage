@@ -49,15 +49,14 @@
 
 /* events_controller */
 .tabs {
+  margin: 0;
+  height: 5px;
   li {
     list-style-type: none;
     float: left;
-    padding: 5px;
+    padding: 2px 5px;
+    border: 1px solid $TheMe_COLOR;
   }
-  margin: 0 0 0 -5px;
-  background: #D3F1FF;
-  height: 25px;
-  width: 310px;
 }
 
 /* 404 Error */
@@ -68,4 +67,26 @@
     color: red;
     font-size: 14px;
   }
+}
+
+/* tables */
+.table {
+  border: solid 1px;
+  border-collapse: separate;
+  a {
+    &:hover {
+      color: #707070;
+    }
+  }
+  td {
+    vertical-align: middle;
+  }
+}
+.table.table-striped td:first-child {
+    width: 48px;
+}
+
+/* sessions */
+.reset-pw {
+  margin: -9px 0 0 9px;
 }

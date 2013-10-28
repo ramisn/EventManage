@@ -1,83 +1,16 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-/* photos-scroll */
-.photos {
-  display: block;
-  position:relative;
-  margin-top: 5px;
-  height: 336px;
-  ul {
-    display: block;
-    width: 10000px;
-    margin: 0;
-    li {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 14px;
-      font-weight: normal;
-      margin: 0;
-      padding: 0;
-      width: 1200px;
-      height: 336px;
-      float: left;
-      display: block;
-      img {
-        display: block;
-        margin: 0;
-        width: auto;
-        height: auto;
-      }
-      span {
-        color: #0b75b9;
-        margin: 0 auto;
-        padding: 0;
-        width: 95%;
-        display: block;
-        margin-bottom: 5px;
-      }
-      p {
-        color: #6b6262;
-        margin: 0 auto;
-        padding: 0;
-        width: 95%;
-        line-height: 18px;
-      }
-    }
+/* alert-success */
+.alert_success {
+    display: none;
+    border: 1px solid #79C20D;
+    color: $alert_success;
+    padding: 6px 0;
+    text-indent: 35px;
+    font-size: 12px;
+    background: #EDFCED;
   }
-}
-
-.photo-carousel-cointainer {
-  overflow: hidden;
-  position: relative;
-  > * {
-    position: relative;
-  }
-}
-
-.scroll-left, .scroll-right {
-  display: none;
-  position: absolute;
-  top: 47px;
-  cursor: pointer;
-  width: 21px;
-  height: 205px;
-  background: image-url("slider_arrows_sprite.png") 0 center no-repeat;
-}
-
-.scroll-left {
-  left: 0;
-  &:hover {
-    background-position: -21px center;
-  }
-}
-
-.scroll-right {
-  left: 918px;
-  background-position: -42px center;
-  &:hover {
-    background-position: -63px center;
-  }
-}
 
 /* fixtures-results scrollbar*/
 .results, .fixtures {
@@ -92,56 +25,45 @@
   }
 }
 .active {
-  background-color: #753D30;
+  background-color: $somecolor;
   a, a:hover, a:focus {
     color: #FFFFFF;
   }
 }
 
-/* Social buttons*/
-#facebook > a{
-  background: image-url("social-icons.png") 0 0 ;
-  height: 35px;
-  width: 35px;
-}
-.social, .news-updates {
-  margin-bottom: 90px;
-  float: right;
-  padding-left: 5px;
-  /*box-shadow: 0 0 9px -6px rgba(0, 0, 0, 0.5);*/
-  box-shadow: -1px 12px 9px -6px rgba(53, 85, 178, 0.63);
-  h3 {
-    color: #355193;
-  }
-}
-.span3.social {
-  width: 23%;
-}
 /* Hero-image box-caption */
 .box-caption {
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0.41);
   border-radius: 4px 4px 4px 4px;
-  left: 16px;
+  left: 65px;
   position: relative;
-  top: -182px;
-  h4 {
-    color: #0B75B9;
-    padding: 5px;
+  top: -241px;
+  z-index: 10;
+  width: 22%;
+  h3 {
+    font-weight: lighter;
   }
   a {
     color: #FFFFFF;
     padding-left: 10px;
     font-size: 14px;
     text-decoration: none;
-  }
-  a:hover
+  &:hover
    {
-    color: #0B75B9;
+    color: $TheMe_COLOR;
    }
+  }
+}
+ /* header drop-down */
+ .submenu {
+  display: none;
+}
+.menu:hover .submenu{
+  display: block;
 }
 
-/* News & Updates */
-.span8.news-updates {
-  height: 218px;
-  width: 71%;
+.slides {
+  li {
+  max-height: 364px;
+  }
 }
