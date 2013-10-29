@@ -20,7 +20,7 @@
           <% @events.each_with_index do |event,index| %>
           <tr>
             <td><%= index + 1 %></td>
-            <td><h3><%= link_to "#{event.title.titleize}", admin_event_matches_path(event.slug) %></h3></td>
+            <td><%= link_to "#{event.title.titleize}", admin_event_matches_path(event.slug) %></td>
             <td><%= event.created_at.strftime("%d-%b-%Y") %></td>
             <td>Administrator</td>
             <td>
