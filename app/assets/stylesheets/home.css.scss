@@ -35,13 +35,14 @@
 .box-caption {
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0.41);
   border-radius: 4px 4px 4px 4px;
-  left: 65px;
-  position: relative;
-  top: -241px;
+  left: 90px;
+  position: absolute;
+  top: 177px;
   z-index: 10;
   width: 22%;
   h3 {
     font-weight: lighter;
+	margin: 0;
   }
   a {
     color: #FFFFFF;
@@ -60,10 +61,4 @@
 }
 .menu:hover .submenu{
   display: block;
-}
-
-.slides {
-  li {
-  max-height: 364px;
-  }
 }

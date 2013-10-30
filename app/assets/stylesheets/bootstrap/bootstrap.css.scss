@@ -236,7 +236,7 @@ a {
 }
 
 .span6 {
-  width: 460px;
+  width: 470px;
 }
 
 .span5 {
@@ -3477,7 +3477,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
   line-height: 16px;
   padding: 12px 14px;
   text-transform: none;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .alert-info {
@@ -4422,10 +4422,10 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 }
 
 .breadcrumb {
-  padding: 8px 15px;
-  margin: 0 0 20px;
+  padding: 0;
+  margin: 0 0 10px;
   list-style: none;
-  background-color: #f5f5f5;
+  color: #f5f5f5;
 
   li {
     display: inline-block;
@@ -5775,7 +5775,7 @@ h5 {
 }
 
 p {
-  padding-bottom: 25px;
+  padding: 0;
   margin: 0;
   color: white;
 }
@@ -5816,7 +5816,7 @@ p {
 
 .row-1 {
   background: #fff;
-  padding: 14px 0;
+  padding: 5px 0;
 }
 
 .row-2 {
@@ -5826,10 +5826,15 @@ p {
   text-align: center;
   border-top: 2px dashed #ccc;
   border-bottom: 2px dashed #ccc;
+  border-right: 2px dashed #ccc;  
   font-style: italic;
   h3 {
     margin: 10px 0;
     font-style: normal;
+  }
+  ul {
+	  text-align: left;
+	  margin-left: 83px;
   }
 }
 
@@ -6196,8 +6201,7 @@ p {
   position: relative;
   vertical-align: top;
   z-index: 1;
-  margin: 0 0 20px;
-  padding-top: 10px;
+  margin: 0 0 5px;
   fieldset {
     border: none;
     padding: 0;
@@ -6500,6 +6504,9 @@ footer {
 @media (max-width: 1300px) {
   #search input {
     width: 200px;
+  }
+  .clear {
+	  margin-bottom: 30px;
   }
 }
 
