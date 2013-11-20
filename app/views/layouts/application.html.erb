@@ -17,17 +17,21 @@
 
     <div class="bg-content" style="background: black">
       <div class="container">
-        <div id="contact-form">
-          <div id="alert_success" class="success">Thank you for your valuable Feedback!</div>
-        </div>
-        <div class="breadcrumb"><%= render_breadcrumbs %></div>
-        <% flash.each do |name,msg| %>
-         <% if msg %>
-          <div class="alert-error">
-            <%= content_tag(:div, msg, :id => "flash_#{name}")%>
+        <div class="row">
+          <div id="contact-form">
+            <div id="alert_success" class="success">Thank you for your valuable Feedback!</div>
           </div>
+
+          <div class="breadcrumb"><%= render_breadcrumbs %></div>
+
+          <% flash.each do |name,msg| %>
+           <% if msg %>
+            <div class="alert-error">
+              <%= content_tag(:div, msg, :id => "flash_#{name}")%>
+            </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
 
         <%= yield %>
       </div>

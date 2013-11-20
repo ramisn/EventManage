@@ -14,13 +14,15 @@
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <th>Sr No</th>
+            <th></th>
             <th>Match</th>
             <th>Teams</th>
             <th width="110" class="ac">Content Control</th>
           </tr>
           <% @matches.each_with_index do |match, index| %>
             <tr>
-              <td><%= index + 1 %></td>
+              <td style="width:28px"><%= index + 1 %></td>
+              <td style="width:27px"><div class="<%= "played" if match.result != "nil" %>"></div></td>
               <td><%= link_to "#{match.title}", admin_event_match_path(params[:event_id],match.id) %></td>
               <td><%= @teams[index][0].title unless @teams[index][0].nil? %> <b>v/s</b> <%= @teams[index][1].title unless @teams[index][1].nil? %></td>
               <td><%= link_to 'edit', edit_admin_event_match_path(params[:event_id],match.id), :class => "ico edit" %>

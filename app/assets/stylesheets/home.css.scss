@@ -35,14 +35,14 @@
 .box-caption {
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0.41);
   border-radius: 4px 4px 4px 4px;
-  left: 90px;
   position: absolute;
-  top: 177px;
   z-index: 10;
   width: 22%;
+  left: 9.53%;
+    top: 53.53%;
   h3 {
     font-weight: lighter;
-	margin: 0;
+    margin: 0;
   }
   a {
     color: #FFFFFF;
@@ -53,6 +53,28 @@
    {
     color: $TheMe_COLOR;
    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+  .box-caption {
+    left: 9.53%;
+    top: 44.53%;
+  }
+}
+@media (max-width: 767px) {
+  .box-caption {
+    left: 9.53%;
+    top: 28.53%;
+    h3 {
+      font-size: 13px;
+      line-height: 19px;
+      padding-left: 6px;
+    }
+    a {
+      font-size: 10px;
+      padding-left: 6px;
+    }
   }
 }
  /* header drop-down */

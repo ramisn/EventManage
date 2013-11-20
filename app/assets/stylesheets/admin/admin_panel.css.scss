@@ -481,4 +481,15 @@ body {
         margin: 0 0 9px 9px;
       }
   }
+
+  /* whether match is played or not*/
+  .table {
+    td {
+      .played {
+        background: image-url("bootstrap/glyphicons-halflings.png") -137px -64px transparent;
+        width: 27px;
+        height: 27px;
+      }
+    }
+    }
 }

@@ -3473,9 +3473,9 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
   background: none repeat scroll 0 0 #f2dede;
   border-color: #eed3d7;
   color: #b94a48;
-  font-size: 14px;
-  line-height: 16px;
-  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 14px;
+  padding: 6px 14px;
   text-transform: none;
   margin-bottom: 4px;
 }
@@ -4942,8 +4942,8 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 
 .thumbnails > li {
   float: left;
-  margin-bottom: 20px;
-  margin-left: 0px;
+  margin: 0 11.71px 40px;
+  width: 10%;
 }
 
 .thumbnail {
@@ -5672,7 +5672,6 @@ header {
 .nav-collapse_ .nav {
   ul {
     position: absolute;
-    
     width: 120px;
     left: -18px;
     top: 84px;
@@ -5856,9 +5855,7 @@ p {
 .thumbnails-1 {
   margin: 0;
   list-style: outside none;
-  > li {
-    margin-bottom: 40px;
-  }
+
   .thumbnail-1 {
     border: none;
     -webkit-border-radius: 0;
@@ -6264,13 +6261,13 @@ p {
   }
   .success {
     display: none;
-    margin-bottom: 20px;
-    color: #000000;
-    font-size: 14px;
-    line-height: 16px;
+    margin: 2px 0 20px 0;
+    color: $TheMe_COLOR;
+    font-size: 13px;
+    line-height: 14px;
     position: relative;
     background: #ffffff;
-    padding: 12px 14px;
+    padding: 6px 14px;
     text-transform: none;
   }
   .error, .empty {
@@ -6562,7 +6559,13 @@ footer {
     clear: none !important;
     .nav > li {
       float: left !important;
-      margin-left: 10px;
+      margin-left: 0px;
+    }
+    .nav {
+      ul {
+        top: 42px;
+        left: -2px;
+      }
     }
   }
   .portfolio {
@@ -6589,6 +6592,12 @@ footer {
   }
   #form-search input {
     width: 74%;
+  }
+  .thumbnails > li {
+    margin: 0 1.25% 12px;
+  }
+  .left {
+    margin-left: 20px;
   }
 }
 
@@ -6676,7 +6685,7 @@ footer {
         -webkit-border-radius: 0;
         -moz-border-radius: 0;
         border-radius: 0;
-        width: 100%;
+        width: auto;
         padding: 8px 0;
         font-weight: normal;
       }
@@ -6722,17 +6731,18 @@ footer {
     list-style: none;
     zoom: 1;
     z-index: 9;
-    background: #ccc;
+    background: #fff;
     padding: 0;
     margin: 0;
     left: 0;
     top: 0;
     li a {
       display: block;
-      font-size: 16px;
+      font-size: 14px;
       padding: 4px 0;
+      color: #000;
       &:hover {
-        background: #575757 !important;
+        background: $TheMe_COLOR !important;
       }
     }
   }
@@ -6746,9 +6756,7 @@ footer {
   .bg-glow {
     background: none;
   }
-  .thumbnail-1 > img {
-    width: 100%;
-  }
+
   #form-search input {
     width: 70%;
   }
@@ -6766,16 +6774,11 @@ footer {
   #search input {
     width: 66%;
   }
-  .thumbnails-1 {
-    .thumbnail-1 img {
-      width: 100%;
-    }
-    margin-left: -20px;
-    li {
-      float: left;
-      width: 45%;
-      margin-left: 20px;
-    }
+
+  .thumbnails > li {
+    margin: 0 1.24% 10px;
+    float: left;
+      width: 10%;
   }
 }
 
@@ -6802,17 +6805,6 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .thumbnails-1 {
-    .thumbnail-1 img {
-      width: 100%;
-    }
-    margin-left: 0px;
-    li {
-      float: none;
-      width: 100%;
-      margin-left: 0px;
-    }
-  }
   .img-indent {
     float: none;
     margin: 0 0 16px 0;
@@ -6851,7 +6843,7 @@ footer {
     width: 66%;
   }
   footer {
-    padding: 31px 0;
+    padding-top: 2px;
     text-align: center;
   }
   #contact-form {

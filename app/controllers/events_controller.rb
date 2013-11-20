@@ -1,14 +1,13 @@
 class EventsController < ApplicationController
   add_breadcrumb "home", :root_path
   add_breadcrumb "events", :events_path
-  @@events = Event.all
 
   def index
-    @events = @@events
+    @events = Event.all
   end
 
   def matches
-    @events = @@events
+    @events = Event.all
     #@event = @events.collect { |e| e if e.id.eql?(params[:id].to_i)}.reject { |e| e.nil? }.first
     @event = Event.find(params[:id])  #improved performance
     add_breadcrumb "#{@event.title}"
@@ -21,7 +20,7 @@ class EventsController < ApplicationController
   end
 
   def teams
-    @events = @@events
+    @events = Event.all
     #@event = @events.collect { |e| e if e.id.eql?(params[:id].to_i)}.reject { |e| e.nil? }.first
     @event = Event.find(params[:id])  #improved performance
     add_breadcrumb "#{@event.title}"
@@ -30,7 +29,7 @@ class EventsController < ApplicationController
   end
 
   def groups
-    @events = @@events
+    @events = Event.all
     #@event = @events.collect { |e| e if e.id.eql?(params[:id].to_i)}.reject { |e| e.nil? }.first
     @event = Event.find(params[:id])  #improved performance
     add_breadcrumb "#{@event.title}"
@@ -39,7 +38,7 @@ class EventsController < ApplicationController
   end
 
   def results
-    @events = @@events
+    @events = Event.all
     #@event = @events.collect { |e| e if e.id.eql?(params[:id].to_i)}.reject { |e| e.nil? }.first
     @event = Event.find(params[:id])  #improved performance
     add_breadcrumb "#{@event.title}"
@@ -48,7 +47,7 @@ class EventsController < ApplicationController
   end
 
   def rules
-    @events = @@events
+    @events = Event.all
     #@event = @events.collect { |e| e if e.id.eql?(params[:id].to_i)}.reject { |e| e.nil? }.first
     @event = Event.find(params[:id])  #improved performance
     add_breadcrumb "#{@event.title}"

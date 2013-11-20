@@ -9,7 +9,7 @@
     line-height: 35px;
     font-weight: 600;
     color: #FFF;
-    width: 960px;
+    width: 944px;
     margin: 0 auto;
 
     .link {
@@ -32,6 +32,27 @@
     strong {
       color: grey;
       font-weight: 600;
+    }
+  }
+}
+
+@media(max-width: 979px) and (min-width: 768px)  {
+  #login_bar {
+    .name {
+      width: 724px;
+    }
+  }
+}
+
+@media(max-width: 767px) {
+  #login_bar {
+    font-size: 10px;
+    .name {
+      max-width: 95%;
+      margin: 0 5px;
+      .link {
+        padding-right: 6px;
+      }
     }
   }
 }

@@ -31,6 +31,12 @@
   min-width: 190px;
 }
 
+@media (max-width: 767px) {
+  .ui-dialog {
+    max-width: 445px;
+  }
+}
+
 .dropdown:hover .dropdown-menu {
   display: block;
 }
@@ -81,9 +87,6 @@
   td {
     vertical-align: middle;
   }
-}
-.table.table-striped td:first-child {
-    width: 48px;
 }
 
 .table.table-striped p {

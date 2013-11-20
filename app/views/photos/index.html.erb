@@ -1,10 +1,19 @@
-<ul class="thumbnails thumbnails-1 list-services">
-  <% @events.each do |event| %>
-    <li class="span2">
-      <div class="thumbnail thumbnail-1">
-        <%= link_to image_tag("folder_icon.png", :border => 0), event_photos_path(event.title) if event.photos.any? %>
-          <%= link_to event.title, "#", :class => "link-1" %>
-      </div>
-    </li>
+<div class="row">
+  <% if @events.any? %>
+    <ul class="thumbnails thumbnails-1">
+      <% @events.each do |event| %>
+        <% if event.photos.any? %>
+          <li>
+              <%= link_to image_tag("folder_icon.png", :border => 0), event_photos_path(event.title) %></br>
+              <%= link_to event.title, "#", :class => "link-1" %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Sorry! There is no photos uploaded!</p>
   <% end %>
-</ul>
+
+
+  <p><%= link_to 'back', root_path %></p>
+</div>

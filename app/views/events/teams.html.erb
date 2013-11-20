@@ -14,15 +14,15 @@
       <tr>
         <% @teams.each_with_index do |team,index| %>
           <td>
-            <ul>
-              <% if team.players.any? %>
+            <% if team.players.any? %>
+              <ul>
                 <% team.players.each do |player| %>
                   <li><%= player.name %></li>
                 <% end %>
-              <% else %>
-                No players selected!
-              <% end %>
-            </ul>
+              </ul>
+            <% else %>
+              No players selected!
+            <% end %>
           </td>
         <% end %>
       </tr>

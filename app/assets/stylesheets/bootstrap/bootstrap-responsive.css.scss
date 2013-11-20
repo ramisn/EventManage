@@ -404,7 +404,7 @@
 
 @media (min-width: 768px) and (max-width: 979px) {
   .row {
-    margin-left: -20px;
+    margin-left: 0px;
     *zoom: 1;
     &:before {
       display: table;
@@ -421,7 +421,7 @@
   [class*="span"] {
     float: left;
     min-height: 1px;
-    margin-left: 20px;
+    margin-left: 0px;
   }
   .container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container, .span12 {
     width: 724px;
@@ -442,7 +442,7 @@
     width: 414px;
   }
   .span6 {
-    width: 352px;
+    width: 372px;
   }
   .span5 {
     width: 290px;
@@ -714,8 +714,8 @@
 
 @media (max-width: 767px) {
   body {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
   .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
     margin-left: -20px;
@@ -743,13 +743,6 @@
   }
   .row {
     margin-left: 0;
-  }
-  .thumbnails {
-    margin-left: 0;
-    > li {
-      float: none;
-      margin-left: 0;
-    }
   }
   [class*="span"], .row-fluid [class*="span"] {
     float: none;
@@ -791,6 +784,20 @@
     &.fade.in {
       top: auto;
     }
+  }
+
+  .btn.btn-navbar.btn-navbar_ {
+    color: #81A2CE;
+    background: image-url("bootstrap/glyphicons-halflings.png") -328px -40px;
+    width:30px;
+    height:30px;
+    position: absolute;
+    right: 0;
+    top: 23px;
+    width: 30px;
+    padding: 0;
+    text-decoration: none;
+    border: medium none;
   }
 }
 
@@ -837,6 +844,7 @@
   .carousel-caption {
     position: static;
   }
+
 }
 
 @media (max-width: 979px) {
@@ -883,13 +891,13 @@
         }
       }
       .nav-header {
-        color: #777777;
+        color: #EEEEEE;
         text-shadow: none;
       }
       > li > a {
         padding: 9px 15px;
         font-weight: bold;
-        color: #777777;
+        color: #EEEEEE;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
         border-radius: 3px;
@@ -898,7 +906,7 @@
     .dropdown-menu a {
       padding: 9px 15px;
       font-weight: bold;
-      color: #777777;
+      color: #EEEEEE;
       -webkit-border-radius: 3px;
       -moz-border-radius: 3px;
       border-radius: 3px;
@@ -914,7 +922,7 @@
       margin-bottom: 2px;
     }
     .nav > li > a:hover, .dropdown-menu a:hover {
-      background-color: #f2f2f2;
+      background-color: $TheMe-COLOR;
     }
   }
   .navbar-inverse .nav-collapse {

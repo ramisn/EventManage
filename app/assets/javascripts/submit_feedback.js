@@ -37,7 +37,7 @@ $(function() {
     autoOpen: false,
     height: 400,
     width: 550,
-    position: [350,100],
+    position: ['center',100],
     resizable: false,
     draggable: false,
     modal: true,

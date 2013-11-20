@@ -14,15 +14,15 @@
       <tr>
         <% @groups.each_with_index do |group,index| %>
           <td>
-            <ul>
-              <% if group.teams.any? %>
+            <% if group.teams.any? %>
+              <ul>
                 <% group.teams.each do |team| %>
                   <li><%= team.title %></li>
                 <% end %>
-              <% else %>
-                No Teams selected!
-              <% end %>
-            </ul>
+              </ul>
+            <% else %>
+              No Teams selected!
+            <% end %>
           </td>
         <% end %>
       </tr>

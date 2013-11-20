@@ -2,14 +2,20 @@
 
 <h4>Rules</h4>
 
-<% if @rules.any? %>
-  <% @rules.each do |rule| %>
-    <p>
-      <%= raw rule.description %>
-    </p>
-  <% end %>
-<% else %>
-  <p>Why should all the games have rules!! Cheers!</p>
-<% end %>
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <td style="text-align: left;">
+        <% if @rules.any? %>
+          <% @rules.each do |rule| %>
+            <%= raw rule.description %>
+          <% end %>
+        <% else %>
+          Why should all the games have rules!! Cheers!
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 <p><%= link_to 'back', events_path %></p>
