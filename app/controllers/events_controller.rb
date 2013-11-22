@@ -12,10 +12,23 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])  #improved performance
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "matches"
-    @matches = @event.matches.order(:title)
-    @teams = []
-    @matches.each do |match|
-      @teams << Team.where("id IN (?)", [match.t1,match.t2])
+    @matches = @event.matches.order("updated_at DESC")
+
+    @match_results = []
+    @match_fixtures = []
+    @matches.collect { |m| @match_results << m unless m.result.eql?('nil') }
+    @matches.collect { |m| @match_fixtures << m if m.result.eql?('nil') }
+
+    @teams_for_results = []
+    @teams_for_fixtures = []
+
+    @match_results.each do |match|
+      @teams_for_results << Team.where("id IN (?)", [match.t1,match.t2])
+    end
+
+    @match_fixtures = @match_fixtures.reverse!
+    @match_fixtures.each do |match|
+      @teams_for_fixtures << Team.where("id IN (?)", [match.t1,match.t2])
     end
   end
 

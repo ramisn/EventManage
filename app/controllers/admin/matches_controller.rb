@@ -6,7 +6,7 @@ class Admin::MatchesController < AdminController
     @event = Event.find(params[:event_id])
     add_breadcrumb "#{@event.title}"
     add_breadcrumb "matches", :admin_event_matches_path
-    @matches = @event.matches.order(:title)
+    @matches = @event.matches.order('updated_at desc')
     @teams = []
     @matches.each do |match|
       @teams << Team.where("id IN (?)", [match.t1,match.t2])

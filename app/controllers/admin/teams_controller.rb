@@ -8,10 +8,15 @@ class Admin::TeamsController < AdminController
     add_breadcrumb "teams", :admin_event_teams_path
     @users = User.all
     @teams = @event.teams.includes(:players)
-    @selected_users = User.joins(:team_users).where(team_users: {event_id: params[:event_id]})
 
-    #@dropdown_users = User.where("id NOT IN (?)", @selected_users)
-    @dropdown_users = @users - @selected_users
+    if @event.title == "Cricket"
+      @selected_users = User.joins(:team_users).where(team_users: {event_id: params[:event_id]})
+
+      #@dropdown_users = User.where("id NOT IN (?)", @selected_users)
+      @dropdown_users = @users - @selected_users
+    else
+      @dropdown_users = @users
+    end
   end
 
   def new

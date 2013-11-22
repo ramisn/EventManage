@@ -2,36 +2,87 @@
 
 <h4>Matches</h4>
 <% if @matches.any? %>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th >Sr No.</th>
-        <th>Match</th>
-        <th>Teams</th>
-        <th>Details</th>
-        <th>Result &nbsp;<%= link_to 'Point Table', results_event_path(@event.slug) %></th>
-      </tr>
-    </thead>
-    <% @matches.each_with_index do |match,index| %>
-      <% unless match.nil? %>
-        <tbody>
+  <span id="fixtures"><%= link_to "Fixtures", "#" %></span>
+  <span id="results" class="active"><%= link_to "Results", "#" %></span>
+
+  <div class="fixtures" style="display: none">
+    <% if @match_fixtures.any? %>
+      <table class="table table-striped">
+        <thead>
           <tr>
-            <td><%= index +1 %></td>
-            <td style="text-align: left;"><%= match.title %></td>
-            <td><%= @teams[index][0].title %> v/s <%= @teams[index][1].title %></td>
-            <td style="text-align: left;"><%= raw match.description %></td>
-            <% unless match.result.nil? || match.result == 'nil' %>
-              <td><%= match.result %></td>
-            <% else %>
-              <td></td>
-            <% end %>
+            <th >Sr No.</th>
+            <th>Date</th>
+            <th>Teams</th>
+            <th>Match</th>
           </tr>
-        </tbody>
-      <% end %>
+        </thead>
+        <% j = 0 %>
+        <% @match_fixtures.each_with_index do |match,index| %>
+          <tbody>
+            <tr>
+              <td><%= index +1 %></td>
+              <td><%= raw match.description %></td>
+              <td><%= @teams_for_fixtures[j][0].title unless @teams_for_fixtures[j][0].nil? %><b> v/s </b><%= @teams_for_fixtures[j][1].title unless @teams_for_fixtures[j][1].nil? %></td>
+              <td><%= match.title %></td>
+            </tr>
+          </tbody>
+          <% j+=1 %>
+        <% end %>
+      </table>
+    <% else %>
+      No Fixtures!
     <% end %>
-  </table>
+  </div>
+
+  <div class="results">
+    <% if @match_results.any? %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th >Sr No.</th>
+            <th>Date</th>
+            <th>Teams</th>
+            <th>Match</th>
+            <th>Result &nbsp;<%= link_to 'Point Table', results_event_path(@event.slug) %></th>
+          </tr>
+        </thead>
+        <% i = 0 %>
+        <% @match_results.each_with_index do |match,index| %>
+          <tbody>
+            <tr>
+              <td><%= index +1 %></td>
+              <td><%= raw match.description %></td>
+              <td><%= @teams_for_results[i][0].title unless @teams_for_results[i][0].nil? %><b> v/s </b><%= @teams_for_results[i][1].title unless @teams_for_results[i][1].nil? %></td>
+              <td><%= match.title %></td>
+              <td><%= match.result %></td>
+            </tr>
+          </tbody>
+          <% i+=1 %>
+        <% end %>
+      </table>
+    <% else %>
+      <p>No Results!</p>
+    <% end %>
+  </div>
 <% else %>
   <p>No matches!</p>
 <% end %>
 
 <p><%= link_to 'back', events_path %></p>
+
+
+<script type="text/javascript">
+$("#fixtures").click(function () {
+  $(".fixtures").show();
+  $(".results").hide();
+  $("#fixtures").addClass("active");
+  $("#results").removeClass("active");
+})
+
+$("#results").click(function () {
+  $(".results").show();
+  $(".fixtures").hide();
+  $("#results").addClass("active");
+  $("#fixtures").removeClass("active");
+})
+</script>
