@@ -5,6 +5,6 @@ class TeamUser < ActiveRecord::Base
 
   attr_accessible :team_id, :user_id, :event_id
 
-  validates :user_id, :uniqueness => {:scope => :event_id}
+  validates :user_id, :uniqueness => {:scope => :team_id}
 
 end

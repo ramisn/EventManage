@@ -82,8 +82,10 @@ class Admin::TeamsController < AdminController
   end
 
   def add_player
+    
     begin
-      TeamUser.create!(:team_id=>params[:team_id].to_s,:user_id=>params[:user_id].to_s,:event_id=>params[:event_id].to_s)
+      event_id = Event.find(params[:event_id]).id
+      TeamUser.create!(:team_id=>params[:team_id].to_s,:user_id=>params[:user_id].to_s,:event_id=>event_id)
       flash[:success] = "Player Added!"
       redirect_to admin_event_teams_path
     rescue
