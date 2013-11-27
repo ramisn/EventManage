@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  add_breadcrumb "home", :root_path
+  add_breadcrumb "Home", :root_path
 
   def index
     @events = Event.all

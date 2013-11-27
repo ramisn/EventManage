@@ -22,7 +22,11 @@
             <div id="alert_success" class="success">Thank you for your valuable Feedback!</div>
           </div>
 
-          <div class="breadcrumb"><%= render_breadcrumbs %></div>
+        <div class="breadcrumb">
+          <ol>
+            <%= render_breadcrumbs :separator => '', :tag => 'li' %>
+          </ol>
+        </div>
 
           <% flash.each do |name,msg| %>
            <% if msg %>
