@@ -13,3 +13,9 @@
   <%= f.label :event %>
   <%= f.select :event_id, options_from_collection_for_select(@events, :id, :title, @photo.event_id), :prompt=> "--select event--" %>
 </p>
+
+<div class="radio-button">
+  <%= f.label :hero_image? %></br>
+  <%= f.radio_button :hero_image, true %> <%= f.label :true %>
+  <%= f.radio_button :hero_image, false %> <%= f.label :false %>
+</div>

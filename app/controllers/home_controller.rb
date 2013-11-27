@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 
   def index
     @events = Event.all
-    @photos = Photo.all
+    @photos = Photo.heroimages
     #Logic-1 :: It is faster than Logic-2 in data load.
     @matches = Match.order("updated_at DESC")
 
