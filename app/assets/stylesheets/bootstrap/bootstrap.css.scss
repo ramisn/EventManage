@@ -5872,8 +5872,10 @@ p {
 /*------ thumbnails-1 ------- */
 
 .thumbnails-1 {
-  margin: 0;
+  margin: 0 0 15px 0;
   list-style: outside none;
+  border: solid 1px #f0f0f0;
+  padding: 15px 0;
 
   .thumbnail-1 {
     border: none;
