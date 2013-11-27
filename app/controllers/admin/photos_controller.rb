@@ -1,13 +1,13 @@
 class Admin::PhotosController < AdminController
-  add_breadcrumb "home", :admin_path
-  add_breadcrumb "photos", :admin_photos_path
+  add_breadcrumb "Home", :admin_path
+  add_breadcrumb "Photos", :admin_photos_path
 
   def index
     @events = Event.includes(:photos)
   end
 
   def new
-    add_breadcrumb "new"
+    add_breadcrumb "New"
     @events = Event.all
     if @events.any?
       @photo = Photo.new
@@ -18,7 +18,7 @@ class Admin::PhotosController < AdminController
   end
 
   def create
-    add_breadcrumb "new"
+    add_breadcrumb "New"
     @events = Event.all
     @photo = Photo.new(params[:photo])
     if @photo.save
@@ -33,15 +33,15 @@ class Admin::PhotosController < AdminController
     @events = Event.all
     @photo = Photo.find(params[:id])
     @event = Event.find(@photo.event_id)
-    add_breadcrumb "#{@event.title}"
-    add_breadcrumb "#{@photo.title}"
+    add_breadcrumb "#{@event.title.capitalize}", admin_event_photos_path(@event.title)
+    add_breadcrumb "#{@photo.title.capitalize}"
   end
 
   def update
     @photo = Photo.find(params[:id])
     @event = Event.find(@photo.event_id)
-    add_breadcrumb "#{@event.title}"
-    add_breadcrumb "#{@photo.title}"
+    add_breadcrumb "#{@event.title.capitalize}"
+    add_breadcrumb "#{@photo.title.capitalize}"
 
     if @photo.update_attributes(params[:photo])
       flash[:success] = "Photo updated!"
@@ -64,8 +64,7 @@ class Admin::PhotosController < AdminController
 
   def event_photos
     @event = Event.find_by_title(params[:event])
-    add_breadcrumb "#{@event.title}"
-    add_breadcrumb "thumbnails"
+    add_breadcrumb "#{@event.title.capitalize}"
     @photos = @event.photos
   end
 end

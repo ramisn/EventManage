@@ -1,28 +1,28 @@
 class Admin::GroupsController < AdminController
-  add_breadcrumb "home", :admin_path
-  add_breadcrumb "events", :admin_events_path
+  add_breadcrumb "Home", :admin_path
+  add_breadcrumb "Events", :admin_events_path
 
   def index
     @event = Event.find(params[:event_id])
-    add_breadcrumb "#{@event.title}"
-    add_breadcrumb "groups", :admin_event_groups_path
+    add_breadcrumb "#{@event.title.capitalize}"
+    add_breadcrumb "Groups", :admin_event_groups_path
     @groups = @event.groups.includes(:teams)
     @teams = @event.teams.where(:group_id => nil)
   end
 
   def new
     @event = Event.find(params[:event_id])
-    add_breadcrumb "#{@event.title}"
-    add_breadcrumb "groups", :admin_event_groups_path
-    add_breadcrumb "new"
+    add_breadcrumb "#{@event.title.capitalize}"
+    add_breadcrumb "Groups", :admin_event_groups_path
+    add_breadcrumb "New"
     @group = @event.groups.new
   end
 
   def create
     @event = Event.find(params[:event_id])
-    add_breadcrumb "#{@event.title}"
-    add_breadcrumb "groups", :admin_event_groups_path
-    add_breadcrumb "new"
+    add_breadcrumb "#{@event.title.capitalize}"
+    add_breadcrumb "Groups", :admin_event_groups_path
+    add_breadcrumb "New"
 
     @group = @event.groups.new(params[:group])
     if @group.save
@@ -36,17 +36,17 @@ class Admin::GroupsController < AdminController
   def edit
     @event = Event.find(params[:event_id]) #To show path from admin layout
     @group = Group.find(params[:id])
-    add_breadcrumb "#{@event.title}"
-    add_breadcrumb "groups", :admin_event_groups_path
-    add_breadcrumb "#{@group.title}"
+    add_breadcrumb "#{@event.title.capitalize}"
+    add_breadcrumb "Groups", :admin_event_groups_path
+    add_breadcrumb "#{@group.title.capitalize}"
   end
 
   def update
     @event = Event.find(params[:event_id]) #To show path from admin layout
     @group = Group.find(params[:id])
-    add_breadcrumb "#{@event.title}"
-    add_breadcrumb "groups", :admin_event_groups_path
-    add_breadcrumb "#{@group.title}"
+    add_breadcrumb "#{@event.title.capitalize}"
+    add_breadcrumb "Groups", :admin_event_groups_path
+    add_breadcrumb "#{@group.title.capitalize}"
 
     if @group.update_attributes(params[:group])
       flash[:success] = "Group updated!"

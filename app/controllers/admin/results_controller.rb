@@ -1,11 +1,11 @@
 class Admin::ResultsController < AdminController
-  add_breadcrumb "home", :admin_path
-  add_breadcrumb "events", :admin_events_path
+  add_breadcrumb "Home", :admin_path
+  add_breadcrumb "Events", :admin_events_path
 
   def index
     @event = Event.find(params[:event_id])
-    add_breadcrumb "#{@event.title}"
-    add_breadcrumb "results", :admin_event_results_path
+    add_breadcrumb "#{@event.title.capitalize}"
+    add_breadcrumb "Results", :admin_event_results_path
     @teams = @event.teams.includes(:result)
   end
 

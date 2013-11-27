@@ -1,6 +1,6 @@
 class Admin::UsersController < AdminController
-  add_breadcrumb "home", :admin_path
-  add_breadcrumb "users", :admin_users_path
+  add_breadcrumb "Home", :admin_path
+  add_breadcrumb "Users", :admin_users_path
 
   def index
     @players = User.all
@@ -8,12 +8,12 @@ class Admin::UsersController < AdminController
   end
 
   def new
-    add_breadcrumb "new"
+    add_breadcrumb "New"
     @user = User.new
   end
 
   def create
-    add_breadcrumb "new"
+    add_breadcrumb "New"
     @user = User.new(params[:user])
     if @user.save
       flash[:success] = "Signed up!"
@@ -25,12 +25,12 @@ class Admin::UsersController < AdminController
 
   def edit
     @user = User.find(params[:id])
-    add_breadcrumb "#{@user.name}"
+    add_breadcrumb "#{@user.name.capitalize}"
   end
 
   def update
     @user = User.find(params[:id])
-    add_breadcrumb "#{@user.name}"
+    add_breadcrumb "#{@user.name.capitalize}"
 
     if @user.update_attributes(params[:user])
       flash[:success] = "User Updated!"

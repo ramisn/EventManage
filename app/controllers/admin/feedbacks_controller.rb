@@ -1,6 +1,6 @@
 class Admin::FeedbacksController < AdminController
-  add_breadcrumb "home", :admin_path
-  add_breadcrumb "feedbacks", :admin_feedbacks_path
+  add_breadcrumb "Home", :admin_path
+  add_breadcrumb "Feedbacks", :admin_feedbacks_path
 
   helper_method :sort_column, :sort_direction
   def index
