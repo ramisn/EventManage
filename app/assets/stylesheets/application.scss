@@ -2,7 +2,9 @@
 $somecolor: #00232A;
 $alert_success: #32510F;
 $lightblue: #81A2CE;
-$TheMe_COLOR: $lightblue; /* change only from above color and it will change the theme*/
+$skyblue: #349ADC;
+
+$TheMe_COLOR: $skyblue; /* change only from above color and it will change the theme*/
 
 /* Admin scss */
 @import "admin/feedbacks";

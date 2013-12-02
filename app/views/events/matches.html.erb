@@ -2,8 +2,9 @@
 
 <h4>Matches</h4>
 <% if @matches.any? %>
+  <div class="row">
   <span id="fixtures"><%= link_to "Fixtures", "#" %></span>
-  <span id="results" class="active"><%= link_to "Results", "#" %></span>
+  <span id="results" class="active"><%= link_to "Results", "#" %></span></div>
 
   <div class="fixtures" style="display: none">
     <% if @match_fixtures.any? %>
@@ -73,15 +74,15 @@
 
 <script type="text/javascript">
 $("#fixtures").click(function () {
-  $(".fixtures").show();
-  $(".results").hide();
+  $(".fixtures").slideDown(1000);
+  $(".results").slideUp(500);
   $("#fixtures").addClass("active");
   $("#results").removeClass("active");
 })
 
 $("#results").click(function () {
-  $(".results").show();
-  $(".fixtures").hide();
+  $(".results").slideDown(1000);
+  $(".fixtures").slideUp(500);
   $("#results").addClass("active");
   $("#fixtures").removeClass("active");
 })

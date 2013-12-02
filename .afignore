@@ -1,4 +1,4 @@
 # Appfog will ignore following files from pushing/uploading
 
 # ignore system directory
-public/system/
+
