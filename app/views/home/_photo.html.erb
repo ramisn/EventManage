@@ -1,7 +1,11 @@
 <li>
   <%= image_tag(photo.image.url(:heroimage), :alt => "#{photo.title}") %>
-  <p><%= photo.title %>
-  <br/><%= photo.image_updated_at.strftime("%d-%b-%Y %I:%M %p") %></p>
+  <div class="photo-caption">
+    <p>
+      <%= photo.title %><br/>
+      <%= photo.image_updated_at.strftime("%d-%b-%Y %I:%M %p") %>
+    </p>
+  </div>
 
   <div class="box-caption">
     <h3>Find More</h3>
