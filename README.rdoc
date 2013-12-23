@@ -29,6 +29,6 @@ Work done till now.
 * Event Photos as slider
 * Fixtures/ Results at home page
 
-Last Updated: 29-aug-13
+Last Updated: 23-dec-13
 
 Parth.
