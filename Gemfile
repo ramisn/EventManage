@@ -12,20 +12,23 @@ gem "paperclip", "3.4.1"  #For uploading files
 gem "breadcrumbs_on_rails", '2.3.0'  #For adding breadcrumb
 gem 'friendly_id', '4.0.10.1'
 
+gem 'mysql2'
+gem 'dotenv-rails'
+
 gem 'execjs'
 gem 'therubyracer'  #Needed to solve javascript error
 # Gems used only for assets and not required
 # in production environments by default.
 
 # If you use a different database in development, hide it from AppFog.
-group :development do
-  gem 'mysql2'
-end
+# group :development do
+  
+# end
 
 # Rails 3.1 can use the latest mysql2 gem.
-group :production do
-  gem 'mysql2'
-end
+# group :production do
+#   gem 'mysql2'
+# end
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
